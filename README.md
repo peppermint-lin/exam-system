@@ -1,6 +1,6 @@
 # Exam Syatem Readme Text
 
-### yarn add已安装插件
+### 通过yarn add安装的插件
 
 1. nanoid——唯一标识符生成器
 2. pubsub-js——消息订阅与发布
