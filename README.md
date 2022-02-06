@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+# Exam Syatem Readme Text
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### yarn add已安装插件
 
-## Available Scripts
+1. nanoid——唯一标识符生成器
+2. pubsub-js——消息订阅与发布
+3. react-router-dom——React路由
+4. antd——Ant Design企业级UI设计语言和React组件库
+5. react-app-rewired——对create-react-app脚手架进行自定义配置的社区解决方案
+6. customize-cra——为了能够使用react-app-rewired@2.x而需要的插件
+7. babel-plugin-import——按需加载组件代码和样式的Babel插件
+8. less——向后兼容的 CSS 扩展语言库
+9. less-loader—— 用于处理编译.less文件，将其转为css文件代码
+10. @craco/craco——对create-react-app脚手架进行自定义配置的社区解决方案（Ant Design官方文档推荐）
+11. craco-less——支持覆写webpack loader相关配置的库
+12. redux——专门用于做状态管理的JS库
+13. redux-thunk——Redux异步中间件
+14. react-redux——专门用来简化react应用中使用redux的库
+15. redux-devtools-extension——结合Chrome浏览器插件调试Redux的工具依赖包
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
