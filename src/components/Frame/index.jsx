@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Route, Redirect } from 'react-router-dom'
 import { Layout, Menu, Input } from 'antd';
-import { MyIcon,routes } from "../../router"
-// import SearchPic from "./search.png"
+import { MyIcon } from '../../assets/iconfont.js';
+import { routes } from "../../router.js"
 import './index.css'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -31,7 +31,6 @@ export default class Frame extends Component {
                 </Sider>
                 <Layout>
                     <Header className="site-layout-sub-header-background" style={{ padding: 0 }}>
-                        {/* <img src={SearchPic} alt="搜索框" /> */}
                         <Search size="large" placeholder=""
                             prefix={<MyIcon id='searchIcon' type='icon-yuejuan' />} enterButton="Search" />
                     </Header>
@@ -43,7 +42,7 @@ export default class Frame extends Component {
                             <Redirect to="/home" />
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{ textAlign: 'center' }}>Examination system ©2022 Created by Gunara, God of darkness</Footer>
                 </Layout>
             </Layout>
         );

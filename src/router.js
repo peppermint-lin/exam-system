@@ -1,15 +1,11 @@
-import { createFromIconfontCN } from '@ant-design/icons';
-import Home from "../pages/Home"
-import Course from "../pages/Course"
-import Bank from "../pages/Bank"
-import Exam from "../pages/Exam"
-import Mark from "../pages/Mark"
-import Statistics from "../pages/Statistics"
-import Manage from "../pages/Manage"
-
-export const MyIcon = createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_3169719_a2dgz05w5xs.js'
-});
+import { MyIcon } from "./assets/iconfont"
+import Home from "./pages/Home"
+import Course from "./pages/Course"
+import Bank from "./pages/Bank"
+import Exam from "./pages/Exam"
+import Mark from "./pages/Mark"
+import Statistics from "./pages/Statistics"
+import Manage from "./pages/Manage"
 
 export const routes = [
   {

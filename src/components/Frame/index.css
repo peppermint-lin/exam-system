@@ -17,12 +17,6 @@
     box-shadow: 10px 0px 4px rgba(57, 57, 227, 0.25);
 }
 
-/* 右侧头部 */
-.ant-layout-header {
-    background-color: white !important;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-}
-
 /* 左侧导航栏内的菜单 */
 .ant-menu {
     background-color: transparent !important;
@@ -54,6 +48,29 @@
 /* 左侧导航栏内菜单的项被选中时的图标 */
 .ant-menu-item-selected svg {
     color: black;
+}
+
+/* 右侧头部Header部分 */
+.ant-layout-header {
+    background-color: white !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* 右侧中间Content部分的父容器 */
+.ant-layout-content {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 24px 16px 0px !important;
+    /* overflow-y: scroll !important; */
+}
+
+/* 右侧中间Content部分 */
+.site-layout-background {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 /* 右侧顶部 */
