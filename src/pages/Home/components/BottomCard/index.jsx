@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import { Pie } from '@ant-design/plots';
+import { MyIcon } from '../../../../assets/iconfont.js';
 import BottomCardCss from './index.module.css'
 
 export default class BottomCard extends Component {
@@ -17,7 +20,7 @@ export default class BottomCard extends Component {
             angleField: 'value',
             colorField: 'type',
             radius: 1,
-            innerRadius: 0.6,
+            innerRadius: 0.7,
             legend: false,
             color: ['#F2F2F2', 'l(60) 0:#82B8FF 1:#606BFF'],
             tooltip: {
@@ -34,7 +37,7 @@ export default class BottomCard extends Component {
                         whiteSpace: 'pere-wrap',
                         ovrflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        fontSize: '1.2em',
+                        fontSize: '1.3em',
                         color: "#3B90FF"
                     },
                     content: `${data[1].value * 100}%`,
@@ -57,7 +60,7 @@ export default class BottomCard extends Component {
             angleField: 'value',
             colorField: 'type',
             radius: 1,
-            innerRadius: 0.6,
+            innerRadius: 0.7,
             legend: false,
             color: ['#F2F2F2', 'l(60) 0:#82B8FF 1:#606BFF'],
             tooltip: {
@@ -74,7 +77,7 @@ export default class BottomCard extends Component {
                         whiteSpace: 'pere-wrap',
                         ovrflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        fontSize: '1.2em',
+                        fontSize: '1.3em',
                         color: "#3B90FF"
                     },
                     content: `${data[1].value * 100}%`,
@@ -91,6 +94,15 @@ export default class BottomCard extends Component {
         "banks": 3500, //题库录入
         "invigilations": 1 //监考次数
     }
+
+    /* 快捷入口按钮数据 */
+    entrance = [
+        {"url": "/bank", "icon": "icon-tiku", "title": "题库建设"},
+        {"url": "/exam", "icon": "icon-kaoshi", "title": "我要出卷"},
+        {"url": "/mark", "icon": "icon-yuejuan", "title": "人工阅卷"},
+        {"url": "/statistics", "icon": "icon-tongji", "title": "成绩统计"},
+        {"url": "/manage", "icon": "icon-guanli", "title": "大纲管理"}
+    ]
 
     render() {
         return (
@@ -134,6 +146,27 @@ export default class BottomCard extends Component {
                     <div className={BottomCardCss.leftCircle}></div>
                     <div className={BottomCardCss.rightCircleBg}></div>
                     <div className={BottomCardCss.rightCircle}></div>
+                </div>
+                {/* 工作数据部分 */}
+                <div className={BottomCardCss.quickEntrance}>
+                    <h3>快捷入口</h3>
+                    <div className={BottomCardCss.buttonWrapper}>
+                        {/* 循环渲染每个按钮 */}
+                        {this.entrance.map( item => {
+                            return (
+                                <div className={BottomCardCss.quickItem} key={nanoid()}>
+                                    <Link to={item.url}>
+                                        <div className={BottomCardCss.quickIconWrapper}>
+                                            <MyIcon id={BottomCardCss.quickIcon} type={item.icon} />
+                                        </div>
+                                        <div className={BottomCardCss.quickTitle}>
+                                            <h3> {item.title} </h3>
+                                        </div>
+                                    </Link>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         )

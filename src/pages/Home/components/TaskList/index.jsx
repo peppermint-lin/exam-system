@@ -24,9 +24,9 @@ export default class TaskList extends Component {
                         return (
                             <div key={nanoid()} className={TaskListCss.listItem}>
                                 <p> {index+1}. {task.content} </p>
-                                <Link to={task.url}>
-                                    <Button id={TaskListCss.gotoButton} shape="round" size='small'>立即前往</Button>
-                                </Link>
+                                <Button id={TaskListCss.gotoButton} shape="round" size='small'>
+                                    <Link to={task.url}>立即前往</Link>
+                                </Button>
                             </div>
                         )
                     })}
