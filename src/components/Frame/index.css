@@ -56,23 +56,6 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-/* 右侧中间Content部分的父容器 */
-.ant-layout-content {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 24px 16px 0px !important;
-    /* overflow-y: scroll !important; */
-}
-
-/* 右侧中间Content部分 */
-.site-layout-background {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-
 /* 右侧顶部 */
 Header {
     display: flex;
@@ -102,6 +85,24 @@ Header {
     background-color: #67A1F3 !important;
     background-image: linear-gradient(60deg, #82B8FF , #606BFF) !important;
     border-radius: 0 1000px 1000px 0 !important;
+}
+
+/* 右侧中间Content部分的父容器 */
+.ant-layout-content {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 24px 16px 0px !important;
+    /* overflow-y: scroll !important; */
+}
+
+/* 右侧中间Content部分 */
+.site-layout-background {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding-bottom: 0 !important;
 }
 
 /*

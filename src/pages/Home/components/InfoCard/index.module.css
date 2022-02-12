@@ -132,6 +132,7 @@
     width: 10%;
     top: 0px;
     right: 15%;
+    cursor: pointer;
 }
 
 /* 详细信息内容（为信息内容左对齐且在卡片中部居中） */
