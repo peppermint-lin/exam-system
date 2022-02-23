@@ -21,9 +21,9 @@
 
 ### 项目运行
 
-1. 安装最新的稳定版`Node.js`，下载地址 https://nodejs.org/en/。安装后在终端中运行 `node -v` 可以看到版本号，建议下载 14.x 最新稳定版
-2. 通过 https://git-scm.com/ 安装，安装后可以在终端执行 `git --version` 命令确认版本为 2.0 以上（VSCode安装插件-`GitLens`和`Git History`后，可以在VSCode中绑定GitHub账号并实现仓库管理和同步上传）
-3. 从GitHub链接https://github.com/peppermint-lin/exam-system.git下载项目源码
+1. 安装最新的稳定版`Node.js`，下载地址`https://nodejs.org/en/`。安装后在终端中运行 `node -v` 可以看到版本号，建议下载 14.x 最新稳定版
+2. 通过`https://git-scm.com/`安装，安装后可以在终端执行 `git --version` 命令确认版本为 2.0 以上（VSCode安装插件-`GitLens`和`Git History`后，可以在VSCode中绑定GitHub账号并实现仓库管理和同步上传）
+3. 从GitHub链接`https://github.com/peppermint-lin/exam-system.git`下载项目源码
 4. 在该项目根目录下打开终端，输入`npm install`安装项目依赖（有可能会比较慢，可以考虑翻个墙或者更换淘宝镜像，亦或者替换为第5步）
 5. 在终端通过`npm i -g create-react-app`命令，全局安装React脚手架，用`create-react-app hello-react`创建一个新项目，将项目源码中的`public`、`src`、`craco.config.js`和`README.md`文件和文件夹粘贴替换到新项目中，通过`yarn add xxx`安装依赖，例如`yarn add nanoid`（具体需要的依赖详见上一节“通过yarn add安装的依赖”中所述，或根据`package.json`的`dependencies`安装，该步骤可替换第4步）
 6. 在该项目根目录下打开终端，输入`yarn start`运行项目（没有yarn命令的话安装一下，或者用npm应该也可以的）
@@ -128,4 +128,24 @@
        "banks": 3500, //题库录入
        "invigilations": 1 //监考次数
    }
+   ```
+   
+7. Course页面的主组件中的courseItem数据
+
+   ```js
+   /* 教师所教授的每个课程的数据 */
+     courseItem = [
+         // name：课程名称；picURL：课程图片地址；code：课程代码；class：班级；time：时间；year：学年；semester：学期；belong：课程归属
+         {
+             "name": "计算机网络",
+             "picURL": "https://imgtu.com/i/b9icVO",
+             "code": "224105001",
+             "class": "计算机（师范）201",
+             "time": "星期一4-5节",
+             "year": "2021-2022",
+             "semester": "第二学期",
+             "belong": "专业选修课"
+         },
+         ……
+     ]
    ```

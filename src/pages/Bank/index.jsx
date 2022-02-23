@@ -3,13 +3,13 @@ import { Tabs } from 'antd';
 import Create from "./Create"
 import Share from './Share';
 import Reference from './Reference'
-import './index.css'
+import './index.css';
 
 const { TabPane } = Tabs;
 export default class Bank extends Component {
   render() {
     return (
-        <div className="card-container">
+        <div className="bankContainer">
             <Tabs type="card">
             <TabPane tab="我创建的" key="1">
                 <Create />
