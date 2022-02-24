@@ -1,0 +1,29 @@
+/* 分页器选中页码的方框 */
+.ant-pagination-item-active {
+    background-color: #67A1F3 !important;
+    border: #67A1F3 !important;
+}
+
+/* 分页器选中页码的数字 */
+.ant-pagination-item-active > a {
+    color: white !important;
+}
+
+/* 表格标题行 */
+th {
+    background-color: #67A1F3 !important;
+    color: white !important;
+}
+
+/* 表格标题行内的图标 */
+svg {
+    color: white !important;
+}
+
+/* .shallow_gray {
+    background-color: red;
+}
+
+.deep_gray {
+    background-color: black;
+} */

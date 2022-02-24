@@ -18,6 +18,7 @@
 14. redux-thunk——Redux异步中间件
 15. react-redux——专门用来简化react应用中使用redux的库
 16. redux-devtools-extension——结合Chrome浏览器插件调试Redux的工具依赖包
+17. react-highlight-words——React中用于高亮展示某段文本的组件
 
 ### 项目运行
 

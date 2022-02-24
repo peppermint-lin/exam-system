@@ -132,3 +132,81 @@
     white-space: nowrap;
     overflow-x: auto;
 }
+
+/* 课程信息右侧按钮总父容器 */
+.buttonWrapper {
+    /* background-color: rebeccapurple; */
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+/* 单个按钮的父容器 */
+.buttonItem {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 按钮的悬挂竖线 */
+.buttonLine{
+    background-color: #67A1F3;
+    width: 1px;
+    height: 25%;
+}
+
+/* 按钮文字父容器 */
+.buttonText {
+    background-color: #67A1F3;
+    width: 55%;
+    height: 55%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 按钮文字 */
+.buttonText > p, .buttonTextPurple > p {
+    color: white;
+    writing-mode: vertical-lr;
+    writing-mode: tb-lr;
+    text-align: center;
+}
+
+/* 按钮的悬挂竖线-紫色 */
+.buttonLinePurple{
+    background-color: #8183FF;
+    width: 1px;
+    height: 25%;
+}
+
+/* 按钮文字父容器-紫色 */
+.buttonTextPurple {
+    background-color: #8183FF;
+    width: 55%;
+    height: 55%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 课程底部表格的父容器 */
+.TableWrapper {
+    width: 90%;
+    height: 70%;
+    overflow-y: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
