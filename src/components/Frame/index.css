@@ -47,7 +47,7 @@
 
 /* 左侧导航栏内菜单的项被选中时的图标 */
 .ant-menu-item-selected svg {
-    color: black;
+    color: black !important;
 }
 
 /* 右侧头部Header部分 */

@@ -1,7 +1,18 @@
 /* 标签页整体父容器 */
 .courseContainer {
+    position: relative;
     height: 99%;
     box-shadow: -4px 10px 10px -10px rgba(0, 0, 0, 0.25);
+}
+
+/* 右上角增加新课程按钮 */
+#createNewCurriculum {
+    position: absolute;
+    top: 0;
+    right: 2%;
+    border-color: #3B90FF;
+    color: #3B90FF;
+    cursor: pointer;
 }
 
 /* 标签页正文卡片内的文字段落 */

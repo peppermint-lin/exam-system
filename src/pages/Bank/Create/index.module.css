@@ -1,0 +1,19 @@
+/* 操作按钮 */
+.editButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#editAgain, #changeStatus {
+    margin-right: 10%;
+}
+
+#editAgain, #changeStatus, #exportPrinting {
+    cursor: pointer;
+}
+
+#editAgain svg, #changeStatus svg, #exportPrinting svg {
+    color: #333 !important;
+}

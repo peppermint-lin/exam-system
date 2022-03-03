@@ -81,7 +81,7 @@
 .courseTopWrapper {
     background-color: white;
     width: 100%;
-    height: 30%;
+    height: 25%;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -98,7 +98,7 @@
 /* 课程信息总父容器 */
 .infoWrapper {
     width: 40%;
-    height: 40%;
+    height: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -205,8 +205,28 @@
 /* 课程底部表格的父容器 */
 .TableWrapper {
     width: 90%;
-    height: 70%;
+    height: 75%;
     overflow-y: auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+}
+
+/* 操作按钮 */
+.editButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#changeGradeIcon {
+    margin-right: 10%;
+}
+
+#changeGradeIcon, #outOfClassIcon {
+    cursor: pointer;
+}
+
+#changeGradeIcon svg, #outOfClassIcon svg {
+    color: #333 !important;
 }

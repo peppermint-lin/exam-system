@@ -1,6 +1,18 @@
 /* 标签页整体父容器 */
 .bankContainer {
+    position: relative;
+    height: 99%;
     box-shadow: -4px 10px 10px -10px rgba(0, 0, 0, 0.25);
+}
+
+/* 右上角增加新题库按钮 */
+#createNewOutline {
+    position: absolute;
+    top: 0;
+    right: 2%;
+    border-color: #3B90FF;
+    color: #3B90FF;
+    cursor: pointer;
 }
 
 /* 标签页正文卡片内的文字段落 */
@@ -21,6 +33,24 @@
     /* border-right: 5px solid rgba(153, 153, 153, 0.2); */
     /* border-bottom: 5px solid rgba(153, 153, 153, 0.2); */
     border-radius: 0px 5px 5px 5px;
+}
+
+/* 实现标签页卡片正文撑满中部屏幕 */
+.ant-tabs-top, .ant-tabs-content {
+    height: 100% !important;
+    border-radius: 5px;
+}
+
+.ant-tabs-nav {
+    margin-bottom: 0 !important;
+}
+
+.ant-tabs-content {
+    margin-top: 16px !important;
+}
+
+.ant-tabs-content-holder {
+    margin-top: -16px;
 }
 
 /* 标签页的标签 */

@@ -136,7 +136,7 @@
    ```js
    /* 教师所教授的每个课程的数据 */
      courseItem = [
-         // name：课程名称；picURL：课程图片地址；code：课程代码；class：班级；time：时间；year：学年；semester：学期；belong：课程归属
+         // name：课程名称；picURL：课程图片地址；code：课程代码；class：班级；time：时间；year：学年；semester：学期；belong：课程归属，data：表格数据
          {
              "name": "计算机网络",
              "picURL": "https://imgtu.com/i/b9icVO",
@@ -145,7 +145,20 @@
              "time": "星期一4-5节",
              "year": "2021-2022",
              "semester": "第二学期",
-             "belong": "专业选修课"
+             "belong": "专业选修课"，
+             "data": [
+             	{
+             		key: '1',
+             		number: 1,
+            		college: '信息学院',
+             		class: '计算机201',
+             		name: '秦梦瑶',
+             		studentNumber: '2020001',
+             		telephone: '19815201520',
+             		grade: 89
+         		},
+         		……
+         	  ]
          },
          ……
      ]

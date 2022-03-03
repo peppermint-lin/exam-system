@@ -24,7 +24,7 @@ export default class TaskList extends Component {
                         return (
                             <div key={nanoid()} className={TaskListCss.listItem}>
                                 <p> {index+1}. {task.content} </p>
-                                <Button id={TaskListCss.gotoButton} shape="round" size='small'>
+                                <Button id={TaskListCss.gotoButton} shape='round' size='small'>
                                     <Link to={task.url}>立即前往</Link>
                                 </Button>
                             </div>
@@ -34,7 +34,7 @@ export default class TaskList extends Component {
                 </div>
                 {/* 清单底部的编辑和清空按钮 */}
                 <div className={TaskListCss.buttonWrapper}>
-                    <Button id={TaskListCss.editButton} type="default" shape="round" size='small'>编辑清单</Button>
+                    <Button id={TaskListCss.editButton} type="default" shape='round' size='small'>编辑清单</Button>
                     <Button danger shape="round" size='small'>清空清单</Button>
                 </div>
             </div>
