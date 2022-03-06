@@ -230,3 +230,10 @@
 #changeGradeIcon svg, #outOfClassIcon svg {
     color: #333 !important;
 }
+
+/* 操作按钮的文字 */
+.editButtonWrapper > p {
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}

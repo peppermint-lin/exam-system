@@ -159,7 +159,7 @@ export default class Course extends Component {
   render() {
     return (
       <div className="courseContainer">
-        <Button id='createNewCurriculum' shape="round" size='middle'> 创建新课程 </Button>
+        <Button id='createNewCourse' shape="round" size='middle'> 创建新课程 </Button>
         <Tabs type="card">
           {
             this.courseItem.map((item, index) => {

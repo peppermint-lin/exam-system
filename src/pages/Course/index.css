@@ -6,13 +6,14 @@
 }
 
 /* 右上角增加新课程按钮 */
-#createNewCurriculum {
+#createNewCourse {
     position: absolute;
     top: 0;
     right: 2%;
     border-color: #3B90FF;
     color: #3B90FF;
     cursor: pointer;
+    z-index: 999;
 }
 
 /* 标签页正文卡片内的文字段落 */

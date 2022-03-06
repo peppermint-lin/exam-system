@@ -6,15 +6,15 @@
     align-items: center;
 }
 
-#editAgain, #changeStatus {
+#collection {
     margin-right: 10%;
 }
 
-#editAgain, #changeStatus, #exportPrinting {
+#collection, #details {
     cursor: pointer;
 }
 
-#editAgain svg, #changeStatus svg, #exportPrinting svg {
+#details svg {
     color: #333 !important;
 }
 

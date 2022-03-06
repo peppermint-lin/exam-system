@@ -86,7 +86,7 @@
    
 3. Home页面的TaskList组件中的taskList数据
 
-   ```
+   ```js
    /* 任务清单列表信息 */
    taskList = [
        // content：任务标题；url：立即前往的跳路由；show：跳转后展示的tab标签页
@@ -135,31 +135,61 @@
 
    ```js
    /* 教师所教授的每个课程的数据 */
-     courseItem = [
-         // name：课程名称；picURL：课程图片地址；code：课程代码；class：班级；time：时间；year：学年；semester：学期；belong：课程归属，data：表格数据
-         {
-             "name": "计算机网络",
-             "picURL": "https://imgtu.com/i/b9icVO",
-             "code": "224105001",
-             "class": "计算机（师范）201",
-             "time": "星期一4-5节",
-             "year": "2021-2022",
-             "semester": "第二学期",
-             "belong": "专业选修课"，
-             "data": [
-             	{
-             		key: '1',
-             		number: 1,
-            		college: '信息学院',
-             		class: '计算机201',
-             		name: '秦梦瑶',
-             		studentNumber: '2020001',
-             		telephone: '19815201520',
-             		grade: 89
-         		},
-         		……
-         	  ]
-         },
-         ……
-     ]
+   courseItem = [
+       // name：课程名称；picURL：课程图片地址；code：课程代码；class：班级；time：时间；year：学年；semester：学期；belong：课程归属，data：表格数据
+       {
+           "name": "计算机网络",
+           "picURL": "https://imgtu.com/i/b9icVO",
+           "code": "224105001",
+           "class": "计算机（师范）201",
+           "time": "星期一4-5节",
+           "year": "2021-2022",
+           "semester": "第二学期",
+           "belong": "专业选修课"，
+           "data": [
+               {
+                   key: '1',
+                   number: 1,
+                   college: '信息学院',
+                   class: '计算机201',
+                   name: '秦梦瑶',
+                   studentNumber: '2020001',
+                   telephone: '19815201520',
+                   grade: 89
+           	},
+       		……
+   		]
+   	},
+       ……
+   ]
    ```
+   
+   
+   
+8. Bank页面的Create组件中的data数据
+
+   ```js
+   /* 我创建的题库的信息 */
+   const data = [
+   	// key：唯一标识；number：序号；name：名称；course：课程；type：题型；quantity：题量；status：共享状态
+       {
+           key: '1',
+           number: 1,
+           name: '第一单元练习题',
+           course: '计算机网络',
+           type: '混合',
+           quantity: 35,
+           status: '私有'
+       },
+       ……
+   ]
+   ```
+
+   
+
+9. 
+
+   ```js
+   
+   ```
+

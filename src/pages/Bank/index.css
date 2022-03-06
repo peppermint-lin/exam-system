@@ -13,6 +13,7 @@
     border-color: #3B90FF;
     color: #3B90FF;
     cursor: pointer;
+    z-index: 999;
 }
 
 /* 标签页正文卡片内的文字段落 */

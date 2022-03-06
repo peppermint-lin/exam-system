@@ -104,43 +104,49 @@ export default class Create extends Component {
         align: 'center'
       },
       {
-        title: '学院',
-        dataIndex: 'college',
-        key: 'college',
-        width: '10%',
-        align: 'center'
-      },
-      {
-        title: '班级',
-        dataIndex: 'class',
-        key: 'class',
-        width: '10%',
-        align: 'center',
-        sorter: (a, b) => a.class.length - b.class.length,
-        sortDirections: ['descend', 'ascend']
-      },
-      {
-        title: '姓名',
+        title: '名称',
         dataIndex: 'name',
         key: 'name',
-        width: '10%',
+        width: '15%',
         align: 'center',
         ...this.getColumnSearchProps('name')
       },
       {
-        title: '学号',
-        dataIndex: 'studentNumber',
-        key: 'studentNumber',
+        title: '课程',
+        dataIndex: 'course',
+        key: 'course',
         width: '10%',
         align: 'center',
-        ...this.getColumnSearchProps('studentNumber')
+        ...this.getColumnSearchProps('course')
       },
       {
-        title: '手机号',
-        dataIndex: 'telephone',
-        key: 'telephone',
-        width: '15%',
+        title: '题型',
+        dataIndex: 'type',
+        key: 'type',
+        width: '10%',
         align: 'center'
+      },
+      {
+        title: '题量',
+        dataIndex: 'quantity',
+        key: 'quantity',
+        width: '10%',
+        align: 'center',
+        sorter: (a, b) => a.quantity - b.quantity,
+        sortDirections: ['descend', 'ascend']
+      },
+      {
+        title: '共享状态',
+        dataIndex: 'status',
+        key: 'status',
+        width: '10%',
+        align: 'center',
+        ...this.getColumnSearchProps('status'),
+        render: (text) => //text是值，record是当前项对象，index是下标
+          text === "可组卷"
+          ? <span style={{color: "#3B90FF"}}>可组卷</span>
+          : text === "可查看" ? <span>可查看</span>
+          : <span>私有</span>
       },
       {
         title: '操作',
@@ -155,106 +161,179 @@ export default class Create extends Component {
       }
     ]
 
+    /* 我创建的题库的信息 */
     const data = [
+      // key：唯一标识；number：序号；name：名称；course：课程；type：题型；quantity：题量；status：共享状态
       {
         key: '1',
         number: 1,
-        college: '信息学院',
-        class: '计算机201',
-        name: '秦梦瑶',
-        studentNumber: '2020001',
-        telephone: '19815201520',
-        grade: 89
+        name: '第一单元练习题',
+        course: '计算机网络',
+        type: '混合',
+        quantity: 35,
+        status: '私有'
       },
       {
         key: '2',
         number: 2,
-        college: '信息学院',
-        class: '计算机201',
-        name: '王淡真',
-        studentNumber: '2020002',
-        telephone: '19815201521',
-        grade: 90
+        name: '第二单元练习题',
+        course: '计算机网络',
+        type: '填空题',
+        quantity: 25,
+        status: '可查看'
       },
       {
         key: '3',
         number: 3,
-        college: '信息学院',
-        class: '计算机201',
-        name: '师妃喧',
-        studentNumber: '2020003',
-        telephone: '19815201522',
-        grade: 77
+        name: '计网名词解析汇总',
+        course: '计算机网络',
+        type: '名词解析',
+        quantity: 30,
+        status: '可组卷'
       },
       {
         key: '4',
         number: 4,
-        college: '信息学院',
-        class: '计算机201',
-        name: '允寒夜',
-        studentNumber: '2020004',
-        telephone: '19815201523',
-        grade: 69
+        name: '实验材料分析题',
+        course: '网络安全',
+        type: '混合',
+        quantity: 45,
+        status: '可组卷'
       },
       {
         key: '5',
         number: 5,
-        college: '信息学院',
-        class: '计算机201',
-        name: '樱雪婷',
-        studentNumber: '2020005',
-        telephone: '19815201524',
-        grade: 58
+        name: '第一章复习题',
+        course: '网络安全',
+        type: '单选题',
+        quantity: 15,
+        status: '私有'
       },
       {
         key: '6',
         number: 6,
-        college: '信息学院',
-        class: '计算机201',
-        name: '月韩依',
-        studentNumber: '2020006',
-        telephone: '19815201525',
-        grade: 55
+        name: '第二章复习题',
+        course: '网络安全',
+        type: '多选题',
+        quantity: 50,
+        status: '可组卷'
       },
       {
         key: '7',
         number: 7,
-        college: '信息学院',
-        class: '计算机201',
-        name: '雯欣雨',
-        studentNumber: '2020007',
-        telephone: '19815201526',
-        grade: 87
+        name: '2021-2022-1复习',
+        course: '信息管理',
+        type: '混合',
+        quantity: 50,
+        status: '可查看'
       },
       {
         key: '8',
         number: 8,
-        college: '信息学院',
-        class: '计算机201',
-        name: '可一琳',
-        studentNumber: '2020008',
-        telephone: '19815201527',
-        grade: 92
+        name: '信管名词解析汇总',
+        course: '信息管理',
+        type: '名词解析',
+        quantity: 25,
+        status: '可查看'
       },
       {
         key: '9',
         number: 9,
-        college: '信息学院',
-        class: '计算机201',
-        name: '韩语惠',
-        studentNumber: '2020009',
-        telephone: '19815201528',
-        grade: 63
+        name: '第六单元练习题',
+        course: '操作系统',
+        type: '计算题',
+        quantity: 25,
+        status: '私有'
       },
       {
         key: '10',
         number: 10,
-        college: '信息学院',
-        class: '计算机201',
-        name: '叶允栗',
-        studentNumber: '2020010',
-        telephone: '19815201529',
-        grade: 81
+        name: '第七单元练习题',
+        course: '操作系统',
+        type: '论述题',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '11',
+        number: 11,
+        name: '测试题1',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '12',
+        number: 12,
+        name: '测试题2',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '13',
+        number: 13,
+        name: '测试题3',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '14',
+        number: 14,
+        name: '测试题4',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '15',
+        number: 15,
+        name: '测试题5',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '16',
+        number: 16,
+        name: '测试题6',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '17',
+        number: 17,
+        name: '测试题7',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '18',
+        number: 18,
+        name: '测试题8',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
+      },
+      {
+        key: '19',
+        number: 19,
+        name: '测试题9',
+        course: '操作系统',
+        type: '综合',
+        quantity: 50,
+        status: '可组卷'
       }
     ]
 
@@ -262,7 +341,7 @@ export default class Create extends Component {
 
     return (
       <div>
-        <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={18} />
+        <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={12} />
       </div>
     );
   }
