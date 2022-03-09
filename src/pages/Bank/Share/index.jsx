@@ -4,7 +4,7 @@ import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import { MyIcon } from '../../../assets/iconfont.js';
 import InfoTable from '../../../components/InfoTable';
-import CreateCss from './index.module.css'
+import ShareCss from './index.module.css'
 
 export default class Share extends Component {
 
@@ -177,12 +177,12 @@ export default class Share extends Component {
         dataIndex: 'edit',
         key: 'edit',
         align: 'center',
-        render: (text, record) => <div className={CreateCss.editButtonWrapper}>
-          <p id={CreateCss.collection} onClick={() => this.changeCollect(text, record)}>
+        render: (text, record) => <div className={ShareCss.editButtonWrapper}>
+          <p id={ShareCss.collection} onClick={() => this.changeCollect(text, record)}>
             <MyIcon type={ this.state.isCollected[record.key] === false ? 'icon-yijianshoucang' : 'icon-quxiaoshoucang' } />
             &nbsp;一键收藏
           </p>
-          <p id={CreateCss.details}><MyIcon type='icon-chakanxiangqing' />&nbsp;查看详情</p>
+          <p id={ShareCss.details}><MyIcon type='icon-chakanxiangqing' />&nbsp;查看详情</p>
         </div>
       }
     ]

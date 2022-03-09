@@ -185,4 +185,14 @@
    ]
    ```
 
-   
+9. Bank页面的Reference组件中referenceData数据
+
+   ```js
+   /* 爬虫结果的返回数据 */
+   referenceData = {
+       // name：关键词；url：参考题库来源网站；content：爬虫OCR返回结果
+       "name": "计算机网络",
+       "url": "https://www.nowcoder.com/discuss/1937",
+       "content": "OSI分层 （7层）：…………" //该数据换行用\连接
+   }
+   ```
