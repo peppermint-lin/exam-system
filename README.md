@@ -185,14 +185,43 @@
    ]
    ```
 
-9. Bank页面的Reference组件中referenceData数据
+9. Bank页面的Outline组件中的selectOptions数据
 
    ```js
-   /* 爬虫结果的返回数据 */
-   referenceData = {
-       // name：关键词；url：参考题库来源网站；content：爬虫OCR返回结果
-       "name": "计算机网络",
-       "url": "https://www.nowcoder.com/discuss/1937",
-       "content": "OSI分层 （7层）：…………" //该数据换行用\连接
-   }
+   /* 查看的课程中可选择的课程名（该教师所任教的课程） */
+   selectOptions = ["计算机网络", "网络安全", "信息管理", "操作系统"]
    ```
+   
+10. Bank页面的Reference组件中的referenceData数据
+
+    ```js
+    /* 爬虫结果的返回数据 */
+    referenceData = {
+        // name：关键词；url：参考题库来源网站；content：爬虫OCR返回结果
+        "name": "计算机网络",
+        "url": "https://www.nowcoder.com/discuss/1937",
+        "content": "OSI分层 （7层）：…………" //该数据换行用\连接
+    }
+    ```
+
+11. Bank页面的Outline组件中的data数据
+
+    ```js
+    /* 教师所查看的科目的考纲信息 */
+    const data = [
+    	// key：唯一标识；number：序号；chapter：chapterIndex：第几章；章节；sectionIndex：第几节；section：节次；site：考点；mastery：掌握程度
+        {
+            key: '1',
+            number: 1,
+            chapterIndex: 1,
+            chapter: '计算机网络体系结构',
+            sectionIndex: 1,
+            section: '计算机网络概述',
+            site: '计算机网络的概念、组成与功能',
+            mastery: '了解'
+        },
+        ……
+    ]
+    ```
+
+    

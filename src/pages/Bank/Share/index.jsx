@@ -358,7 +358,7 @@ export default class Share extends Component {
     </div>
 
     return (
-      <div>
+      <div className={ShareCss.mainWrapper}>
         <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={12} />
       </div>
     );

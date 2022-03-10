@@ -29,7 +29,7 @@
 
 /* 标签页正文卡片内的文字容器 */
 .bankContainer > .ant-tabs-card .ant-tabs-content > .ant-tabs-tabpane {
-    padding: 23px 27px;
+    padding: 20px 27px 16px 27px;
     background: #fff;
     /* border-right: 5px solid rgba(153, 153, 153, 0.2); */
     /* border-bottom: 5px solid rgba(153, 153, 153, 0.2); */

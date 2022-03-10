@@ -340,7 +340,7 @@ export default class Create extends Component {
     const showTotal = (total) => <p> 共{total}条&emsp; </p>
 
     return (
-      <div>
+      <div className={CreateCss.mainWrapper}>
         <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={12} />
       </div>
     );
