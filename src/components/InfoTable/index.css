@@ -19,6 +19,9 @@ tr > th {
 /* 表格所有行 */
 tr > td, tr > th {
     padding: 9px 0 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* 表格标题行内的图标 */
@@ -28,9 +31,9 @@ tr > th svg {
     margin-left: -25px;
 }
 
-.ant-table-filter-column {
+/* .ant-table-filter-column {
     justify-content: center !important;
-}
+} */
 
 /* 奇数行的背景 */
 .odd_row {
