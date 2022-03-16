@@ -224,4 +224,23 @@
     ]
     ```
 
+12. Exam页面的主组件中的data数据
+
+    ```js
+    /* 考务安排的信息 */
+    const data = [
+        // key：唯一标识；number：序号；subject：考试科目；date：考试日期；time：考试时间；place：考试地点；status：考务状态
+        {
+            key: '1',
+            number: 1,
+            subject: '计算机网络',
+            date: '2021-12-25',
+            time: '14:00-16:00',
+            place: '教学楼A-111',
+            status: '暂时保存'
+        },
+        ……
+    ]
+    ```
+
     

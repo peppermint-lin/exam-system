@@ -11,7 +11,7 @@ export default class Course extends Component {
     // name：课程名称；picURL：课程图片地址；code：课程代码；class：班级；time：时间；year：学年；semester：学期；belong：课程归属；data：课程数据
     {
       "name": "计算机网络",
-      "picURL": "http://121.41.11.127/test/computerNetwork.png",
+      "picURL": "http://api.sciuridae.xyz/image/computerNetwork.png",
       "code": "224105001",
       "class": "计算机（师范）201",
       "time": "星期一4-5节",
@@ -123,7 +123,7 @@ export default class Course extends Component {
     },
     {
       "name": "网络安全",
-      "picURL": "http://121.41.11.127/test/networkSecurity.png",
+      "picURL": "http://api.sciuridae.xyz/image/networkSecurity.png",
       "code": "224105001",
       "class": "计算机203、软工201",
       "time": "星期三6-7节",
@@ -134,7 +134,7 @@ export default class Course extends Component {
     },
     {
       "name": "信息管理",
-      "picURL": "http://121.41.11.127/test/icecream.png",
+      "picURL": "http://api.sciuridae.xyz/image/icecream.png",
       "code": "224105001",
       "class": "计算机（师范）201",
       "time": "星期一4-5节",
