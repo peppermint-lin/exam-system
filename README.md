@@ -243,4 +243,37 @@
     ]
     ```
 
-    
+13. Exam页面的NewTest组件中的subject数据
+
+    ```js
+    /* 课程及章节信息 */
+    subject = [
+        // value：数据值；label：页面显示的标签；children：级联的下一层数据（其内对象属性同父层级）
+        {
+            value: "计算机网络",
+            label: "计算机网络",
+            children: [
+                {
+                    value: "第一章",
+                    label: "第一章"
+                },
+                ……
+            ]
+        },
+        ……
+    ]
+    ```
+
+14. Exam页面的NewTest组件中的studentChildren数据
+
+    ```js
+    /* 应试学生可选列表 */
+    studentChildren = ["计算机181", "计算机191", "计算机201"]
+    ```
+
+15. Exam页面的NewTest组件中的teacherChildren数据
+
+    ```js
+    /* 监考教师可选列表 */
+    teacherChildren = ["张三", "李四", "王五"];
+    ```
