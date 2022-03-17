@@ -136,7 +136,7 @@ export default class NewTest extends Component {
             style={{ marginBottom: 10 }}
             rules={[{ required: true, message: '请选择考试类型'}]}
           >
-            <Select onChange={this.handleChange}>
+            <Select onChange={this.selectChange}>
               <Option value="final">期末考试</Option>
               <Option value="middle">期中考试</Option>
               <Option value="other">其他</Option>
@@ -161,19 +161,16 @@ export default class NewTest extends Component {
           </Form.Item>
       
           <Form.Item label="考试时间" style={{marginBottom: 0}} required>
-              
             <Form.Item name="date"
               rules={[{ required: true, message: '请输入考试日期' }]}
               style={{ display: 'inline-block', width: 'calc(50% - 8px)', marginBottom: 10 }}>
               <DatePicker onChange={this.dateChange} />
             </Form.Item>
-
             <Form.Item name="time"
               rules={[{ required: true, message: '请选择起止时间' }]}
               style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}>
                 <TimePicker.RangePicker />
             </Form.Item>
-
           </Form.Item>
 
           <Form.Item label="考试地点" name="place"
