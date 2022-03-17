@@ -277,3 +277,11 @@
     /* 监考教师可选列表 */
     teacherChildren = ["张三", "李四", "王五"];
     ```
+
+16. Exam页面的Place组件中的campusBelong数据
+
+    ```js
+    /* 所属校区可选列表 */
+    campusBelong = ["A市B区", "B市C区", "C市D区"];
+    ```
+
