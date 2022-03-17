@@ -6,7 +6,7 @@ import PlaceCss from './index.module.css'
 const { Option } = Select;
 export default class Place extends Component {
   
-    /* 监考教师可选列表 */
+    /* 所属校区可选列表 */
     campusBelong = ["A市B区", "B市C区", "C市D区"];
 
     /* 选择器发生变化时的回调 */
