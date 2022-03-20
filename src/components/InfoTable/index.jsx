@@ -24,6 +24,6 @@ export default class InfoTable extends Component {
     }
 
     return <Table bordered columns={columns} dataSource={data}
-      pagination={pagination} rowClassName={rowClassName}/>;
+      pagination={pagination} rowClassName={rowClassName} />;
   }
 }

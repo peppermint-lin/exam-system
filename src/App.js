@@ -1,15 +1,18 @@
+
+import React, { Component } from 'react'
 import Frame from './components/Frame'
 import { BrowserRouter } from 'react-router-dom'
 import './App.less'
+export default class App extends Component {
+  render() {
+    // console.log(calHeight, document.documentElement.clientHeight)
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Frame />
-      </BrowserRouter>
-    </div>
-  );
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Frame />
+        </BrowserRouter>
+      </div>
+    )
+  }
 }
-
-export default App;

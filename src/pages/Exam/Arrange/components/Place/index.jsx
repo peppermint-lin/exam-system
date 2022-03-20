@@ -65,7 +65,7 @@ export default class Place extends Component {
                     style={{ marginBottom: 10 }}
                     rules={[{ required: true, message: '请选择是否为机房'}]}
                     >
-                        <Switch size='default' checkedChildren="是" unCheckedChildren="否" />
+                        <Switch size='default' checked="false" checkedChildren="是" unCheckedChildren="否" />
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ offset: 20, span: 4 }} style={{marginBottom: 0}}>
