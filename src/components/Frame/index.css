@@ -94,6 +94,7 @@ Header {
     height: 100% !important;
     margin: 0 !important;
     padding: 24px 16px 0px !important;
+    margin-top: 64px !important;
     /* overflow-y: scroll !important; */
 }
 

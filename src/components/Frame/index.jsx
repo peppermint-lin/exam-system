@@ -23,11 +23,15 @@ class Frame extends Component {
     render() {
 
         return (
-            <Layout>
+            <Layout hasSider>
                 {/* 左侧导航栏 */}
                 <Sider id='frameSider'
-                breakpoint="lg"
-                collapsedWidth="0"
+                    breakpoint="lg"
+                    collapsedWidth="0"
+                    style={{
+                        overflow: 'auto', height: '100vh', position: 'fixed',
+                        left: 0, top: 0, bottom: 0, zIndex: 999
+                    }}
                 >
                     {/* 产品Logo */}
                     <div className="logo">
@@ -43,14 +47,17 @@ class Frame extends Component {
                         })}
                     </Menu>
                 </Sider>
-                <Layout>
+                <Layout style={{ marginLeft: 200 }}>
+                {/* <Layout> */}
                     {/* 右侧顶部搜索栏 */}
-                    <Header className="site-layout-sub-header-background" style={{ padding: 0 }}>
+                    <Header className="site-layout-sub-header-background"
+                        style={{ position: "fixed", zIndex: 1, width: '100%', right: 0, padding: 0 }}>
+                        {/* style={{ padding: 0 }}> */}
                         <Search size="large" placeholder=""
                             prefix={<MyIcon id='searchIcon' type='icon-yuejuan' />} enterButton="Search" />
                     </Header>
                     {/* 右侧中间正文 */}
-                    <Content style={{ margin: '24px 16px 0' }}>
+                    <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                         <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                             {routes.map((route) => {
                                 return <Route key={route.path} path={route.path} component={route.component}/>
