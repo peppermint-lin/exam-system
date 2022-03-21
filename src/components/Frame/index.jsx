@@ -26,8 +26,8 @@ class Frame extends Component {
             <Layout hasSider>
                 {/* 左侧导航栏 */}
                 <Sider id='frameSider'
-                    breakpoint="lg"
-                    collapsedWidth="0"
+                    // breakpoint="lg"
+                    // collapsedWidth="0"
                     style={{
                         overflow: 'auto', height: '100vh', position: 'fixed',
                         left: 0, top: 0, bottom: 0, zIndex: 999
