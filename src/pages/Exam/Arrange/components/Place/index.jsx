@@ -7,11 +7,11 @@ const { Option } = Select;
 export default class Place extends Component {
   
     /* 所属校区可选列表 */
-    campusBelong = ["A市B区", "B市C区", "C市D区"];
+    campusBelong = ["A市B区", "B市C区", "C市D区"]
 
     /* 选择器发生变化时的回调 */
     selectChange = (value) => {
-      console.log(`selected ${value}`);
+      console.log(`selected ${value}`)
     }
 
     render() {

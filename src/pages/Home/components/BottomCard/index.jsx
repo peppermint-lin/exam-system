@@ -97,11 +97,11 @@ export default class BottomCard extends Component {
 
     /* 快捷入口按钮数据 */
     entrance = [
-        {"url": "/bank", "icon": "icon-tiku", "title": "题库建设"},
-        {"url": "/exam", "icon": "icon-kaoshi", "title": "我要出卷"},
-        {"url": "/mark", "icon": "icon-yuejuan", "title": "人工阅卷"},
-        {"url": "/statistics", "icon": "icon-tongji", "title": "成绩统计"},
-        {"url": "/manage", "icon": "icon-guanli", "title": "大纲管理"}
+        {"url": "/teacher/bank", "icon": "icon-tiku", "title": "题库建设"},
+        {"url": "/teacher/exam", "icon": "icon-kaoshi", "title": "我要出卷"},
+        {"url": "/teacher/mark", "icon": "icon-yuejuan", "title": "人工阅卷"},
+        {"url": "/teacher/statistics", "icon": "icon-tongji", "title": "成绩统计"},
+        {"url": "/teacher/manage", "icon": "icon-guanli", "title": "大纲管理"}
     ]
 
     render() {

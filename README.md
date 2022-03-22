@@ -275,13 +275,28 @@
 
     ```js
     /* 监考教师可选列表 */
-    teacherChildren = ["张三", "李四", "王五"];
+    teacherChildren = ["张三", "李四", "王五"]
     ```
 
 16. Exam页面的Place组件中的campusBelong数据
 
     ```js
     /* 所属校区可选列表 */
-    campusBelong = ["A市B区", "B市C区", "C市D区"];
+    campusBelong = ["A市B区", "B市C区", "C市D区"]
+    ```
+    
+17. Exam页面的Build组件中的realTimeData数据
+
+    ```js
+    /* 新建试卷实时统计信息 */
+    realTimeData = {
+    	// cover：考纲覆盖率；same：近三年试卷重复率；year：年份；rate：某年份对应的重复率
+    	cover: 0,
+    	same: [
+            { year: 2021, rate: 0 },
+            { year: 2020, rate: 0 },
+            { year: 2019, rate: 0 }
+        ]
+    }
     ```
 

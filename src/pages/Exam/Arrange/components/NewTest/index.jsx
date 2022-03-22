@@ -86,7 +86,7 @@ export default class NewTest extends Component {
   /* 应试学生可选列表 */
   studentChildren = ["计算机181", "计算机191", "计算机201"]
   /* 监考教师可选列表 */
-  teacherChildren = ["张三", "李四", "王五"];
+  teacherChildren = ["张三", "李四", "王五"]
 
   /* 级联选择发生变化时的回调 */
   cascaderChange(value) {
@@ -95,20 +95,20 @@ export default class NewTest extends Component {
   
   /* 选择器发生变化时的回调 */
   selectChange = (value) => {
-    console.log(`selected ${value}`);
+    console.log(`selected ${value}`)
   }
 
   /* 日期发生变化时的回调 */
   dateChange = (date, dateString) => {
-    console.log(date, dateString);
+    console.log(date, dateString)
   }
 
   onFinish = (values) => {
-    console.log('Success:', values);
+    console.log('Success:', values)
   }
 
   onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log('Failed:', errorInfo)
   }
 
   render() {

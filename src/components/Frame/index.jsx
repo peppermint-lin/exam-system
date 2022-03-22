@@ -11,7 +11,7 @@ const { Search } = Input;
 
 class Frame extends Component {
 
-    state = {current: "/home"}
+    state = {current: "/teacher/home"}
 
     /* 组件挂载完毕的钩子 */
     componentDidMount = () => {
@@ -30,7 +30,7 @@ class Frame extends Component {
                     // collapsedWidth="0"
                     style={{
                         overflow: 'auto', height: '100vh', position: 'fixed',
-                        left: 0, top: 0, bottom: 0, zIndex: 999
+                        left: 0, top: 0, bottom: 0, zIndex: 9999
                     }}
                 >
                     {/* 产品Logo */}
@@ -51,7 +51,7 @@ class Frame extends Component {
                 {/* <Layout> */}
                     {/* 右侧顶部搜索栏 */}
                     <Header className="site-layout-sub-header-background"
-                        style={{ position: "fixed", zIndex: 1, width: '100%', right: 0, padding: 0 }}>
+                        style={{ position: "fixed", zIndex: 1999, width: '100%', right: 0, padding: 0 }}>
                         {/* style={{ padding: 0 }}> */}
                         <Search size="large" placeholder=""
                             prefix={<MyIcon id='searchIcon' type='icon-yuejuan' />} enterButton="Search" />
@@ -62,7 +62,7 @@ class Frame extends Component {
                             {routes.map((route) => {
                                 return <Route key={route.path} path={route.path} component={route.component}/>
                             })}
-                            <Redirect to="/home" />
+                            <Redirect to="/teacher/home" />
                         </div>
                     </Content>
                     {/* 右侧底部版权栏 */}

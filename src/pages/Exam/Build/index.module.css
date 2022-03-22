@@ -1,0 +1,87 @@
+/* 总父容器 */
+.mainWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 左列父容器 */
+.leftWrapper {
+    width: 20%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 左上父容器 */
+.leftTopWrapper {
+    width: 100%;
+    height: 60%;
+    padding: 2% 0 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* 左上单行父容器 */
+.leftTopLine {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 左下父容器 */
+.leftBottomWrapper {
+    width: 100%;
+    height: 35%;
+    padding: 5% 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* 左下单行父容器 */
+.leftBottomLine {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 中部父容器 */
+.middleWrapper {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* 右列父容器 */
+.rightWrapper {
+    width: 22%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+}

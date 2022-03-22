@@ -19,10 +19,16 @@
 		<!-- 预加载导航栏背景图片文件 -->
 		<link rel="prefetch" href="/src/components/Frame/background.png">
 		<title>考试系统教师端</title>
+		<style>
+			/* 隐藏侧边滚动条并保持可以滚动 */
+			body::-webkit-scrollbar {
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
-		<div id="root"></div>
+		<div id="root" ></div>
 		
 		<script type="text/javascript">
 			/* 根据屏幕可视区域宽度及恒定比例，设置根元素的高度 */

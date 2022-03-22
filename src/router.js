@@ -9,49 +9,49 @@ import Manage from "./pages/Manage"
 
 export const routes = [
   {
-    path: "/home",
+    path: "/teacher/home",
     component: Home,
     icon: <MyIcon className='icon' type='icon-shouye' />,
     Chinese: "首页",
     English: "Home"
   },
   {
-    path: "/course",
+    path: "/teacher/course",
     component: Course,
     icon: <MyIcon className='icon' type='icon-kecheng' />,
     Chinese: "课程",
     English: "Course"
   },
   {
-    path: "/bank",
+    path: "/teacher/bank",
     component: Bank,
     icon: <MyIcon className='icon' type='icon-tiku' />,
     Chinese: "题库",
     English: "Bank"
   },
   {
-    path: "/exam",
+    path: "/teacher/exam",
     component: Exam,
     icon: <MyIcon className='icon' type='icon-kaoshi' />,
     Chinese: "考试",
     English: "Exam"
   },
   {
-    path: "/mark",
+    path: "/teacher/mark",
     component: Mark,
     icon: <MyIcon className='icon' type='icon-yuejuan' />,
     Chinese: "阅卷",
     English: "Mark"
   },
   {
-    path: "/statistics",
+    path: "/teacher/statistics",
     component: Statistics,
     icon: <MyIcon className='icon' type='icon-tongji' />,
     Chinese: "统计",
     English: "Statistics"
   },
   {
-    path: "/manage",
+    path: "/teacher/manage",
     component: Manage,
     icon: <MyIcon className='icon' type='icon-guanli' />,
     Chinese: "管理",
