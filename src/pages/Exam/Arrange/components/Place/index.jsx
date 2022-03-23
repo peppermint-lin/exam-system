@@ -60,12 +60,12 @@ export default class Place extends Component {
                         </Form.Item>
                     </Form.Item>
 
-                    <Form.Item label="是否为机房" name="isComputerRoom"
+                    <Form.Item label="是否为机房" name="isComputerRoom" valuePropName="checked"
                     wrapperCol={{ offset: 1, span: 10 }}
                     style={{ marginBottom: 10 }}
                     rules={[{ required: true, message: '请选择是否为机房'}]}
                     >
-                        <Switch size='default' checked="false" checkedChildren="是" unCheckedChildren="否" />
+                        <Switch size='default' defaultChecked="false" checkedChildren="是" unCheckedChildren="否" />
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ offset: 20, span: 4 }} style={{marginBottom: 0}}>

@@ -13,8 +13,10 @@
 
 /* 卡片父容器 */
 .cardWrapper {
-    width: 30%;
-    height: 70%;
+    box-sizing: border-box;
+    width: 40vh;
+    height: 50vh;
+    padding: 5vh;
     background-color: white;
     border-radius: 20px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);

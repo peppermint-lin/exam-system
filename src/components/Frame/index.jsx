@@ -8,16 +8,20 @@ import './index.css'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
-
 class Frame extends Component {
 
     state = {current: "/teacher/home"}
 
     /* 组件挂载完毕的钩子 */
     componentDidMount = () => {
-        this.props.history.listen( event => {
+        this.UNLISTEN = this.props.history.listen( event => {
             this.setState({current: event.pathname})
         })
+    }
+
+    /* 组件即将挂载的钩子 */
+    componentWillUnmount = () => {
+        this.UNLISTEN && this.UNLISTEN()
     }
 
     render() {

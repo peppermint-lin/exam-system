@@ -30,19 +30,19 @@ export default class Login extends Component {
                 <div className={LoginCss.cardWrapper}>
                     <h1 style={{ marginBottom: '10%', fontWeight: 'bold' }}>Login</h1>
                     <Form className={LoginCss.formWrapper}>
-                        <Form.Item label="Username" name="username" style={{alignSelf: 'flex-start'}}
+                        <Form.Item label="Username" required style={{alignSelf: 'flex-start'}}
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         > <Input /> </Form.Item>
 
-                        <Form.Item label="&nbsp;Password" name="password" style={{alignSelf: 'flex-start'}}
+                        <Form.Item label="&nbsp;Password" required style={{alignSelf: 'flex-start'}}
                             rules={[{ required: true, message: 'Please input your password!' }]}
                         > <Input type="password" /> </Form.Item>
 
-                        <Form.Item>
+                        <Form.Item style={{ width: '100%', textAlign: 'center' }}>
                             <Form.Item name="remember" valuePropName="checked" noStyle>
-                                <Checkbox>Remember me</Checkbox>
+                                <Checkbox style={{overflow: 'hidden'}}>Remember me</Checkbox>
                             </Form.Item>
-                            <Link> Forgot password </Link>
+                            <Link to='' style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}> Forgot password </Link>
                         </Form.Item>
 
                         <Form.Item style={{marginBottom: 10, width: '100%'}}>
@@ -52,7 +52,7 @@ export default class Login extends Component {
                             Login In </Button>
                         </Form.Item>
                         
-                        <Link style={{width: '100%', textAlign: 'center'}}> Or register now! </Link>
+                        <Link to='' style={{width: '100%', textAlign: 'center'}}> Or register now! </Link>
                     </Form>
                 </div>
             </div>
