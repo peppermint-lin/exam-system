@@ -3,13 +3,14 @@ import { Button, Input, Divider, Form, Select, Radio } from 'antd';
 import { nanoid } from 'nanoid';
 import { MyIcon } from '../../../assets/iconfont.js';
 import BigQ from './components/BigQ';
+import SingleQ from './components/SingleQ';
 import BuildCss from './index.module.css'
 
 const { Option } = Select;
 export default class Build extends Component {
 
-  // state = {problemInfo: [], isRemoveShadow: false}
-  state = {problemInfo: [], isRemoveShadow: true}
+  // state = {problemInfo: [], isSave: false}
+  state = {problemInfo: []}
 
   /* 新建试卷实时统计信息 */
   realTimeData = {
@@ -34,7 +35,9 @@ export default class Build extends Component {
   addBigQ = () => {
     var total = this.state.problemInfo.length
     var newProblem = this.state.problemInfo.slice()
-    newProblem.push({id: total+1, title: '', number: 0, grade: 0})
+    newProblem.push({
+      id: total+1, title: '', number: 0, grade: 0,
+      isSave: false, isAddSQ: false, isOverSQ: true, singleQ: []})
     this.setState({problemInfo: newProblem})
   }
 
@@ -46,14 +49,66 @@ export default class Build extends Component {
 		const newProblemInfo = problemInfo.filter((problemInfoObj)=>{
 			return problemInfoObj.id !== id
 		})
-		//更新状态
+		//更新状态problemInfo
 		this.setState({problemInfo: newProblemInfo})
 	}
 
-  // /* 首次新建卡片后，去除阴影的回调 */
-  // deleteShadow = (event) => {
-  //   if(event.target.id === 'middle') this.setState({isRemoveShadow: true})
-  // }
+  /* 保存卡片后，去除阴影的回调 */
+  saveBigQ = (id, title, number, grade) => {
+		const {problemInfo} = this.state
+    const newProblemInfo = problemInfo.map((item) => {
+      if(item.id === id) {
+        item.isSave = true
+        item.title = title
+        item.number = number
+        item.grade = grade
+      }
+      return item
+    })
+    this.setState({problemInfo: newProblemInfo})
+  }
+
+  /* 增加小题的回调 */
+	addSmallQ = (id) => {
+		const {problemInfo} = this.state
+    const newProblemInfo = problemInfo.map((item) => {
+      if(item.id === id) {
+        item.isAddSQ = true
+        item.isOverSQ = false
+      }
+      return item
+    })
+    this.setState({problemInfo: newProblemInfo})
+	}
+
+  /* 结束增加小题的回调 */
+	overSmallQ = (id) => {
+		const {problemInfo} = this.state
+    const newProblemInfo = problemInfo.map((item) => {
+      if(item.id === id) {
+        item.isAddSQ = false
+        item.isOverSQ = true
+      }
+      return item
+    })
+    this.setState({problemInfo: newProblemInfo})
+	}
+
+  /* 增加单选题的回调 */
+  addSingleQ = () => {
+    var newProblem = this.state.problemInfo
+    newProblem.map((item) => {
+      if(item.isAddSQ) {
+        var total = item.singleQ.length
+        item.singleQ.push({id: total+1, title: '', number: 0, grade: 0, isSave: false})
+      }
+      return item
+    })
+    this.setState({problemInfo: newProblem}, () => {
+      
+    console.log(this.state.problemInfo)
+    })
+  }
 
   render() {
     return (
@@ -64,7 +119,7 @@ export default class Build extends Component {
           <div className={BuildCss.leftTopWrapper}>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}> <p style={{fontSize: 16}}>添加题目</p> </div>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}>
-              <Button size='small' type="ghost" icon={<MyIcon type='icon-danxuan' style={{color: '#7B7B7B'}} />}>单选题</Button>
+              <Button onClick={this.addSingleQ} size='small' type="ghost" icon={<MyIcon type='icon-danxuan' style={{color: '#7B7B7B'}} />}>单选题</Button>
               <Button size='small' type="ghost" icon={<MyIcon type='icon-duoxuan' style={{color: '#7B7B7B'}} />}>多选题</Button>
             </div>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}>
@@ -131,8 +186,15 @@ export default class Build extends Component {
           {/* 试题 */}
           {
             this.state.problemInfo.map((item, index) => {
-              return <BigQ key={nanoid()} deleteBigQ={this.deleteBigQ} isRemoveShadow={this.state.isRemoveShadow}
-                index={index+1} {...item} />
+              return (
+                <div style={{width: '100%'}}>
+                  <BigQ key={nanoid()} index={index+1} {...item}  deleteBigQ={this.deleteBigQ} saveBigQ={this.saveBigQ}
+                    addSmallQ={this.addSmallQ} overSmallQ={this.overSmallQ} />
+                  {item.singleQ.map((item, index) => {
+                    return <SingleQ />
+                  })}
+                </div>
+                )
             })
           }
         </div>
