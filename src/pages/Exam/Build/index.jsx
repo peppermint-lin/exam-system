@@ -3,7 +3,7 @@ import { Button, Input, Divider, Form, Select, Radio } from 'antd';
 import { nanoid } from 'nanoid';
 import { MyIcon } from '../../../assets/iconfont.js';
 import BigQ from './components/BigQ';
-import SingleQ from './components/SingleQ';
+import JudgeQ from './components/JudgeQ';
 import BuildCss from './index.module.css'
 
 const { Option } = Select;
@@ -37,19 +37,16 @@ export default class Build extends Component {
     var newProblem = this.state.problemInfo.slice()
     newProblem.push({
       id: total+1, title: '', number: 0, grade: 0,
-      isSave: false, isAddSQ: false, isOverSQ: true, singleQ: []})
+      isSave: false, isAddSQ: false, isOverSQ: true, judgeQ: []})
     this.setState({problemInfo: newProblem})
   }
 
   /* 删除大题的回调 */
 	deleteBigQ = (id) => {
-		//获取原来的todos
 		const {problemInfo} = this.state
-		//删除指定id的todo对象
 		const newProblemInfo = problemInfo.filter((problemInfoObj)=>{
 			return problemInfoObj.id !== id
 		})
-		//更新状态problemInfo
 		this.setState({problemInfo: newProblemInfo})
 	}
 
@@ -94,20 +91,71 @@ export default class Build extends Component {
     this.setState({problemInfo: newProblemInfo})
 	}
 
-  /* 增加单选题的回调 */
-  addSingleQ = () => {
+  /* 增加判断题的回调 */
+  addJudgeQ = () => {
     var newProblem = this.state.problemInfo
     newProblem.map((item) => {
       if(item.isAddSQ) {
-        var total = item.singleQ.length
-        item.singleQ.push({id: total+1, title: '', number: 0, grade: 0, isSave: false})
+        var total = item.judgeQ.length
+        item.judgeQ.push({id: total+1, title: '', answer: '', grade: 0, isSave: false})
       }
       return item
     })
-    this.setState({problemInfo: newProblem}, () => {
-      
-    console.log(this.state.problemInfo)
+    this.setState({problemInfo: newProblem})
+  }
+
+  /* 删除判断题的回调 */
+	deleteJudgeQ = (id) => {
+		const {problemInfo} = this.state
+    const newProblemInfo = problemInfo.map((item) => {
+      if(item.isAddSQ) {
+        const newJudgeQ = item.judgeQ.filter((judgeQObj)=>{
+          return judgeQObj.id !== id
+        })
+        item.judgeQ = newJudgeQ
+      }
+      return item
     })
+		this.setState({problemInfo: newProblemInfo})
+	}
+
+  /* 保存判断题后，去除阴影的回调 */
+  saveJudgeQ = (id, title, answer, grade) => {
+		const {problemInfo} = this.state
+    const newProblemInfo = problemInfo.map((item) => {
+      if(item.isAddSQ) {
+        const newQ = item.judgeQ.map((Q) => {
+          if(Q.id === id){
+            Q.isSave = true
+            Q.title = title
+            Q.answer = answer
+            Q.grade = grade
+          }
+          return Q
+        })
+        item.judgeQ = newQ
+      }
+      return item
+    })
+    this.setState({problemInfo: newProblemInfo})
+  }
+
+  /* 重新编辑判断题的回调 */
+  editJudgeQ = (id) => {
+		const {problemInfo} = this.state
+    const newProblemInfo = problemInfo.map((item) => {
+      if(item.isAddSQ) {
+        const newQ = item.judgeQ.map((Q) => {
+          if(Q.id === id){
+            Q.isSave = false
+          }
+          return Q
+        })
+        item.judgeQ = newQ
+      }
+      return item
+    })
+    this.setState({problemInfo: newProblemInfo})
   }
 
   render() {
@@ -119,12 +167,12 @@ export default class Build extends Component {
           <div className={BuildCss.leftTopWrapper}>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}> <p style={{fontSize: 16}}>添加题目</p> </div>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}>
-              <Button onClick={this.addSingleQ} size='small' type="ghost" icon={<MyIcon type='icon-danxuan' style={{color: '#7B7B7B'}} />}>单选题</Button>
+              <Button size='small' type="ghost" icon={<MyIcon type='icon-danxuan' style={{color: '#7B7B7B'}} />}>单选题</Button>
               <Button size='small' type="ghost" icon={<MyIcon type='icon-duoxuan' style={{color: '#7B7B7B'}} />}>多选题</Button>
             </div>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}>
               <Button size='small' type="ghost" icon={<MyIcon type='icon-tiankong' style={{color: '#7B7B7B'}} />}>填空题</Button>
-              <Button size='small' type="ghost" icon={<MyIcon type='icon-panduan' style={{color: '#7B7B7B'}} />}>判断题</Button>
+              <Button onClick={this.addJudgeQ} size='small' type="ghost" icon={<MyIcon type='icon-panduan' style={{color: '#7B7B7B'}} />}>判断题</Button>
             </div>
             <div className={BuildCss.lineWrapper} style={{ width: '80%' }}>
               <Button size='small' type="ghost" icon={<MyIcon type='icon-jisuan' style={{color: '#7B7B7B'}} />}>计算题</Button>
@@ -187,11 +235,12 @@ export default class Build extends Component {
           {
             this.state.problemInfo.map((item, index) => {
               return (
-                <div style={{width: '100%'}}>
-                  <BigQ key={nanoid()} index={index+1} {...item}  deleteBigQ={this.deleteBigQ} saveBigQ={this.saveBigQ}
+                <div key={nanoid()} style={{width: '100%'}}>
+                  <BigQ index={index+1} {...item} deleteBigQ={this.deleteBigQ} saveBigQ={this.saveBigQ}
                     addSmallQ={this.addSmallQ} overSmallQ={this.overSmallQ} />
-                  {item.singleQ.map((item, index) => {
-                    return <SingleQ />
+                  {item.judgeQ.map((item, index) => {
+                    return <JudgeQ index={index+1} {...item} deleteJudgeQ={this.deleteJudgeQ} 
+                      saveJudgeQ={this.saveJudgeQ} editJudgeQ={this.editJudgeQ} />
                   })}
                 </div>
                 )
@@ -207,7 +256,8 @@ export default class Build extends Component {
           <Form name="basicInfo" style={{width: '80%'}}>
             <Form.Item label="所属科目" name="courseBelong"
             style={{ marginTop: '5%', marginBottom: '5%' }}
-            rules={[{ required: true, message: '必选'}]}
+            // rules={[{ required: true, message: '必选'}]} validateStatus="error"
+            required 
             >
               <Select onChange={this.selectChange}  placeholder="请选择">
                   {this.courseBelong.map((item, index) => {
@@ -227,7 +277,8 @@ export default class Build extends Component {
             <Form.Item label="试卷型号" name="paperType"
             wrapperCol={{ offset: 1, span: 16 }}
             style={{ marginTop: '4%', marginBottom: '4%' }}
-            rules={[{ required: true, message: '必选'}]}
+            // rules={[{ required: true, message: '必选'}]}
+            required validateStatus="error"
             >
               <Radio.Group>
                 <Radio value='A'>A</Radio>
