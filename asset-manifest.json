@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/exam-system/static/css/main.56ba5538.css",
+    "main.js": "/exam-system/static/js/main.271c853e.js",
+    "static/media/background.png": "/exam-system/static/media/background.ccde293749280f9de34c.png",
+    "static/media/avatar.png": "/exam-system/static/media/avatar.974b736bb645b04eb6b9.png",
+    "static/media/modify.png": "/exam-system/static/media/modify.d7ab07e6203f1738cbcf.png",
+    "index.html": "/exam-system/index.html",
+    "main.56ba5538.css.map": "/exam-system/static/css/main.56ba5538.css.map",
+    "main.271c853e.js.map": "/exam-system/static/js/main.271c853e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56ba5538.css",
+    "static/js/main.271c853e.js"
+  ]
+}
