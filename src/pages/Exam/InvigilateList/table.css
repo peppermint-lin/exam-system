@@ -1,0 +1,4 @@
+/* 首列选择方式的下拉框图标 */
+.ant-dropdown-trigger > .anticon-down > svg {
+    margin-left: 0;
+}

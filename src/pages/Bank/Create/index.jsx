@@ -10,7 +10,7 @@ export default class Create extends Component {
 
   state = {
     searchText: '',
-    searchedColumn: '',
+    searchedColumn: ''
   }
 
   /* 列筛选框 */

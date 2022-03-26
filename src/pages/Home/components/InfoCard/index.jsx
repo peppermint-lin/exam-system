@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { nanoid } from 'nanoid';
 import { MyIcon } from '../../../../assets/iconfont.js';
-import avaterPng from './avatar.png'
 import modifyInformation from './modify.png'
 import InfoCardCss from'./index.module.css'
 
 export default class InfoCard extends Component {
     /* 当前登录用户的个人信息 */
     userInfo = {
-        "avatar": avaterPng, //网络图片地址字符串
+        "avatar": "http://api.sciuridae.xyz/image/sampleAvatar.png", //网络图片地址字符串
         "name": "张三", //姓名
         "nickname": "Zhang San", //昵称
         "jobNumber": "20191522", //工号

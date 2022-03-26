@@ -306,4 +306,25 @@
     /* 所属科目可选列表 */
     courseBelong = ["计算机网络", "网络安全", "信息管理", '操作系统']
     ```
+    
+19. Exam页面的Invigilate组件中的data数据
 
+    ```js
+    /* 监考任务列表的信息 */
+    const data = [
+        // key：唯一标识；name：姓名；number：学号；place：考试地点；loginIP：登录IP；loginTime：登录时间；submitTime：提交时间；cutting：切屏次数；rate：答题率；status：共享状态
+        {
+            key: '1',
+            name: '秦梦瑶',
+            number: '2020001',
+            place: '教学楼A-111',
+            loginIP: '192.168.1.1',
+            loginTime: '14:00',
+            submitTime: '',
+            cutting: 1,
+            rate: 0.012,
+            status: '允许'
+        },
+        ……
+    ]
+    ```

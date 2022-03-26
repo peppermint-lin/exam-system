@@ -145,7 +145,7 @@ export default class Course extends Component {
     },
     {
       "name": "操作系统",
-      "picURL": "http://121.41.11.127/test/icecream.png",
+      "picURL": "http://api.sciuridae.xyz/image/icecream.png",
       "code": "224105001",
       "class": "计算机（师范）201",
       "time": "星期一4-5节",

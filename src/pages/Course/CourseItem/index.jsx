@@ -10,7 +10,7 @@ export default class CourseItem extends Component {
 
   state = {
     searchText: '',
-    searchedColumn: '',
+    searchedColumn: ''
   }
 
   /* 列筛选框 */

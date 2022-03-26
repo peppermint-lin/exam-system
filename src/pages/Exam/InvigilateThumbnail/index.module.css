@@ -1,0 +1,10 @@
+/* 切换图标的父容器 */
+.switchButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #3B90FF;
+    padding: 5px 10px;
+    border-radius: 0 0 5px 0;
+    cursor: pointer;
+}

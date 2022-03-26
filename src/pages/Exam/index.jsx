@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import { Tabs } from 'antd';
 import Arrange from './Arrange'
 import Build from './Build';
-import Invigilate from './Invigilate'
+import InvigilateList from './InvigilateList'
+import InvigilateThumbnail from './InvigilateThumbnail';
 import './index.css';
 
 const { TabPane } = Tabs;
 export default class Exam extends Component {
+
+  state = {isList: true}
+
+  /* 改变监考界面列表和缩略图的回调 */
+  changeMode = () => {
+    const {isList} = this.state
+    if(isList) this.setState({isList: false})
+    else this.setState({isList: true})
+  }
+
   render() {
     return (
       <div className="examContainer">
@@ -18,7 +29,8 @@ export default class Exam extends Component {
             <Build />
           </TabPane>
           <TabPane tab="监考任务" key="3">
-            <Invigilate />
+            {this.state.isList ? <InvigilateList changeMode={this.changeMode} />
+              : <InvigilateThumbnail changeMode={this.changeMode}  />}
           </TabPane>
         </Tabs>
       </div>

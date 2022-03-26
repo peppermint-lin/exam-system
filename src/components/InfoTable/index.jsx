@@ -6,7 +6,7 @@ export default class InfoTable extends Component {
 
   render() {
 
-    const {columns, data, showTotal, pageSize} = this.props
+    const {columns, data, rowSelection, showTotal, pageSize} = this.props
 
     const pagination = {
       showTotal: showTotal,
@@ -24,6 +24,6 @@ export default class InfoTable extends Component {
     }
 
     return <Table bordered columns={columns} dataSource={data}
-      pagination={pagination} rowClassName={rowClassName} />;
+      pagination={pagination} rowClassName={rowClassName} rowSelection={rowSelection} />;
   }
 }

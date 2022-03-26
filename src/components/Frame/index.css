@@ -133,7 +133,7 @@ Header {
 /* 左侧导航栏父容器 */
 #frameSider {
     background-color: #5F6AFE;
-    background-image: url('./background.png');
+    background-image: url("http://api.sciuridae.xyz/image/background.png");
     background-size: 100% 100%;
 }
 
