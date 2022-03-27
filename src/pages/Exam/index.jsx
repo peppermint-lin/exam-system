@@ -9,7 +9,7 @@ import './index.css';
 const { TabPane } = Tabs;
 export default class Exam extends Component {
 
-  state = {isList: true}
+  state = {isList: false}
 
   /* 改变监考界面列表和缩略图的回调 */
   changeMode = () => {
@@ -30,7 +30,7 @@ export default class Exam extends Component {
           </TabPane>
           <TabPane tab="监考任务" key="3">
             {this.state.isList ? <InvigilateList changeMode={this.changeMode} />
-              : <InvigilateThumbnail changeMode={this.changeMode}  />}
+              : <InvigilateThumbnail changeMode={this.changeMode} />}
           </TabPane>
         </Tabs>
       </div>

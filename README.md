@@ -307,7 +307,7 @@
     courseBelong = ["计算机网络", "网络安全", "信息管理", '操作系统']
     ```
     
-19. Exam页面的Invigilate组件中的data数据
+19. Exam页面的InvigilateList组件中的data数据
 
     ```js
     /* 监考任务列表的信息 */
@@ -324,6 +324,25 @@
             cutting: 1,
             rate: 0.012,
             status: '允许'
+        },
+        ……
+    ]
+    ```
+    
+20. Exam页面的InvigilateThumbnail组件中的data数据
+
+    ```js
+    /* 监考任务缩略图的信息 */
+    invigilateInfo = [
+        // pic：照片地址；name：真实姓名；number：学号；snap：抓拍；cutting：切屏；authentication：认证；tag：1考试中，2已交卷，3缺考，4人脸识别失败
+        {
+            pic: 'http://api.sciuridae.xyz/image/Exam/QingMengyao.png',
+            name: '秦梦瑶',
+            number: '2020001',
+            snap: 3,
+            cutting: 1,
+            authentication: 3,
+            tag: 0
         },
         ……
     ]

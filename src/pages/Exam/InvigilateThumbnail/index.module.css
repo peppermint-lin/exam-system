@@ -1,3 +1,41 @@
+/* 缩略图父容器 */
+.nailWrapper {
+    width: 100%;
+    height: 89%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* 顶部按钮栏的父容器 */
+.topWrapper {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 顶部栏左侧按钮父容器 */
+.leftWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* 顶部栏右侧按钮父容器 */
+.rightWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
 /* 切换图标的父容器 */
 .switchButton {
     position: absolute;

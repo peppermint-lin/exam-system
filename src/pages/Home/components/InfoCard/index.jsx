@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { nanoid } from 'nanoid';
 import { MyIcon } from '../../../../assets/iconfont.js';
-import modifyInformation from './modify.png'
 import InfoCardCss from'./index.module.css'
 
 export default class InfoCard extends Component {
     /* 当前登录用户的个人信息 */
     userInfo = {
-        "avatar": "http://api.sciuridae.xyz/image/sampleAvatar.png", //网络图片地址字符串
+        "avatar": "http://api.sciuridae.xyz/image/Home/sampleAvatar.png", //网络图片地址字符串
         "name": "张三", //姓名
         "nickname": "Zhang San", //昵称
         "jobNumber": "20191522", //工号
@@ -47,7 +46,7 @@ export default class InfoCard extends Component {
                 </div>
                 {/* 详细信息部分 */}
                 <div className={InfoCardCss.detailInfo}>
-                    <img id={InfoCardCss.modify} src={modifyInformation} alt='修改信息'></img>
+                    <img id={InfoCardCss.modify} src='http://api.sciuridae.xyz/image/Home/modify.png' alt='修改信息'></img>
                     <div className={InfoCardCss.infoContent}>
                         <p> 职称：{this.userInfo.title} </p>
                         <p> 邮箱：{this.userInfo['e-mail']} </p>

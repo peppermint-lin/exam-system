@@ -40,7 +40,6 @@ export default class Outline extends Component {
         width: '20%',
         align: 'center',
         onCell: (record) => {
-          console.log(record)
           if(record.chapterIndex % 2 !== 1) return {
             rowSpan: record.chapterRowSpan,
             id: 'chapterMergedCell'

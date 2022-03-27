@@ -1,0 +1,51 @@
+/* 单个缩略图的父容器 */
+.itemWrapper {
+    width: 25%;
+    height: 56%;
+    margin-bottom: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* 信息卡片的父容器 */
+.infoCard {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+
+}
+
+/* 照片上方的标签 */
+.tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 5px;
+    color: white;
+    padding: 3px 7px;
+}
+
+/* 信息卡片中的照片 */
+.infoCard > img {
+    width: 100%;
+    height: 54%;
+}
+
+/* 信息卡片中文本信息的父容器 */
+.textWrapper {
+    width: 100%;
+    height: 46%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

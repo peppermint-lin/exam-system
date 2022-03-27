@@ -224,7 +224,7 @@ export default class InvigilateList extends Component {
         loginTime: '14:00',
         submitTime: '--:--',
         cutting: 0,
-        rate: 0.012,
+        rate: 0,
         status: '允许'
       },
       {
