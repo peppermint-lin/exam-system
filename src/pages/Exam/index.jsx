@@ -9,7 +9,18 @@ import './index.css';
 const { TabPane } = Tabs;
 export default class Exam extends Component {
 
-  state = {isList: false}
+  state = {isList: false, activeKey: '1'}
+
+  /* 组件挂载完毕的钩子 */
+  componentDidMount = () => {
+    const {isJump} = this.props.location.state || {}
+    if(isJump) this.setState({activeKey: '2'})
+  }
+
+  /* 组件即将卸载的钩子 */
+  componentWillUnmount = () => {
+    this.setState({activeKey: '1'})
+  }
 
   /* 改变监考界面列表和缩略图的回调 */
   changeMode = () => {
@@ -21,7 +32,8 @@ export default class Exam extends Component {
   render() {
     return (
       <div className="examContainer">
-        <Tabs type="card">
+        <Tabs type="card" activeKey={this.state.activeKey} 
+          onChange={(key)=>{ this.setState({ activeKey: key })}}>
           <TabPane tab="考务安排" key="1">
             <Arrange />
           </TabPane>

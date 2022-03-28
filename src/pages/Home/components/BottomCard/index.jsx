@@ -101,7 +101,7 @@ export default class BottomCard extends Component {
         {"url": "/teacher/exam", "icon": "icon-kaoshi", "title": "我要出卷"},
         {"url": "/teacher/mark", "icon": "icon-yuejuan", "title": "人工阅卷"},
         {"url": "/teacher/statistics", "icon": "icon-tongji", "title": "成绩统计"},
-        {"url": "/teacher/manage", "icon": "icon-guanli", "title": "大纲管理"}
+        {"url": "/teacher/bank", "icon": "icon-guanli", "title": "大纲管理"}
     ]
 
     render() {
@@ -155,7 +155,7 @@ export default class BottomCard extends Component {
                         {this.entrance.map( item => {
                             return (
                                 <div className={BottomCardCss.quickItem} key={nanoid()}>
-                                    <Link to={item.url}>
+                                    <Link to={{pathname: item.url, state: {isJump: true}}}>
                                         <div className={BottomCardCss.quickIconWrapper}>
                                             <MyIcon id={BottomCardCss.quickIcon} type={item.icon} />
                                         </div>

@@ -347,3 +347,59 @@
         ……
     ]
     ```
+    
+21. Manage页面的Teacher组件中的data数据
+
+    ```js
+    /* 教师用户的信息 */
+    const data = [
+        // key：唯一标识；number：序号；nickname：用户名；name：真实姓名；teacherNumber：工号；landline：座机；telephone：手机号码；office：办公室
+        {
+            key: '1',
+            number: 1,
+            nickname: 'Liu Yi',
+            name: '刘一',
+            teacherNumber: '20191520',
+            landline: '28861520',
+            telephone: '15315201520',
+            office: '办公楼A-520'
+        },
+        ……
+    ]
+    ```
+
+22. Manage页面的Student组件中的data数据
+
+    ```js
+    /* 学生用户的信息 */
+    const data = [
+        // key：唯一标识；number：序号；nickname：用户名；college：学院；class：班级；name：真实姓名；studentNumber：学号；telephone：手机号码
+        {
+            key: '1',
+            number: 1,
+            nickname: 'Qing Mengyao',
+            college: '信息学院',
+            class: '计算机201',
+            name: '秦梦瑶',
+            studentNumber: '2020001',
+            telephone: '19815201520'
+        },
+        ……
+    ]
+    ```
+
+23. Manage页面的Handle组件中的data数据（在state里面）
+
+    ```js
+    /* 操作审批的信息 */
+    data: [ // key：唯一标识；number：序号；send：发送方；content：操作内容；status：状态
+        {
+            key: '1',
+            number: 1,
+            send: '刘一',
+            content: '创建《Web服务器端程序设计》课程',
+            status: '待审批'
+        },
+        ……
+    ]
+    ```

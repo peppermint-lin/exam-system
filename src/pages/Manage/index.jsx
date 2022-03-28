@@ -26,7 +26,7 @@ export default class Manage extends Component {
               <TabPane tab="角色管理" key="3">
                   <Character />
               </TabPane>
-              <TabPane tab="操作审核" key="4">
+              <TabPane tab="操作审批" key="4">
                   <Handle />
               </TabPane>
               <TabPane tab="系统公告" key="5">

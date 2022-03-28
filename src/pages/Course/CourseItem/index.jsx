@@ -136,7 +136,7 @@ export default class CourseItem extends Component {
         ...this.getColumnSearchProps('studentNumber')
       },
       {
-        title: '手机号',
+        title: '手机号码',
         dataIndex: 'telephone',
         key: 'telephone',
         width: '15%',

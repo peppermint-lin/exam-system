@@ -1,0 +1,33 @@
+/* 总父容器 */
+.mainWrapper {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* 操作按钮 */
+.editButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#editAgain {
+    margin-right: 10%;
+}
+
+#editAgain, #changeStatus {
+    cursor: pointer;
+}
+
+#editAgain svg, #changeStatus svg {
+    color: #333 !important;
+}
+
+/* 操作按钮的文字 */
+.editButtonWrapper > p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

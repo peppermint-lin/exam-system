@@ -19,7 +19,7 @@ class Frame extends Component {
         })
     }
 
-    /* 组件即将挂载的钩子 */
+    /* 组件即将卸载的钩子 */
     componentWillUnmount = () => {
         this.UNLISTEN && this.UNLISTEN()
     }

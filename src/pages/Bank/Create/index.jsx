@@ -343,6 +343,6 @@ export default class Create extends Component {
       <div className={CreateCss.mainWrapper}>
         <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={12} />
       </div>
-    );
+    )
   }
 }
