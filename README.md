@@ -19,6 +19,7 @@
 15. react-redux——专门用来简化react应用中使用redux的库
 16. redux-devtools-extension——结合Chrome浏览器插件调试Redux的工具依赖包
 17. react-highlight-words——React中用于高亮展示某段文本的组件
+18. draft-js——一款用来构建React富文本编辑器的框架
 
 ### 项目运行
 
@@ -388,7 +389,39 @@
     ]
     ```
 
-23. Manage页面的Handle组件中的data数据（在state里面）
+23. Manage页面的Character组件中的userData数据
+
+    ```js
+    /* 用户的角色信息 */
+    const userData = [
+        // key：唯一标识；number：序号；name：真实姓名；character：角色
+        {
+            key: '1',
+            number: 1,
+            name: '刘一',
+            character: ['任课教师']
+        },
+        ……
+    ]
+    ```
+    
+24. Manage页面的Character组件中的configureData数据
+
+    ```js
+    /* 配置的角色信息 */
+    const configureData = [
+        // key：唯一标识；number：序号；character：角色，detail：详情
+        {
+            key: '1',
+            number: 1,
+            character: '任课教师',
+            detail: '具有课程、题库、监考、统计模块权限'
+        },
+        ……
+    ]
+    ```
+
+25. Manage页面的Handle组件中的data数据（在state里面）
 
     ```js
     /* 操作审批的信息 */

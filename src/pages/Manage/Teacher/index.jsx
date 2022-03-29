@@ -314,6 +314,7 @@ export default class Teacher extends Component {
       },
       {
         key: '16',
+        number: 16,
         nickname: 'Wei Yenong',
         name: '蔚叶农',
         teacherNumber: '20191535',
