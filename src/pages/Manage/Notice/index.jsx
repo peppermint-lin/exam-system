@@ -4,7 +4,6 @@ import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import { MyIcon } from '../../../assets/iconfont.js';
 import InfoTable from '../../../components/InfoTable';
-import NewTest from '../../Exam/Arrange/components/NewTest'
 import NoticeCss from './index.module.css'
 
 export default class Notice extends Component {
@@ -243,7 +242,6 @@ export default class Notice extends Component {
     return (
       <div className={NoticeCss.mainWrapper}>
         <div className={NoticeCss.leftWrapper}>
-          <NewTest />
           <p style={{marginBottom: '2%'}}>历史公告</p>
           <div className={NoticeCss.InfoTableWrapper}>
             <InfoTable columns={noticeColumns} data={noticeData} showTotal={showTotal} pageSize={5} />

@@ -436,3 +436,35 @@
         ……
     ]
     ```
+    
+26. Manage页面的Notice组件中的noticeData数据
+
+    ```js
+    /* 历史公告的信息 */
+    const noticeData = [
+        // key：唯一标识；number：序号；receive：接收对象；title：公告标题
+        {
+            key: '1',
+            number: 1,
+            receive: '全选',
+            title: '关于做好近期本科在线教学管理的通知'
+        },
+        ……
+    ]
+    ```
+
+27. Manage页面的Notice组件中的noticeData数据
+
+    ```js
+    /* 历史任务的信息 */
+    const taskData = [
+        // key：唯一标识；number：序号；receive：接收对象；title：任务标题
+        {
+            key: '1',
+            number: 1,
+            receive: '刘一',
+            title: '请参与《数据库原理》课程监考'
+        },
+        ……
+    ]
+    ```
