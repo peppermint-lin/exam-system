@@ -25,22 +25,22 @@ export default class Reference extends Component {
 
   render() {
     return (
-        <div className={ReferenceCss.mainWrapper}>
-          <div className={ReferenceCss.infoWrapper}>
-            <div className={ReferenceCss.searchWrapper}>
-              <p>请输入搜索课程的关键词</p>
-              <Input className={ReferenceCss.searchInput} placeholder="例：计算机网络" allowClear />,
-              <Button id={ReferenceCss.searchButton} shape='round' size='small'> 立即搜索 </Button>
-              <Button id={ReferenceCss.changeButton} shape='round' size='small'> 换&nbsp;一&nbsp;批 </Button>
-            </div>
-            <Tooltip placement="topLeft" title="参考题库来源网站：https://www.nowcoder.com/discuss/1937">
-              <p className={ReferenceCss.whereIsFrom}>参考题库来源网站：https://www.nowcoder.com/discuss/1937</p>
-            </Tooltip>
+      <div className={ReferenceCss.mainWrapper}>
+        <div className={ReferenceCss.infoWrapper}>
+          <div className={ReferenceCss.searchWrapper}>
+            <p>请输入搜索课程的关键词</p>
+            <Input className={ReferenceCss.searchInput} placeholder="例：计算机网络" allowClear />,
+            <Button id={ReferenceCss.searchButton} shape='round' size='small'> 立即搜索 </Button>
+            <Button id={ReferenceCss.changeButton} shape='round' size='small'> 换&nbsp;一&nbsp;批 </Button>
           </div>
-          <div className={ReferenceCss.detailsWrapper}>
-            <p> {this.referenceData.content} </p>
-          </div>
+          <Tooltip placement="topLeft" title="参考题库来源网站：https://www.nowcoder.com/discuss/1937">
+            <p className={ReferenceCss.whereIsFrom}>参考题库来源网站：https://www.nowcoder.com/discuss/1937</p>
+          </Tooltip>
         </div>
-    );
+        <div className={ReferenceCss.detailsWrapper}>
+          <p> {this.referenceData.content} </p>
+        </div>
+      </div>
+    )
   }
 }

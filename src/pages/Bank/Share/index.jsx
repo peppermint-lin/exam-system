@@ -169,7 +169,7 @@ export default class Share extends Component {
         render: (text) => //text是值，record是当前项对象，index是下标
           text === "未绑定"
           ? <span style={{color: "#FA5151"}}>未绑定</span>
-          : text === "已绑定" ? <span style={{color: "#07C160"}}>已绑定</span>
+          : text === "已绑定" ? <span style={{color: "#3EB575"}}>已绑定</span>
           : <span>部分绑定</span>
       },
       {

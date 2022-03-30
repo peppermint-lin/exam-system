@@ -9,8 +9,8 @@
     align-items: flex-start;
 }
 
-/* 表格的父容器 */
-.InfoTableWrapper {
+/* 宽高撑满的父容器 */
+.componentWrapper {
     width: 100%;
     height: 100%;
 }

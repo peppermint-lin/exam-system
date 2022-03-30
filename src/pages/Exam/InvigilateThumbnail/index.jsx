@@ -149,7 +149,7 @@ export default class InvigilateThumbnail extends Component {
           </div>
           {/* 右侧按钮组 */}
           <div className={InvigilateThumbnailCss.rightWrapper}>
-            <Button style={{color: '#07C160', borderColor: '#07C160'}}>允许考试</Button>
+            <Button style={{color: '#3EB575', borderColor: '#3EB575'}}>允许考试</Button>
             <Button danger ghost>强制交卷</Button>
           </div>
         </div>

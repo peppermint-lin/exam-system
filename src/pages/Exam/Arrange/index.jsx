@@ -143,7 +143,7 @@ export default class Arrange extends Component {
         ...this.getColumnSearchProps('status'),
         render: (text) => //text是值，record是当前项对象，index是下标
           text === "已发布"
-          ? <span style={{color: "#07C160"}}>已发布</span>
+          ? <span style={{color: "#3EB575"}}>已发布</span>
           : <span>暂时保存</span>
       },
       {

@@ -1,0 +1,18 @@
+/* 卡片父容器 */
+.cardWrapper {
+    width: 99%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+    overflow: auto;
+    margin-bottom: 3%;
+}
+
+/* 表单按钮父容器 */
+.buttonWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

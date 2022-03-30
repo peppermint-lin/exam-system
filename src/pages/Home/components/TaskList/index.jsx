@@ -8,10 +8,10 @@ export default class TaskList extends Component {
     /* 任务清单列表信息 */
     taskList = [
         // content：任务标题；url：立即前往的跳路由；show：跳转后展示的tab标签页
-        {"content": "为《计算机网络》课程选择题题库扩充100题", "url": "/bank", "show": "create"},
-        {"content": "出一份《网络安全》期中考试试卷", "url": "/exam", "show": "new"},
-        {"content": "担任12月25日《数据库原理》考试监考", "url": "/exam", "show": "invigilate"},
-        {"content": "完成《计算机组成原理》主观题阅卷", "url": "/mark", "show": "manual"},
+        {"content": "为《计算机网络》课程选择题题库扩充100题", "url": "/teacher/bank", "show": "create"},
+        {"content": "出一份《网络安全》期中考试试卷", "url": "/teacher/exam", "show": "new"},
+        {"content": "担任12月25日《数据库原理》考试监考", "url": "/teacher/exam", "show": "invigilate"},
+        {"content": "完成《计算机组成原理》主观题阅卷", "url": "/teacher/mark", "show": "manual"},
     ]
 
     render() {

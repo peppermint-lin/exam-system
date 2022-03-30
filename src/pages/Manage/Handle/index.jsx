@@ -215,8 +215,8 @@ export default class Handle extends Component {
         ...this.getColumnSearchProps('status'),
         render: (text) => //text是值，record是当前项对象，index是下标
           text === "待审批"
-          ? <span style={{color: "#F5222D"}}>待审批</span>
-          : text === "已通过" ? <span style={{color: "#07C160"}}>已通过</span>
+          ? <span style={{color: "#FF4D4F"}}>待审批</span>
+          : text === "已通过" ? <span style={{color: "#3EB575"}}>已通过</span>
           : <span>已驳回</span>
       },
       {

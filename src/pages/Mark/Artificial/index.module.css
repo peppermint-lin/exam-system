@@ -1,0 +1,86 @@
+/* 参考题库正文总的父容器 */
+.mainWrapper {
+    width: 100%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 操作查看的试卷的父容器 */
+.infoWrapper {
+    width: 100%;
+    height: 6%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 进行下拉选择的父容器 */
+.selectWrapper {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 下拉选择框前提示文字 */
+.selectWrapper > p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 下拉选择框 */
+.selectInput {
+    width: 30%;
+    margin-left: 2% !important;
+    border-radius: 5px !important;
+}
+
+/* 表格的父容器 */
+.tableWrapper {
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+}
+
+/* 操作按钮 */
+.editButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#editAgain, #changeStatus {
+    margin-right: 10%;
+}
+
+#editAgain, #changeStatus, #exportPrinting {
+    cursor: pointer;
+}
+
+#editAgain svg, #changeStatus svg, #exportPrinting svg {
+    color: #333 !important;
+}
+
+/* 操作按钮的文字 */
+.editButtonWrapper > p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 阅卷进度父容器 */
+.progressWrapper {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}

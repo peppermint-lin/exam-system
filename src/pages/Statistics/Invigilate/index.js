@@ -1,25 +1,22 @@
 import React, { Component } from 'react'
-import { Input, Button, Space, Tooltip } from 'antd';
+import { Input, Button, Space, Select } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
-import { MyIcon } from '../../../assets/iconfont.js';
+import { nanoid } from 'nanoid';
 import InfoTable from '../../../components/InfoTable';
-import InvigilateListCss from './index.module.css'
-import './table.css'
+import InvigilateCss from './index.module.css'
 
-export default class InvigilateList extends Component {
+const { Option } = Select;
+
+export default class Invigilate extends Component {
 
   state = {
-    testInfo: {subject: '数据库原理', lastTime: '1小时55分钟28秒'},
     searchText: '',
-    searchedColumn: '',
-    selectedRowKeys: [] // Check here to configure the default column
+    searchedColumn: ''
   };
 
-  /* 改变监考界面列表和缩略图的回调 */
-  changeMode = () => {
-    this.props.changeMode()
-  }
+  /* 监考的考试可选列表 */
+  testChildren = ["计算机网络期末考试", "考试2", "考试3"]
 
   /* 列多选 */
   onSelectChange = selectedRowKeys => {
@@ -111,7 +108,13 @@ export default class InvigilateList extends Component {
   render() {
     const columns = [
       {
-        title: '真实姓名',
+        title: '序号',
+        dataIndex: 'number',
+        width: '7%',
+        align: 'center'
+      },
+      {
+        title: '姓名',
         dataIndex: 'name',
         width: '10%',
         align: 'center',
@@ -119,28 +122,24 @@ export default class InvigilateList extends Component {
       },
       {
         title: '学号',
-        dataIndex: 'number',
+        dataIndex: 'studentNumber',
         width: '10%',
         align: 'center',
-        ...this.getColumnSearchProps('number')
-      },
-      {
-        title: '考试地点',
-        dataIndex: 'place',
-        width: '12%',
-        align: 'center'
+        ...this.getColumnSearchProps('studentNumber')
       },
       {
         title: '登录IP',
         dataIndex: 'loginIP',
         width: '10%',
-        align: 'center'
+        align: 'center',
+        render: (text) => text === '' ? '--:--' : text
       },
       {
         title: '登录时间',
         dataIndex: 'loginTime',
         width: '10%',
-        align: 'center'
+        align: 'center',
+        render: (text) => text === '' ? '--:--' : text
       },
       {
         title: '提交时间',
@@ -150,6 +149,13 @@ export default class InvigilateList extends Component {
         render: (text) => text === '' ? '--:--' : text
       },
       {
+        title: '抓拍次数',
+        dataIndex: 'snap',
+        width: '10%',
+        align: 'center',
+        render: (text) => text === 0 ? '--' : `${text}次`
+      },
+      {
         title: '切屏次数',
         dataIndex: 'cutting',
         width: '10%',
@@ -157,220 +163,232 @@ export default class InvigilateList extends Component {
         render: (text) => text === 0 ? '--' : `${text}次`
       },
       {
-        title: '答题率',
-        dataIndex: 'rate',
+        title: '认证次数',
+        dataIndex: 'authentication',
         width: '10%',
         align: 'center',
-        render: (text) => `${(text*100).toFixed(2)}%`
+        render: (text) => text === 0 ? '--' : `${text}次`
       },
       {
-        title: '状态',
-        dataIndex: 'status',
+        title: '人脸',
+        dataIndex: 'face',
         width: '10%',
         align: 'center',
-        ...this.getColumnSearchProps('status'),
+        ...this.getColumnSearchProps('face'),
         render: (text) => //text是值，record是当前项对象，index是下标
-          text === "强制交卷"
-          ? <span style={{color: "#FF4D4F"}}>强制交卷</span>
-          : <span>允许</span>
+          text === "不通过"
+          ? <span style={{color: "#FF4D4F"}}>不通过</span>
+          : text === "通过" ? <span style={{color: "#3EB575"}}>通过</span>
+          : <span>缺考</span>
       }
     ]
     
-    /* 监考任务列表的信息 */
+    /* 监考数据的信息 */
     const data = [
-      // key：唯一标识；name：姓名；number：学号；place：考试地点；loginIP：登录IP；loginTime：登录时间；submitTime：提交时间；cutting：切屏次数；rate：答题率；status：共享状态
+      // key：唯一标识；number：序号；name：姓名；studentNumber：学号；loginIP：登录IP；loginTime：登录时间；submitTime：提交时间；snap：抓拍次数；cutting：切屏次数；authentication：认证次数；face：人脸
       {
         key: '1',
+        number: '1',
         name: '秦梦瑶',
-        number: '2020001',
-        place: '教学楼A-111',
+        studentNumber: '2020001',
         loginIP: '192.168.1.1',
         loginTime: '14:00',
-        submitTime: '',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 1,
-        rate: 0.012,
-        status: '允许'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '2',
+        number: '2',
         name: '王淡真',
-        number: '2020002',
-        place: '教学楼B-105',
+        studentNumber: '2020002',
         loginIP: '192.168.1.1',
         loginTime: '14:01',
-        submitTime: '',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 0,
-        rate: 0.008,
-        status: '允许'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '3',
+        number: '3',
         name: '师妃喧',
-        number: '2020003',
-        place: '教学楼C-213',
+        studentNumber: '2020003',
         loginIP: '192.168.1.1',
         loginTime: '14:02',
-        submitTime: '',
+        submitTime: '15:31',
+        snap: 2,
         cutting: 0,
-        rate: 0.006,
-        status: '允许'
+        authentication: 4,
+        face: '不通过'
       },
       {
         key: '4',
+        number: '4',
         name: '允寒夜',
-        number: '2020004',
-        place: '教学楼A-111',
+        studentNumber: '2020004',
         loginIP: '192.168.1.1',
         loginTime: '14:00',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 0,
-        rate: 0,
-        status: '允许'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '5',
+        number: '5',
         name: '樱雪婷',
-        number: '2020005',
-        place: '教学楼B-105',
+        studentNumber: '2020005',
         loginIP: '192.168.1.1',
         loginTime: '14:01',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 5,
-        rate: 0.008,
-        status: '强制交卷'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '6',
+        number: '6',
         name: '月韩依',
-        number: '2020006',
-        place: '教学楼C-213',
+        studentNumber: '2020006',
         loginIP: '192.168.1.1',
         loginTime: '14:02',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 1,
         cutting: 0,
-        rate: 0.006,
-        status: '允许'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '7',
+        number: '7',
         name: '雯欣雨',
-        number: '2020007',
-        place: '教学楼A-111',
+        studentNumber: '2020007',
         loginIP: '192.168.1.1',
         loginTime: '14:00',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 0,
-        rate: 0.012,
-        status: '允许'
+        authentication: 5,
+        face: '不通过'
       },
       {
         key: '8',
+        number: '8',
         name: '可一琳',
-        number: '2020008',
-        place: '教学楼B-105',
+        studentNumber: '2020008',
         loginIP: '192.168.1.1',
         loginTime: '14:01',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 5,
         cutting: 0,
-        rate: 0.008,
-        status: '允许'
+        authentication: 2,
+        face: '通过'
       },
       {
         key: '9',
+        number: '9',
         name: '韩语惠',
-        number: '2020009',
-        place: '教学楼C- 213',
-        loginIP: '192.168.1.1',
-        loginTime: '14:02',
-        submitTime: '--:--',
+        studentNumber: '2020009',
+        loginIP: '',
+        loginTime: '',
+        submitTime: '',
+        snap: 1,
         cutting: 0,
-        rate: 0.006,
-        status: '允许'
+        authentication: 0,
+        face: '缺考'
       },
       {
         key: '10',
+        number: '10',
         name: '叶允栗',
-        number: '2020010',
-        place: '教学楼A-111',
+        studentNumber: '2020010',
         loginIP: '192.168.1.1',
         loginTime: '14:00',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 2,
-        rate: 0.012,
-        status: '强制交卷'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '11',
+        number: '11',
         name: '安雨痕',
-        number: '2020011',
-        place: '教学楼B-105',
-        loginIP: '192.168.1.1',
-        loginTime: '14:01',
-        submitTime: '--:--',
+        studentNumber: '2020011',
+        loginIP: '',
+        loginTime: '',
+        submitTime: '',
+        snap: 1,
         cutting: 0,
-        rate: 0.008,
-        status: '允许'
+        authentication: 0,
+        face: '缺考'
       },
       {
         key: '12',
+        number: '12',
         name: '颜圣翼',
-        number: '2020115',
-        place: '教学楼C-213',
+        studentNumber: '2020115',
         loginIP: '192.168.1.1',
         loginTime: '14:02',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 0,
-        rate: 0.006,
-        status: '允许'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '13',
+        number: '13',
         name: '南黎川',
-        number: '2020116',
-        place: '教学楼A-111',
+        studentNumber: '2020116',
         loginIP: '192.168.1.1',
         loginTime: '14:00',
-        submitTime: '--:--',
+        submitTime: '15:31',
+        snap: 3,
         cutting: 0,
-        rate: 0.012, 
-        status: '允许'
+        authentication: 3,
+        face: '通过'
       },
       {
         key: '14',
+        number: '14',
         name: '车辰希',
-        number: '2020117',
-        place: '教学楼B-105',
-        loginIP: '192.168.1.1',
-        loginTime: '14:01',
-        submitTime: '--:--',
+        studentNumber: '2020117',
+        loginIP: '',
+        loginTime: '',
+        submitTime: '',
+        snap: 1,
         cutting: 0,
-        rate: 0.0080,
-        status: '允许'        
+        authentication: 0,
+        face: '缺考'
       }
     ]
 
-    const showTotal = (total) => <p> 共{total}条&emsp; </p>
-
-    const { selectedRowKeys } = this.state
-    const rowSelection = {
-      selectedRowKeys,
-      onChange: this.onSelectChange,
-      selections: true
-    }
+    const showTotal = (total) => <div className='showTotalWrapper'>
+      <Button shape='round' size='middle'> 导出数据表 </Button>
+      <p> &emsp;&emsp; 共{total}条&emsp; </p>
+    </div>
 
     return (
-      <div className={InvigilateListCss.mainWrapper}>
-        <div className={InvigilateListCss.topLineWrapper}>
-          <div className={InvigilateListCss.buttonWrapper}>
-            <Button size='small' type="text" icon={<MyIcon type='icon-yunxukaoshi' />}> 允许考试&emsp;&emsp; </Button>
-            <Button size='small' type="text" icon={<MyIcon type='icon-qiangzhijiaojuan' />}> 强制交卷&emsp;&emsp; </Button>
-            <Button size='small' type="text" icon={<MyIcon type='icon-shuaxin' />}> 刷新 </Button>
+      <div className={InvigilateCss.mainWrapper}>
+        <div className={InvigilateCss.infoWrapper}>
+          <div className={InvigilateCss.selectWrapper}>
+            <p>监考的考试</p>
+            <Select className={InvigilateCss.selectInput} onChange={this.selectChange} defaultValue={1}>
+              {this.testChildren.map((item, index) => {
+                  return <Option key={nanoid()} value={index+1}>{item}</Option>
+                })}
+            </Select>
           </div>
-          当前正在监考科目：{this.state.testInfo.subject} &emsp; 距离考试结束：{this.state.testInfo.lastTime}
         </div>
-        <InfoTable columns={columns} data={data} rowSelection={rowSelection} showTotal={showTotal} pageSize={11} />
-        <div className={InvigilateListCss.switchButton} onClick={this.changeMode}>
-          <Tooltip title="切换为缩略图模式"><MyIcon type='icon-suolvetu' /></Tooltip>
+        <div className={InvigilateCss.tableWrapper}>
+          <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={10} />
         </div>
       </div>
     )

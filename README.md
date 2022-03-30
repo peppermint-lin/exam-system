@@ -265,28 +265,35 @@
     ]
     ```
 
-14. Exam页面的NewTest组件中的studentChildren数据
+14. Exam页面的NewTest组件中的paperChildren数据
+
+    ```js
+    /* 试卷可选列表 */
+    paperChildren = ["卷1", "卷2", "卷3"]
+    ```
+
+15. Exam页面的NewTest组件中的studentChildren数据
 
     ```js
     /* 应试学生可选列表 */
     studentChildren = ["计算机181", "计算机191", "计算机201"]
     ```
 
-15. Exam页面的NewTest组件中的teacherChildren数据
+16. Exam页面的NewTest组件中的teacherChildren数据
 
     ```js
     /* 监考教师可选列表 */
     teacherChildren = ["张三", "李四", "王五"]
     ```
 
-16. Exam页面的Place组件中的campusBelong数据
+17. Exam页面的Place组件中的campusBelong数据
 
     ```js
     /* 所属校区可选列表 */
     campusBelong = ["A市B区", "B市C区", "C市D区"]
     ```
-    
-17. Exam页面的Build组件中的realTimeData数据
+
+18. Exam页面的Build组件中的realTimeData数据
 
     ```js
     /* 新建试卷实时统计信息 */
@@ -300,15 +307,15 @@
         ]
     }
     ```
-    
-18. Exam页面的Build组件中的courseBelong数据
+
+19. Exam页面的Build组件中的courseBelong数据
 
     ```js
     /* 所属科目可选列表 */
     courseBelong = ["计算机网络", "网络安全", "信息管理", '操作系统']
     ```
-    
-19. Exam页面的InvigilateList组件中的data数据
+
+20. Exam页面的InvigilateList组件中的data数据
 
     ```js
     /* 监考任务列表的信息 */
@@ -329,8 +336,8 @@
         ……
     ]
     ```
-    
-20. Exam页面的InvigilateThumbnail组件中的data数据
+
+21. Exam页面的InvigilateThumbnail组件中的data数据
 
     ```js
     /* 监考任务缩略图的信息 */
@@ -348,8 +355,44 @@
         ……
     ]
     ```
-    
-21. Manage页面的Teacher组件中的data数据
+
+22. Mark页面的Objective组件中的paperChildren数据
+
+    ```js
+    /* 试卷可选列表 */
+    paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
+    ```
+
+23. Mark页面的Artificial组件中的paperChildren数据
+
+    ```js
+    /* 试卷可选列表 */
+    paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
+    ```
+
+24. Mark页面的Artificial组件中的paperChildren数据
+
+    ```js
+    /* 人工阅卷的信息 */
+    const data = [
+        // key：唯一标识；number：序号；testNumber：考号；studentNumber：学号；loginIP：登录IP；loginTime：登录时间；submitTime：提交时间；cutting：切屏次数；rate：答题率；grade：成绩；edit：操作（0开始阅卷，1继续阅卷，2误判修正）
+        {
+            key: '1',
+            number: 1,
+            testNumber: '2022110101',
+            studentNumber: '2020001',
+            loginIP: '192.168.1.1',
+            loginTime: '14:00',
+            submitTime: '15:31',
+            cutting: 1,
+            rate: 0.962,
+            grade: null
+        },
+        ……
+    ]
+    ```
+
+25. Manage页面的Teacher组件中的data数据
 
     ```js
     /* 教师用户的信息 */
@@ -369,7 +412,7 @@
     ]
     ```
 
-22. Manage页面的Student组件中的data数据
+26. Manage页面的Student组件中的data数据
 
     ```js
     /* 学生用户的信息 */
@@ -389,7 +432,7 @@
     ]
     ```
 
-23. Manage页面的Character组件中的userData数据
+27. Manage页面的Character组件中的userData数据
 
     ```js
     /* 用户的角色信息 */
@@ -404,8 +447,8 @@
         ……
     ]
     ```
-    
-24. Manage页面的Character组件中的configureData数据
+
+28. Manage页面的Character组件中的configureData数据
 
     ```js
     /* 配置的角色信息 */
@@ -421,7 +464,7 @@
     ]
     ```
 
-25. Manage页面的Handle组件中的data数据（在state里面）
+29. Manage页面的Handle组件中的data数据（在state里面）
 
     ```js
     /* 操作审批的信息 */
@@ -436,8 +479,8 @@
         ……
     ]
     ```
-    
-26. Manage页面的Notice组件中的noticeData数据
+
+30. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史公告的信息 */
@@ -453,7 +496,7 @@
     ]
     ```
 
-27. Manage页面的Notice组件中的noticeData数据
+31. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史任务的信息 */
@@ -467,4 +510,55 @@
         },
         ……
     ]
+    ```
+
+32. Manage页面的NewNotice组件中的receiver数据
+
+    ```js
+    /* 接收对象可选列表 */
+    receiver = ["张三", "李四", "王五"]
+    ```
+
+33. Manage页面的NewTask组件中的subjectChildren数据
+
+    ```js
+    /* 课程可选列表 */
+    subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
+    ```
+
+34. Manage页面的NewTask组件中的receiver数据
+
+    ```js
+    /* 接收对象可选列表 */
+    receiver = ["张三", "李四", "王五"]
+    ```
+
+35. Statistics页面的Invigilate组件中的data数据
+
+    ```js
+    /* 监考数据的信息 */
+    const data = [
+        // key：唯一标识；number：序号；name：姓名；studentNumber：学号；loginIP：登录IP；loginTime：登录时间；submitTime：提交时间；snap：抓拍次数；cutting：切屏次数；authentication：认证次数；face：人脸
+        {
+            key: '1',
+            number: '1',
+            name: '秦梦瑶',
+            studentNumber: '2020001',
+            loginIP: '192.168.1.1',
+            loginTime: '14:00',
+            submitTime: '15:31',
+            snap: 3,
+            cutting: 1,
+            authentication: 3,
+            face: '通过'
+        },
+        ……
+    ]
+    ```
+
+36. Statistics页面的Invigilate组件中的testChildren数据
+
+    ```js
+    /* 监考的考试可选列表 */
+    testChildren = ["计算机网络期末考试", "考试2", "考试3"]
     ```

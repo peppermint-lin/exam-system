@@ -197,7 +197,7 @@ export default class Build extends Component {
               <Button size='small' type="primary" ghost>&nbsp;刷&nbsp;新&nbsp;</Button>
             </div>
             <div className={BuildCss.lineWrapper} style={{ width: '100%', marginBottom: '4%' }}>
-              <p>考纲覆盖率：<span style={{color: '#F5222D'}}> {this.realTimeData.cover*100}% </span></p>
+              <p>考纲覆盖率：<span style={{color: '#FF4D4F'}}> {this.realTimeData.cover*100}% </span></p>
             </div>
             <div className={BuildCss.lineWrapper} style={{ width: '100%', marginBottom: '4%' }}>
               <p>近三年试卷重复率</p>
@@ -208,7 +208,7 @@ export default class Build extends Component {
                   <div key={nanoid()} className={BuildCss.lineWrapper} style={{ width: '100%', justifySelf: 'center', marginBottom: 5 }}>
                     <p style={{width: '100%', textAlign: 'center'}}>
                       {item.year}年&emsp;&emsp;&emsp;
-                      <span style={{color: '#F5222D'}}>{item.rate*100}%</span>
+                      <span style={{color: '#FF4D4F'}}>{item.rate*100}%</span>
                     </p>
                   </div>
                 )

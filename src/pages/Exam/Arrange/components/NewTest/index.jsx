@@ -83,8 +83,13 @@ export default class NewTest extends Component {
       ]
     }
   ]
+
+  /* 试卷可选列表 */
+  paperChildren = ["卷1", "卷2", "卷3"]
+
   /* 应试学生可选列表 */
   studentChildren = ["计算机181", "计算机191", "计算机201"]
+  
   /* 监考教师可选列表 */
   teacherChildren = ["张三", "李四", "王五"]
 
@@ -148,9 +153,9 @@ export default class NewTest extends Component {
               rules={[{ required: true, message: '请选择应用的试卷' }]}
               style={{ display: 'inline-block', width: 'calc(50% - 8px)', marginBottom: 10 }}>
               <Select onChange={this.selectChange}>
-                <Option value="1">卷1</Option>
-                <Option value="2">卷2</Option>
-                <Option value="3">卷3</Option>
+                {this.paperChildren.map((item, index) => {
+                    return <Option key={nanoid()} value={index+1}>{item}</Option>
+                  })}
               </Select>
             </Form.Item>
             <Form.Item name="grade"
@@ -211,13 +216,13 @@ export default class NewTest extends Component {
 
           <Form.Item label="防作弊设置" name="teacher"
             wrapperCol={{ offset: 1, span: 10 }}
-            style={{ marginBottom: 10 }}
+            style={{ marginBottom: 8 }}
             rules={[{ required: true }]}
           >
             <Button> &nbsp;Go To Now <MyIcon type='icon-fangzuobishezhi' /> </Button>
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 10, span: 4 }} style={{marginBottom: 0}}>
+          <Form.Item wrapperCol={{ offset: 16, span: 4 }} style={{marginBottom: 0}}>
             <div className={NewTestCss.buttonWrapper}>
               <Button danger type="ghost" htmlType="reset" style={{marginRight: '10%'}}> 清空重置 </Button>
               <Button ghost type="primary" style={{marginRight: '10%'}}> 暂时保存 </Button>
