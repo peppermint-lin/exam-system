@@ -9,9 +9,9 @@ export default class TaskList extends Component {
     taskList = [
         // content：任务标题；url：立即前往的跳路由；show：跳转后展示的tab标签页
         {"content": "为《计算机网络》课程选择题题库扩充100题", "url": "/teacher/bank", "show": "create"},
-        {"content": "出一份《网络安全》期中考试试卷", "url": "/teacher/exam", "show": "new"},
+        {"content": "出一份《网络安全》期中考试试卷", "url": "/teacher/exam", "show": "build"},
         {"content": "担任12月25日《数据库原理》考试监考", "url": "/teacher/exam", "show": "invigilate"},
-        {"content": "完成《计算机组成原理》主观题阅卷", "url": "/teacher/mark", "show": "manual"},
+        {"content": "完成《计算机组成原理》主观题阅卷", "url": "/teacher/mark", "show": "artificial"},
     ]
 
     render() {
@@ -25,7 +25,7 @@ export default class TaskList extends Component {
                             <div key={nanoid()} className={TaskListCss.listItem}>
                                 <p> {index+1}. {task.content} </p>
                                 <Button id={TaskListCss.gotoButton} shape='round' size='small'>
-                                    <Link to={task.url}>立即前往</Link>
+                                    <Link to={{pathname: task.url, state: {isJump: true, whichTask: task.show}}}>立即前往</Link>
                                 </Button>
                             </div>
                         )

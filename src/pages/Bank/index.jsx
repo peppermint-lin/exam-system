@@ -13,8 +13,8 @@ export default class Bank extends Component {
   
     /* 组件挂载完毕的钩子 */
     componentDidMount = () => {
-      const {isJump} = this.props.location.state || {}
-      if(isJump) this.setState({activeKey: '4'})
+      const {isJump, whichTask} = this.props.location.state || {}
+      if(isJump && whichTask !== 'create') this.setState({activeKey: '4'})
     }
   
     /* 组件即将卸载的钩子 */

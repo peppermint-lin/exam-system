@@ -13,16 +13,10 @@ export default class Invigilate extends Component {
   state = {
     searchText: '',
     searchedColumn: ''
-  };
+  }
 
   /* 监考的考试可选列表 */
   testChildren = ["计算机网络期末考试", "考试2", "考试3"]
-
-  /* 列多选 */
-  onSelectChange = selectedRowKeys => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys);
-    this.setState({ selectedRowKeys });
-  };
 
   /* 列筛选框 */
   getColumnSearchProps = dataIndex => ({

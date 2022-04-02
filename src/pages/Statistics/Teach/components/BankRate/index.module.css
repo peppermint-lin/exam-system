@@ -1,0 +1,19 @@
+/* 总的父容器 */
+.mainWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 首行的父容器 */
+.lineWrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5%;
+}

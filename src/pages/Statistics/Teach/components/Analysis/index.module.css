@@ -1,0 +1,41 @@
+/* 总的父容器 */
+.mainWrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 表格的父容器 */
+.tableWrapper {
+    width: 90%;
+    height: 80%;
+    border-radius: 5px;
+    border-top: 1px solid #67A1F3;
+    border-left: 1px solid #67A1F3;
+    border-right: 1px solid #67A1F3;
+    overflow-y: auto;
+}
+
+/* 表格单行父容器 */
+.tableLine {
+    width: 100%;
+    height: 25%;
+    border-bottom: 1px solid #67A1F3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 表格的每个格子 */
+.textItem {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

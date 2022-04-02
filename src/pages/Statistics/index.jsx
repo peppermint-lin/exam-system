@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import Teach from './Teach'
 import Build from './Build';
 import Invigilate from './Invigilate'
+import formula from './formula.png'
 import './index.css';
 
 const { TabPane } = Tabs;
@@ -10,7 +11,7 @@ export default class Statistics extends Component {
   render() {
     return (
       <div className="statisticsContainer">
-        <Button id='createNewOutline' shape='round' size='middle'> 创建新题库 </Button>
+        <img id='formula' src={formula} alt="计算公式" style={{height: '20px'}} />
         <Tabs type="card">
           <TabPane tab="任课成绩" key="1">
               <Teach />

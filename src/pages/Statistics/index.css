@@ -5,14 +5,10 @@
     box-shadow: -4px 10px 10px -10px rgba(0, 0, 0, 0.25);
 }
 
-/* 右上角创建新题库按钮 */
-#createNewOutline {
+#formula {
     position: absolute;
-    top: 0;
-    right: 2%;
-    border-color: #3B90FF;
-    color: #3B90FF;
-    cursor: pointer;
+    top: 1%;
+    right: 1%;
     z-index: 999;
 }
 

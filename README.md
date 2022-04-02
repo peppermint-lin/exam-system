@@ -392,148 +392,7 @@
     ]
     ```
 
-25. Manage页面的Teacher组件中的data数据
-
-    ```js
-    /* 教师用户的信息 */
-    const data = [
-        // key：唯一标识；number：序号；nickname：用户名；name：真实姓名；teacherNumber：工号；landline：座机；telephone：手机号码；office：办公室
-        {
-            key: '1',
-            number: 1,
-            nickname: 'Liu Yi',
-            name: '刘一',
-            teacherNumber: '20191520',
-            landline: '28861520',
-            telephone: '15315201520',
-            office: '办公楼A-520'
-        },
-        ……
-    ]
-    ```
-
-26. Manage页面的Student组件中的data数据
-
-    ```js
-    /* 学生用户的信息 */
-    const data = [
-        // key：唯一标识；number：序号；nickname：用户名；college：学院；class：班级；name：真实姓名；studentNumber：学号；telephone：手机号码
-        {
-            key: '1',
-            number: 1,
-            nickname: 'Qing Mengyao',
-            college: '信息学院',
-            class: '计算机201',
-            name: '秦梦瑶',
-            studentNumber: '2020001',
-            telephone: '19815201520'
-        },
-        ……
-    ]
-    ```
-
-27. Manage页面的Character组件中的userData数据
-
-    ```js
-    /* 用户的角色信息 */
-    const userData = [
-        // key：唯一标识；number：序号；name：真实姓名；character：角色
-        {
-            key: '1',
-            number: 1,
-            name: '刘一',
-            character: ['任课教师']
-        },
-        ……
-    ]
-    ```
-
-28. Manage页面的Character组件中的configureData数据
-
-    ```js
-    /* 配置的角色信息 */
-    const configureData = [
-        // key：唯一标识；number：序号；character：角色，detail：详情
-        {
-            key: '1',
-            number: 1,
-            character: '任课教师',
-            detail: '具有课程、题库、监考、统计模块权限'
-        },
-        ……
-    ]
-    ```
-
-29. Manage页面的Handle组件中的data数据（在state里面）
-
-    ```js
-    /* 操作审批的信息 */
-    data: [ // key：唯一标识；number：序号；send：发送方；content：操作内容；status：状态
-        {
-            key: '1',
-            number: 1,
-            send: '刘一',
-            content: '创建《Web服务器端程序设计》课程',
-            status: '待审批'
-        },
-        ……
-    ]
-    ```
-
-30. Manage页面的Notice组件中的noticeData数据
-
-    ```js
-    /* 历史公告的信息 */
-    const noticeData = [
-        // key：唯一标识；number：序号；receive：接收对象；title：公告标题
-        {
-            key: '1',
-            number: 1,
-            receive: '全选',
-            title: '关于做好近期本科在线教学管理的通知'
-        },
-        ……
-    ]
-    ```
-
-31. Manage页面的Notice组件中的noticeData数据
-
-    ```js
-    /* 历史任务的信息 */
-    const taskData = [
-        // key：唯一标识；number：序号；receive：接收对象；title：任务标题
-        {
-            key: '1',
-            number: 1,
-            receive: '刘一',
-            title: '请参与《数据库原理》课程监考'
-        },
-        ……
-    ]
-    ```
-
-32. Manage页面的NewNotice组件中的receiver数据
-
-    ```js
-    /* 接收对象可选列表 */
-    receiver = ["张三", "李四", "王五"]
-    ```
-
-33. Manage页面的NewTask组件中的subjectChildren数据
-
-    ```js
-    /* 课程可选列表 */
-    subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
-    ```
-
-34. Manage页面的NewTask组件中的receiver数据
-
-    ```js
-    /* 接收对象可选列表 */
-    receiver = ["张三", "李四", "王五"]
-    ```
-
-35. Statistics页面的Invigilate组件中的data数据
+25. Statistics页面的Invigilate组件中的data数据
 
     ```js
     /* 监考数据的信息 */
@@ -556,9 +415,263 @@
     ]
     ```
 
-36. Statistics页面的Invigilate组件中的testChildren数据
+26. Statistics页面的Invigilate组件中的testChildren数据
 
     ```js
     /* 监考的考试可选列表 */
     testChildren = ["计算机网络期末考试", "考试2", "考试3"]
+    ```
+
+27. Statistics页面的Teach组件中的subjectChildren数据
+
+    ```js
+    /* 查看科目的可选列表 */
+    subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
+    ```
+
+28. Statistics页面的Teach组件中的testChildren数据
+
+    ```js
+    /* 具体考试的可选列表 */
+    testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
+    ```
+
+29. Statistics页面的GradeDistribution组件中的data数据
+
+    ```js
+    /* 柱状图数据 */
+    const data = [
+    	// grade：分数；student：学生人数
+        {
+            grade: '0-19分',
+            student: 2,
+        },
+        ……
+    ]
+    ```
+    
+30. Statistics页面的WrongDistribution组件中的data数据
+
+    ```js
+    /* 饼状图数据 */
+    const data = [
+    	// point：考点；rate：错误率
+        {
+            point: '数据链路层',
+            rate: 0.05
+        },
+        ……
+    ]
+    ```
+    
+31. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
+
+    ```js
+    /* 成绩分析的信息 */
+    const data = {
+        // highest：最高分；lowest：最低分；average：平均分；passRate：及格率；total：考生总数；excellentRate：优秀率；difficulty：难度系数；discrimination：成绩区分度
+        highest: 100,
+        lowest: 15,
+        average: 73.5,
+        passRate: 0.7619,
+        total: 105,
+        excellentRate: 0.333,
+        difficulty: 0.52,
+        discrimination: 0.44
+    }
+    ```
+
+32. Statistics页面的BankRate组件中的data数据
+
+    ```js
+    /* 折线图数据 */
+    const data = [
+    	// index：考纲序号；rate：错误率
+        {
+            index: '1',
+            rate: 0.4
+        },
+        ……
+    ]
+    ```
+
+33. Statistics页面的Build组件中的subjectChildren数据
+
+    ```js
+    /* 查看科目的可选列表 */
+    subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
+    ```
+    
+34. Statistics页面的Build组件中的testChildren数据
+
+    ```js
+    /* 具体考试的可选列表 */
+    testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
+    ```
+
+35. Statistics页面的Chart组件中的data数据
+
+    ```js
+    /* 双轴图数据 */
+    const data = [
+        // grade：分数；frequency：频数；curve：正态分布
+        {
+            grade: 15,
+            frequency: 3,
+            curve: 0.05
+        },
+        ……
+    ]
+    ```
+
+36. Statistics页面的Cover组件中的coverData数据
+
+    ```js
+    /* 考纲覆盖率信息 */
+    const coverData = {
+        // value：考纲覆盖率；point：本卷未覆盖考点
+        value: 0.85,
+        point: ['实体联系模型', '数据库设计', '数据库安全性', '关系数据理论', '安全性知识', '标准性知识', '数据库恢复技术', '数据库发展新技术']
+    }
+    ```
+
+37. Manage页面的Teacher组件中的data数据
+
+    ```js
+    /* 教师用户的信息 */
+    const data = [
+        // key：唯一标识；number：序号；nickname：用户名；name：真实姓名；teacherNumber：工号；landline：座机；telephone：手机号码；office：办公室
+        {
+            key: '1',
+            number: 1,
+            nickname: 'Liu Yi',
+            name: '刘一',
+            teacherNumber: '20191520',
+            landline: '28861520',
+            telephone: '15315201520',
+            office: '办公楼A-520'
+        },
+        ……
+    ]
+    ```
+
+38. Manage页面的Student组件中的data数据
+
+    ```js
+    /* 学生用户的信息 */
+    const data = [
+        // key：唯一标识；number：序号；nickname：用户名；college：学院；class：班级；name：真实姓名；studentNumber：学号；telephone：手机号码
+        {
+            key: '1',
+            number: 1,
+            nickname: 'Qing Mengyao',
+            college: '信息学院',
+            class: '计算机201',
+            name: '秦梦瑶',
+            studentNumber: '2020001',
+            telephone: '19815201520'
+        },
+        ……
+    ]
+    ```
+
+39. Manage页面的Character组件中的userData数据
+
+    ```js
+    /* 用户的角色信息 */
+    const userData = [
+        // key：唯一标识；number：序号；name：真实姓名；character：角色
+        {
+            key: '1',
+            number: 1,
+            name: '刘一',
+            character: ['任课教师']
+        },
+        ……
+    ]
+    ```
+
+40. Manage页面的Character组件中的configureData数据
+
+    ```js
+    /* 配置的角色信息 */
+    const configureData = [
+        // key：唯一标识；number：序号；character：角色，detail：详情
+        {
+            key: '1',
+            number: 1,
+            character: '任课教师',
+            detail: '具有课程、题库、监考、统计模块权限'
+        },
+        ……
+    ]
+    ```
+
+41. Manage页面的Handle组件中的data数据（在state里面）
+
+    ```js
+    /* 操作审批的信息 */
+    data: [ // key：唯一标识；number：序号；send：发送方；content：操作内容；status：状态
+        {
+            key: '1',
+            number: 1,
+            send: '刘一',
+            content: '创建《Web服务器端程序设计》课程',
+            status: '待审批'
+        },
+        ……
+    ]
+    ```
+
+42. Manage页面的Notice组件中的noticeData数据
+
+    ```js
+    /* 历史公告的信息 */
+    const noticeData = [
+        // key：唯一标识；number：序号；receive：接收对象；title：公告标题
+        {
+            key: '1',
+            number: 1,
+            receive: '全选',
+            title: '关于做好近期本科在线教学管理的通知'
+        },
+        ……
+    ]
+    ```
+
+43. Manage页面的Notice组件中的noticeData数据
+
+    ```js
+    /* 历史任务的信息 */
+    const taskData = [
+        // key：唯一标识；number：序号；receive：接收对象；title：任务标题
+        {
+            key: '1',
+            number: 1,
+            receive: '刘一',
+            title: '请参与《数据库原理》课程监考'
+        },
+        ……
+    ]
+    ```
+
+44. Manage页面的NewNotice组件中的receiver数据
+
+    ```js
+    /* 接收对象可选列表 */
+    receiver = ["张三", "李四", "王五"]
+    ```
+
+45. Manage页面的NewTask组件中的subjectChildren数据
+
+    ```js
+    /* 课程可选列表 */
+    subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
+    ```
+
+46. Manage页面的NewTask组件中的receiver数据
+
+    ```js
+    /* 接收对象可选列表 */
+    receiver = ["张三", "李四", "王五"]
     ```

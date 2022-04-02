@@ -181,9 +181,9 @@ export default class Artificial extends Component {
         dataIndex: 'edit',
         key: 'edit',
         align: 'center',
-        render: (text) => text === 0 ? <p>开始阅卷</p>
-          : text === 1 ? <p style={{color: '#3EB575'}}>继续阅卷</p>
-          : <p style={{color: '#FF4D4F'}}>误判修正</p>
+        render: (text) => text === 0 ? <p style={{cursor: 'pointer'}}>开始阅卷</p>
+          : text === 1 ? <p style={{color: '#3EB575', cursor: 'pointer'}}>继续阅卷</p>
+          : <p style={{color: '#FF4D4F', cursor: 'pointer'}}>误判修正</p>
       }
     ]
 
