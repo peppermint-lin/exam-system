@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/exam-system/static/css/main.54a25599.css",
+    "main.js": "/exam-system/static/js/main.75e9455c.js",
+    "static/media/formula.png": "/exam-system/static/media/formula.a15703ce9f8c4441471c.png",
+    "index.html": "/exam-system/index.html",
+    "main.54a25599.css.map": "/exam-system/static/css/main.54a25599.css.map",
+    "main.75e9455c.js.map": "/exam-system/static/js/main.75e9455c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54a25599.css",
+    "static/js/main.75e9455c.js"
+  ]
+}
