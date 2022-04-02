@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { Input, Button, Space, Select, Progress } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
@@ -10,13 +11,27 @@ const { Option } = Select;
 
 export default class Artificial extends Component {
 
-  state = {
-    searchText: '',
-    searchedColumn: ''
-  }
+  state = { searchText: '', searchedColumn: '', isFade: Boolean, defaultSelect: 1, selectValue: {} }
 
   /* 试卷可选列表 */
   paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
+
+  /* 组件挂载完毕的钩子 */
+  componentDidMount = () => {
+    const {defaultSelect} = this.props.location.state || {}
+    this.paperChildren.map((item, index) => {
+      if(defaultSelect === undefined && index === 0) this.setState({selectValue: {label: item, value: 1, key: ''}})
+      else if(index+1 === defaultSelect) this.setState({selectValue: {label: item, value: defaultSelect, key: ''}})
+      return 0
+    })
+    if(defaultSelect) this.setState({defaultSelect: defaultSelect})
+    this.setState({isFade: false})
+  }
+
+  /* 组件即将卸载的钩子 */
+  componentWillUnmount = () => {
+    this.setState({isFade: true})
+  }
 
   /* 列筛选框 */
   getColumnSearchProps = dataIndex => ({
@@ -101,7 +116,17 @@ export default class Artificial extends Component {
   
   /* 选择器发生变化时的回调 */
   selectChange = (value) => {
-    console.log(`selected ${value}`)
+    this.setState({selectValue: value})
+  }
+
+  /* 计算阅卷进度 */
+  countFinished = (data) => {
+    var finish = 0, total = data.length
+    data.map((item) => {
+      if(item.edit === 2) finish = finish + 1
+      return 0
+    })
+    return finish/total
   }
 
   render() {
@@ -181,9 +206,13 @@ export default class Artificial extends Component {
         dataIndex: 'edit',
         key: 'edit',
         align: 'center',
-        render: (text) => text === 0 ? <p style={{cursor: 'pointer'}}>开始阅卷</p>
-          : text === 1 ? <p style={{color: '#3EB575', cursor: 'pointer'}}>继续阅卷</p>
-          : <p style={{color: '#FF4D4F', cursor: 'pointer'}}>误判修正</p>
+        render: (text, record) => text === 0 ? 
+        <Link to={{pathname: "/teacher/mark/goover", state: {studentNumber: record.studentNumber, selectValue: this.state.selectValue}}}>
+          <p style={{cursor: 'pointer'}}>开始阅卷</p></Link>
+        : text === 1 ? <Link to={{pathname: "/teacher/mark/goover", state: {studentNumber: record.studentNumber, selectValue: this.state.selectValue}}}>
+            <p style={{color: '#3EB575', cursor: 'pointer'}}>继续阅卷</p></Link>
+        : <Link to={{pathname: "/teacher/mark/goover", state: {studentNumber: record.studentNumber, selectValue: this.state.selectValue}}}>
+            <p style={{color: '#FF4D4F', cursor: 'pointer'}}>误判修正</p></Link>
       }
     ]
 
@@ -381,15 +410,14 @@ export default class Artificial extends Component {
         <div className={ArtificialCss.infoWrapper}>
           <div className={ArtificialCss.selectWrapper}>
             <p>批阅的试卷</p>
-            <Select className={ArtificialCss.selectInput} onChange={this.selectChange} defaultValue={1}>
+            {this.state.isFade === false ? <Select labelInValue className={ArtificialCss.selectInput} onChange={this.selectChange} defaultValue={this.state.defaultSelect}>
               {this.paperChildren.map((item, index) => {
                   return <Option key={nanoid()} value={index+1}>{item}</Option>
-                })}
-            </Select>
+                })}</Select> : ''}
           </div>
           <div className={ArtificialCss.progressWrapper}>
             <p style={{whiteSpace: 'nowrap', marginRight: 10}}>阅卷进度</p>
-            <Progress strokeColor={{ '0%': '#606BFF', '100%': '#82B8FF' }} percent={55}/>
+            <Progress strokeColor={{ '0%': '#606BFF', '100%': '#82B8FF' }} percent={(this.countFinished(data)*100).toFixed(0)}/>
           </div>
         </div>
         <div className={ArtificialCss.tableWrapper}>

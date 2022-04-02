@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Pie, G2 } from '@ant-design/plots';
+import { nanoid } from 'nanoid';
 import WrongDistributionCss from './index.module.css'
 
 export default class WrongDistribution extends Component {
@@ -90,7 +91,7 @@ export default class WrongDistribution extends Component {
                 <div className={WrongDistributionCss.tableWrapper}>
                     <p style={{lineHeight: '1.88em'}}>错题分布</p>
                     {data.map((item) => {
-                        return <div className={WrongDistributionCss.tableLine} style={{lineHeight: '1.88em'}}>
+                        return <div key={nanoid()} className={WrongDistributionCss.tableLine} style={{lineHeight: '1.88em'}}>
                             <p style={{width: '50%', textAlign: 'center', borderRight: '1px solid #67A1F3'}}>{item.point}</p>
                             <p style={{width: '50%', textAlign: 'center'}}>{item.rate * 100}%</p>
                         </div>

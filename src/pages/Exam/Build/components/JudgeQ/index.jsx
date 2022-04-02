@@ -77,7 +77,7 @@ export default class JudgeQ extends Component {
         <div className={JudgeQCss.lineWrapper} style={{color: '#7B7B7B', justifyContent: 'space-between'}}>
           <div className={JudgeQCss.lineWrapper}> {this.props.index}.&emsp;
           {this.props.isSave ? <p style={{color: '#1B1B1B'}}>{this.props.title}</p>
-            : <TextArea ref={c => this.title = c } style={{ marginLeft: 10, marginRight: 20, resize: 'none' }}
+            : <TextArea ref={ c => this.title = c } style={{ marginLeft: 10, marginRight: 20, resize: 'none' }}
             value={this.state.value} autoSize onChange={this.onTextAreaChange} placeholder="请输入题干"
             defaultValue={this.props.title} />}</div>
           {/* 右上角按钮组 */}
@@ -112,7 +112,7 @@ export default class JudgeQ extends Component {
           </div>
           <div className={JudgeQCss.lineWrapper} style={{ width: '30%', justifyContent: 'flex-end' }}>
             <p style={{whiteSpace: 'nowrap'}}>分值：</p>{this.props.isSave ? <p>{this.props.grade}</p> 
-              : <InputNumber ref={c => this.grade = c } min={1} max={100}
+              : <InputNumber ref={ c => this.grade = c } min={1} max={100}
                   defaultValue={this.props.grade ? this.props.grade : ''} />}<p>&nbsp;分</p>
             <Tooltip title="更多">
               <Dropdown overlay={this.menu} placement="bottomLeft" arrow>

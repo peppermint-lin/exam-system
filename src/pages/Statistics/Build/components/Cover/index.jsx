@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { nanoid } from 'nanoid'
 import CoverCss from './index.module.css'
 
 export default class Cover extends Component {
@@ -17,7 +18,7 @@ export default class Cover extends Component {
                 <div className={CoverCss.tableWrapper}>
                     <p style={{lineHeight: '2.74em'}}>本卷未覆盖考点</p>
                     {coverData.point.map((item, index) => {
-                        if(index % 2 === 0) return <div className={CoverCss.tableLine} style={{lineHeight: '2.74em'}}>
+                        if(index % 2 === 0) return <div key={nanoid()} className={CoverCss.tableLine} style={{lineHeight: '2.74em'}}>
                             <p style={{width: '50%', textAlign: 'center', borderRight: '1px solid #67A1F3'}}>{item}</p>
                             <p style={{width: '50%', textAlign: 'center'}}>{coverData.point[index+1]}</p>
                         </div>

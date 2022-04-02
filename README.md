@@ -20,6 +20,7 @@
 16. redux-devtools-extension——结合Chrome浏览器插件调试Redux的工具依赖包
 17. react-highlight-words——React中用于高亮展示某段文本的组件
 18. draft-js——一款用来构建React富文本编辑器的框架
+19. axios——一个基于 promise 的网络请求库
 
 ### 项目运行
 
@@ -54,7 +55,8 @@
 
 ### 需要后端传回的数据（暂为模拟数据）
 
-1. Home页面的InfoCard组件中的userInfo数据
+1. - [x] Home页面的InfoCard组件中的userInfo数据
+
 
    ```js
    /* 当前登录用户的个人信息 */

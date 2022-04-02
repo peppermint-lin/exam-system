@@ -52,12 +52,12 @@ export default class BigQ extends Component {
                 <div className={BigQCss.lineWrapper} style={{color: '#7B7B7B', fontWeight: 'bold', justifyContent: 'space-between'}}>
                     {this.countBigQ(this.props.index)}.
                     {this.props.isSave ? <p>{this.props.title}</p>
-                        : <Input ref={c => this.title = c } placeholder="请输入大题名称" bordered={false} style={{width: 'auto'}} />}
+                        : <Input ref={ c => this.title = c } placeholder="请输入大题名称" bordered={false} style={{width: 'auto'}} />}
                     <div className={BigQCss.lineWrapper} style={{width: '45%'}}>
                         （共&nbsp;{this.props.isSave ? <p>{this.props.number}</p> 
-                        : <InputNumber ref={c => this.number = c } min={1} max={100} />}&nbsp;题<span>&emsp;</span>
+                        : <InputNumber ref={ c => this.number = c } min={1} max={100} />}&nbsp;题<span>&emsp;</span>
                         共&nbsp;{this.props.isSave ? <p>{this.props.grade}</p> 
-                        : <InputNumber ref={c => this.grade = c } min={1} max={100} />}&nbsp;分）
+                        : <InputNumber ref={ c => this.grade = c } min={1} max={100} />}&nbsp;分）
                     </div>
                     {/* 右上角按钮组 */}
                     <div className={BigQCss.lineWrapper} style={{ width: '30%', justifyContent: 'flex-end' }}>

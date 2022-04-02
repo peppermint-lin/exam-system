@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { nanoid } from 'nanoid'
 import RepeatCss from './index.module.css'
 
 export default class Repeat extends Component {
@@ -18,7 +19,7 @@ export default class Repeat extends Component {
                 <div className={RepeatCss.tableWrapper}>
                     <p style={{lineHeight: '2.74em'}}>与近三年期末考核试卷试题重复率</p>
                     {repeatData.map((item) => {
-                        return <div className={RepeatCss.tableLine} style={{lineHeight: '2.74em'}}>
+                        return <div key={nanoid()} className={RepeatCss.tableLine} style={{lineHeight: '2.74em'}}>
                             <p style={{width: '50%', textAlign: 'center', borderRight: '1px solid #67A1F3'}}>{item.year}</p>
                             <p style={{width: '50%', textAlign: 'center'}}>{item.value * 100}%</p>
                         </div>

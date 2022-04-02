@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import { Tabs } from 'antd';
 import Objective from './Objective'
 import Artificial from './Artificial';
+import GoOver from './Artificial/GoOver';
 import './index.css';
 
 const { TabPane } = Tabs;
@@ -28,7 +30,8 @@ export default class Mark extends Component {
                         <Objective />
                     </TabPane>
                     <TabPane tab="人工阅卷" key="2">
-                        <Artificial />
+                        <Route exact={true} key="/teacher/mark" path="/teacher/mark" component={Artificial} />
+                        <Route exact={true} key="/teacher/mark/goover" path="/teacher/mark/goover" component={GoOver} />
                     </TabPane>
                 </Tabs>
             </div>

@@ -261,7 +261,7 @@ export default class Build extends Component {
             >
               <Select onChange={this.selectChange}  placeholder="请选择">
                   {this.courseBelong.map((item, index) => {
-                      return <Option key={nanoid} value={`belong${index}`}>{item}</Option>
+                      return <Option key={nanoid()} value={`belong${index}`}>{item}</Option>
                   })}
               </Select>
             </Form.Item>
