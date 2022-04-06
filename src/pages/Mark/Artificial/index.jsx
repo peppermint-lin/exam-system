@@ -207,11 +207,11 @@ export default class Artificial extends Component {
         key: 'edit',
         align: 'center',
         render: (text, record) => text === 0 ? 
-        <Link to={{pathname: "/teacher/mark/goover", state: {studentNumber: record.studentNumber, selectValue: this.state.selectValue}}}>
+        <Link to={{pathname: "/teacher/mark/goover", state: {testNumber: record.testNumber, testTitle: this.state.selectValue}}}>
           <p style={{cursor: 'pointer'}}>开始阅卷</p></Link>
-        : text === 1 ? <Link to={{pathname: "/teacher/mark/goover", state: {studentNumber: record.studentNumber, selectValue: this.state.selectValue}}}>
+        : text === 1 ? <Link to={{pathname: "/teacher/mark/goover", state: {testNumber: record.testNumber, testTitle: this.state.selectValue}}}>
             <p style={{color: '#3EB575', cursor: 'pointer'}}>继续阅卷</p></Link>
-        : <Link to={{pathname: "/teacher/mark/goover", state: {studentNumber: record.studentNumber, selectValue: this.state.selectValue}}}>
+        : <Link to={{pathname: "/teacher/mark/goover", state: {testNumber: record.testNumber, testTitle: this.state.selectValue}}}>
             <p style={{color: '#FF4D4F', cursor: 'pointer'}}>误判修正</p></Link>
       }
     ]

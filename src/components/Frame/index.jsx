@@ -16,6 +16,8 @@ class Frame extends Component {
     componentDidMount = () => {
         this.UNLISTEN = this.props.history.listen( event => {
             this.setState({current: event.pathname})
+            if(this.props.history.location.pathname === '/teacher/mark/goover')
+                this.setState({current: "/teacher/mark"})
         })
     }
 

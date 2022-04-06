@@ -394,7 +394,49 @@
     ]
     ```
 
-25. Statistics页面的Invigilate组件中的data数据
+25. Mark页面的GoOver组件中的testInfo数据（在state里面）
+
+    ```js
+    /* 当前所阅考生的试卷所有题目信息 */
+    testInfo: {
+        // testNumber：考号；testTitle_simple：试卷简名；testTitle_full：试卷全名；half_subjective：半主观题；full_subjective：主观题
+    	// id：唯一标识；index：题号；haveChecked：是否人工确认过；isSelected：是否选中（正在批阅）；title：题干；totalGrade：总分；keyWord：关键词；reference：标准参考答案；answer：学生答案；grade：得分
+    	testNumber: this.props.location.state.testNumber,
+    	testTitle_simple: this.props.location.state.testTitle,
+    	testTitle_full: '2021-2022学年《计算机网络》期末考试',
+        half_subjective: [
+            {
+                id: '100001',
+                index: 1,
+                haveChecked: true,
+                isSelected: true,
+                title: 'OSI七层模型包括哪些？',
+                totalGrade: 5,
+                keyWord: '应用层；表示层；会话层；传输层；网络层；数据链路层；物理层',
+                reference: 'OSI七层模型从上到下依次为：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层',
+                answer: '应用层、网络层、连接层、传输层、数据链路层、空间层、物理层',
+                grade: 4
+            },
+            ……
+        ],
+        full_subjective: [
+            {
+                id: '200001',
+                index: 1,
+                haveChecked: false,
+                isSelected: false,
+                title: '请简述CSMA/CD工作原理。',
+                totalGrade: 10,
+                reference: '发送前先监听信道是否空闲，若空闲则立即发送；\n如果信道忙，则继续监听，一旦空闲就立即发送；\n在发送过程中，仍需继续监听。若监听到冲突，则立即停止发送数据，然后发送冲突强化信号；\n发送Jam信号的目的是使所有的站点都能检测到冲突；\n等待一段随机时间（称为退避）以后，再重新尝试',
+                answer: '发前先听，空闲即发送，边发边听，冲突时退避',
+                grade: 0
+            },
+            ……
+        ]
+    }
+    ```
+
+26. Statistics页面的Invigilate组件中的data数据
 
     ```js
     /* 监考数据的信息 */
@@ -417,28 +459,28 @@
     ]
     ```
 
-26. Statistics页面的Invigilate组件中的testChildren数据
+27. Statistics页面的Invigilate组件中的testChildren数据
 
     ```js
     /* 监考的考试可选列表 */
     testChildren = ["计算机网络期末考试", "考试2", "考试3"]
     ```
 
-27. Statistics页面的Teach组件中的subjectChildren数据
+28. Statistics页面的Teach组件中的subjectChildren数据
 
     ```js
     /* 查看科目的可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-28. Statistics页面的Teach组件中的testChildren数据
+29. Statistics页面的Teach组件中的testChildren数据
 
     ```js
     /* 具体考试的可选列表 */
     testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
     ```
 
-29. Statistics页面的GradeDistribution组件中的data数据
+30. Statistics页面的GradeDistribution组件中的data数据
 
     ```js
     /* 柱状图数据 */
@@ -451,8 +493,8 @@
         ……
     ]
     ```
-    
-30. Statistics页面的WrongDistribution组件中的data数据
+
+31. Statistics页面的WrongDistribution组件中的data数据
 
     ```js
     /* 饼状图数据 */
@@ -465,8 +507,8 @@
         ……
     ]
     ```
-    
-31. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
+
+32. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
 
     ```js
     /* 成绩分析的信息 */
@@ -483,7 +525,7 @@
     }
     ```
 
-32. Statistics页面的BankRate组件中的data数据
+33. Statistics页面的BankRate组件中的data数据
 
     ```js
     /* 折线图数据 */
@@ -497,21 +539,21 @@
     ]
     ```
 
-33. Statistics页面的Build组件中的subjectChildren数据
+34. Statistics页面的Build组件中的subjectChildren数据
 
     ```js
     /* 查看科目的可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
-    
-34. Statistics页面的Build组件中的testChildren数据
+
+35. Statistics页面的Build组件中的testChildren数据
 
     ```js
     /* 具体考试的可选列表 */
     testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
     ```
 
-35. Statistics页面的Chart组件中的data数据
+36. Statistics页面的Chart组件中的data数据
 
     ```js
     /* 双轴图数据 */
@@ -526,7 +568,7 @@
     ]
     ```
 
-36. Statistics页面的Cover组件中的coverData数据
+37. Statistics页面的Cover组件中的coverData数据
 
     ```js
     /* 考纲覆盖率信息 */
@@ -537,7 +579,7 @@
     }
     ```
 
-37. Manage页面的Teacher组件中的data数据
+38. Manage页面的Teacher组件中的data数据
 
     ```js
     /* 教师用户的信息 */
@@ -557,7 +599,7 @@
     ]
     ```
 
-38. Manage页面的Student组件中的data数据
+39. Manage页面的Student组件中的data数据
 
     ```js
     /* 学生用户的信息 */
@@ -577,7 +619,7 @@
     ]
     ```
 
-39. Manage页面的Character组件中的userData数据
+40. Manage页面的Character组件中的userData数据
 
     ```js
     /* 用户的角色信息 */
@@ -593,7 +635,7 @@
     ]
     ```
 
-40. Manage页面的Character组件中的configureData数据
+41. Manage页面的Character组件中的configureData数据
 
     ```js
     /* 配置的角色信息 */
@@ -609,7 +651,7 @@
     ]
     ```
 
-41. Manage页面的Handle组件中的data数据（在state里面）
+42. Manage页面的Handle组件中的data数据（在state里面）
 
     ```js
     /* 操作审批的信息 */
@@ -625,7 +667,7 @@
     ]
     ```
 
-42. Manage页面的Notice组件中的noticeData数据
+43. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史公告的信息 */
@@ -641,7 +683,7 @@
     ]
     ```
 
-43. Manage页面的Notice组件中的noticeData数据
+44. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史任务的信息 */
@@ -657,23 +699,39 @@
     ]
     ```
 
-44. Manage页面的NewNotice组件中的receiver数据
+45. Manage页面的NewNotice组件中的receiver数据
 
     ```js
     /* 接收对象可选列表 */
     receiver = ["张三", "李四", "王五"]
     ```
 
-45. Manage页面的NewTask组件中的subjectChildren数据
+46. Manage页面的NewTask组件中的subjectChildren数据
 
     ```js
     /* 课程可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-46. Manage页面的NewTask组件中的receiver数据
+47. Manage页面的NewTask组件中的receiver数据
 
     ```js
     /* 接收对象可选列表 */
     receiver = ["张三", "李四", "王五"]
     ```
+
+### 需要前端传出的数据
+
+| 序号 |            位置             |                             字段                             |
+| :--: | :-------------------------: | :----------------------------------------------------------: |
+|  1   |   Exam页面的NewTest组件中   | 考试科目及章节、考试类型、所选试卷、考试时间、考试地点、应试学生、监考教师 |
+|  2   |   Exam页面的Campus组件中    |                           校区名称                           |
+|  3   |    Exam页面的Place组件中    |        地点名称、所属校区、可容纳人数上限、是否为机房        |
+|  4   |   Mark页面的GoOver组件中    | 序号、是否已确认、是否被选择、题干、总分、关键词（半主观题）、标准参考答案、学生答案、得分 |
+|  5   | Manage页面的NewNotice组件中 |                 公告标题、公告内容、接收对象                 |
+|  6   |  Manage页面的NewTask组件中  | 任务标题、任务所属课程、任务类型模块、考试时间、任务内容、接收对象 |
+|  7   |   Manage页面的BigQ组件中    |               大题题干、包含小题题数、大题总分               |
+|  8   |  Manage页面的JudgeQ组件中   |        小题题干、分值、答案、绑定考纲、解析、所属大题        |
+
+
+

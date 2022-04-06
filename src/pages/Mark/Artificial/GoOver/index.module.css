@@ -1,0 +1,154 @@
+/* 总父容器 */
+.mainWrapper {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 试卷总父容器（含答题卡） */
+.paperWrapper {
+    width: 95%;
+    height: 90%;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 左侧答题卡等父容器 */
+.leftWrapper {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 阅卷进度父容器 */
+.progressWrapper {
+    width: 90%;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 答题卡父容器 */
+.answerCard {
+    width: 90%;
+    height: 73%;
+    margin-top: 4%;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+/* 左侧按钮组父容器 */
+.buttonWrapper {
+    width: 100%;
+    height: 14%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 题号父容器 */
+.circleWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* 单个题号容器 */
+.circleItem {
+    width: 20%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 单个题号 */
+.avater {
+    cursor: pointer;
+}
+
+/* 右侧卷面区域父容器 */
+.rightWrapper {
+    width: 67%;
+    height: 100%;
+    padding: 3% 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+/* 试卷头部 */
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 试题的父容器 */
+.questionWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* 试题左部 */
+.questionLeft {
+    height: 100%;
+}
+
+/* 试题右部 */
+.questionRight {
+    width: 100%;
+    height: 100%;
+}
+
+/* 试题单行的父容器 */
+.lineWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 要换行的文字的父容器 */
+.wrapWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+	white-space: pre-line;
+}
