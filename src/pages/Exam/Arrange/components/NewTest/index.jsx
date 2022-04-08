@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Cascader, Select, DatePicker, TimePicker } from 'antd';
+import { Form, Input, Button, Cascader, Select, DatePicker, TimePicker, message } from 'antd';
 import { nanoid } from 'nanoid';
 import { MyIcon } from '../../../../../assets/iconfont.js';
 import NewTestCss from './index.module.css'
@@ -116,6 +116,14 @@ export default class NewTest extends Component {
     console.log('Failed:', errorInfo)
   }
 
+  /* 发布考试的回调 */
+  submit = () => {
+      message.success({
+          content: '发布考试成功！',
+          style: {marginTop: '8.5vh'}
+      })
+  }
+
   render() {
     return (
       <div className={NewTestCss.leftWrapper}>
@@ -226,7 +234,7 @@ export default class NewTest extends Component {
             <div className={NewTestCss.buttonWrapper}>
               <Button danger type="ghost" htmlType="reset" style={{marginRight: '10%'}}> 清空重置 </Button>
               <Button ghost type="primary" style={{marginRight: '10%'}}> 暂时保存 </Button>
-              <Button type="primary" htmlType="submit"> 立即发布 </Button>
+              <Button type="primary" htmlType="submit" onClick={this.submit}> 立即发布 </Button>
             </div>
           </Form.Item>
         </Form>

@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import CampusCss from './index.module.css'
 
 export default class Campus extends Component {
+
+    /* 新建考试校区的回调 */
+    submit = () => {
+        message.success({
+            content: '新建校区成功！',
+            style: {marginTop: '8.5vh'}
+        })
+    }
+
     render() {
         return (
             <div className={CampusCss.rightTop}>
@@ -26,7 +35,8 @@ export default class Campus extends Component {
                     <Form.Item wrapperCol={{ offset: 20, span: 4 }} style={{marginBottom: 0}}>
                         <div className={CampusCss.buttonWrapper}>
                             <Button danger type="ghost" htmlType="reset" style={{marginRight: '10%'}}> 清空重置 </Button>
-                            <Button type="primary" htmlType="submit" style={{marginRight: '20%'}}> 新建考试校区 </Button>
+                            <Button type="primary" htmlType="submit" style={{marginRight: '20%'}}
+                                onClick={this.submit}> 新建考试校区 </Button>
                         </div>
                     </Form.Item>
                 </Form>

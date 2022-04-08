@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Select, Switch, Button } from 'antd';
+import { Form, Input, Select, Switch, Button, message } from 'antd';
 import { nanoid } from 'nanoid';
 import PlaceCss from './index.module.css'
 
@@ -12,6 +12,14 @@ export default class Place extends Component {
     /* 选择器发生变化时的回调 */
     selectChange = (value) => {
       console.log(`selected ${value}`)
+    }
+
+    /* 新建考试地点的回调 */
+    submit = () => {
+        message.success({
+            content: '新建地点成功！',
+            style: {marginTop: '8.5vh'}
+        })
     }
 
     render() {
@@ -71,7 +79,8 @@ export default class Place extends Component {
                     <Form.Item wrapperCol={{ offset: 20, span: 4 }} style={{marginBottom: 0}}>
                         <div className={PlaceCss.buttonWrapper}>
                             <Button danger type="ghost" htmlType="reset" style={{marginRight: '10%'}}> 清空重置 </Button>
-                            <Button type="primary" htmlType="submit" style={{marginRight: '20%'}}> 新建考试地点 </Button>
+                            <Button type="primary" htmlType="submit" style={{marginRight: '20%'}}
+                                onClick={this.submit}> 新建考试地点 </Button>
                         </div>
                     </Form.Item>
                 </Form>

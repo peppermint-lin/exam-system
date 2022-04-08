@@ -165,7 +165,7 @@
 .buttonText {
     background-color: #67A1F3;
     width: 55%;
-    height: 55%;
+    height: 60%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
@@ -193,7 +193,7 @@
 .buttonTextPurple {
     background-color: #8183FF;
     width: 55%;
-    height: 55%;
+    height: 60%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;

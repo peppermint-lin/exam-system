@@ -167,8 +167,6 @@
    ]
    ```
    
-   
-   
 8. Bank页面的Create组件中的data数据
 
    ```js
@@ -317,7 +315,35 @@
     courseBelong = ["计算机网络", "网络安全", "信息管理", '操作系统']
     ```
 
-20. Exam页面的InvigilateList组件中的data数据
+20. Exam页面的Build组件中的outline数据（JudgeQ组件中的也要）
+
+    ```js
+    /* 覆盖考纲的信息 */
+    outline = [
+        // value：数据值；label：页面显示的标签；children：级联的下一层数据（其内对象属性同父层级）
+        {
+            value: "计算机网络体系结构",
+            label: "计算机网络体系结构",
+            children: [
+                {
+                    value: "计算机网络概述",
+                    label: "计算机网络概述",
+                    children: [
+                        {
+                            value: "计算机网络的概念、组成与功能",
+                            label: "计算机网络的概念、组成与功能"
+                        },
+                        ……
+                    ]
+                },
+                ……
+            ]
+        },
+        ……
+    ]
+    ```
+
+21. Exam页面的InvigilateList组件中的data数据
 
     ```js
     /* 监考任务列表的信息 */
@@ -339,7 +365,7 @@
     ]
     ```
 
-21. Exam页面的InvigilateThumbnail组件中的data数据
+22. Exam页面的InvigilateThumbnail组件中的data数据
 
     ```js
     /* 监考任务缩略图的信息 */
@@ -358,14 +384,7 @@
     ]
     ```
 
-22. Mark页面的Objective组件中的paperChildren数据
-
-    ```js
-    /* 试卷可选列表 */
-    paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
-    ```
-
-23. Mark页面的Artificial组件中的paperChildren数据
+23. Mark页面的Objective组件中的paperChildren数据
 
     ```js
     /* 试卷可选列表 */
@@ -373,6 +392,13 @@
     ```
 
 24. Mark页面的Artificial组件中的paperChildren数据
+
+    ```js
+    /* 试卷可选列表 */
+    paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
+    ```
+
+25. Mark页面的Artificial组件中的paperChildren数据
 
     ```js
     /* 人工阅卷的信息 */
@@ -394,7 +420,7 @@
     ]
     ```
 
-25. Mark页面的GoOver组件中的testInfo数据（在state里面）
+26. Mark页面的GoOver组件中的testInfo数据（在state里面）
 
     ```js
     /* 当前所阅考生的试卷所有题目信息 */
@@ -436,7 +462,7 @@
     }
     ```
 
-26. Statistics页面的Invigilate组件中的data数据
+27. Statistics页面的Invigilate组件中的data数据
 
     ```js
     /* 监考数据的信息 */
@@ -459,28 +485,28 @@
     ]
     ```
 
-27. Statistics页面的Invigilate组件中的testChildren数据
+28. Statistics页面的Invigilate组件中的testChildren数据
 
     ```js
     /* 监考的考试可选列表 */
     testChildren = ["计算机网络期末考试", "考试2", "考试3"]
     ```
 
-28. Statistics页面的Teach组件中的subjectChildren数据
+29. Statistics页面的Teach组件中的subjectChildren数据
 
     ```js
     /* 查看科目的可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-29. Statistics页面的Teach组件中的testChildren数据
+30. Statistics页面的Teach组件中的testChildren数据
 
     ```js
     /* 具体考试的可选列表 */
     testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
     ```
 
-30. Statistics页面的GradeDistribution组件中的data数据
+31. Statistics页面的GradeDistribution组件中的data数据
 
     ```js
     /* 柱状图数据 */
@@ -494,7 +520,7 @@
     ]
     ```
 
-31. Statistics页面的WrongDistribution组件中的data数据
+32. Statistics页面的WrongDistribution组件中的data数据
 
     ```js
     /* 饼状图数据 */
@@ -508,7 +534,7 @@
     ]
     ```
 
-32. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
+33. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
 
     ```js
     /* 成绩分析的信息 */
@@ -525,7 +551,7 @@
     }
     ```
 
-33. Statistics页面的BankRate组件中的data数据
+34. Statistics页面的BankRate组件中的data数据
 
     ```js
     /* 折线图数据 */
@@ -539,21 +565,21 @@
     ]
     ```
 
-34. Statistics页面的Build组件中的subjectChildren数据
+35. Statistics页面的Build组件中的subjectChildren数据
 
     ```js
     /* 查看科目的可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-35. Statistics页面的Build组件中的testChildren数据
+36. Statistics页面的Build组件中的testChildren数据
 
     ```js
     /* 具体考试的可选列表 */
     testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
     ```
 
-36. Statistics页面的Chart组件中的data数据
+37. Statistics页面的Chart组件中的data数据
 
     ```js
     /* 双轴图数据 */
@@ -568,7 +594,7 @@
     ]
     ```
 
-37. Statistics页面的Cover组件中的coverData数据
+38. Statistics页面的Cover组件中的coverData数据
 
     ```js
     /* 考纲覆盖率信息 */
@@ -579,7 +605,7 @@
     }
     ```
 
-38. Manage页面的Teacher组件中的data数据
+39. Manage页面的Teacher组件中的data数据
 
     ```js
     /* 教师用户的信息 */
@@ -599,7 +625,7 @@
     ]
     ```
 
-39. Manage页面的Student组件中的data数据
+40. Manage页面的Student组件中的data数据
 
     ```js
     /* 学生用户的信息 */
@@ -619,7 +645,7 @@
     ]
     ```
 
-40. Manage页面的Character组件中的userData数据
+41. Manage页面的Character组件中的userData数据
 
     ```js
     /* 用户的角色信息 */
@@ -635,7 +661,7 @@
     ]
     ```
 
-41. Manage页面的Character组件中的configureData数据
+42. Manage页面的Character组件中的configureData数据
 
     ```js
     /* 配置的角色信息 */
@@ -651,7 +677,7 @@
     ]
     ```
 
-42. Manage页面的Handle组件中的data数据（在state里面）
+43. Manage页面的Handle组件中的data数据（在state里面）
 
     ```js
     /* 操作审批的信息 */
@@ -667,7 +693,7 @@
     ]
     ```
 
-43. Manage页面的Notice组件中的noticeData数据
+44. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史公告的信息 */
@@ -683,7 +709,7 @@
     ]
     ```
 
-44. Manage页面的Notice组件中的noticeData数据
+45. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史任务的信息 */
@@ -699,21 +725,21 @@
     ]
     ```
 
-45. Manage页面的NewNotice组件中的receiver数据
+46. Manage页面的NewNotice组件中的receiver数据
 
     ```js
     /* 接收对象可选列表 */
     receiver = ["张三", "李四", "王五"]
     ```
 
-46. Manage页面的NewTask组件中的subjectChildren数据
+47. Manage页面的NewTask组件中的subjectChildren数据
 
     ```js
     /* 课程可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-47. Manage页面的NewTask组件中的receiver数据
+48. Manage页面的NewTask组件中的receiver数据
 
     ```js
     /* 接收对象可选列表 */
@@ -722,16 +748,19 @@
 
 ### 需要前端传出的数据
 
-| 序号 |            位置             |                             字段                             |
-| :--: | :-------------------------: | :----------------------------------------------------------: |
-|  1   |   Exam页面的NewTest组件中   | 考试科目及章节、考试类型、所选试卷、考试时间、考试地点、应试学生、监考教师 |
-|  2   |   Exam页面的Campus组件中    |                           校区名称                           |
-|  3   |    Exam页面的Place组件中    |        地点名称、所属校区、可容纳人数上限、是否为机房        |
-|  4   |   Mark页面的GoOver组件中    | 序号、是否已确认、是否被选择、题干、总分、关键词（半主观题）、标准参考答案、学生答案、得分 |
-|  5   | Manage页面的NewNotice组件中 |                 公告标题、公告内容、接收对象                 |
-|  6   |  Manage页面的NewTask组件中  | 任务标题、任务所属课程、任务类型模块、考试时间、任务内容、接收对象 |
-|  7   |   Manage页面的BigQ组件中    |               大题题干、包含小题题数、大题总分               |
-|  8   |  Manage页面的JudgeQ组件中   |        小题题干、分值、答案、绑定考纲、解析、所属大题        |
 
 
-
+|            位置             |                             字段                             |
+| :-------------------------: | :----------------------------------------------------------: |
+|   Home页面的InfoCard组件    |  （修改信息）昵称、职称、邮箱、座机、手机、办公室、校内住址  |
+|   Exam页面的NewTest组件中   | 考试科目及章节、考试类型、所选试卷、考试时间、考试地点、应试学生、监考教师 |
+|   Exam页面的Campus组件中    |                           校区名称                           |
+|    Exam页面的Place组件中    |        地点名称、所属校区、可容纳人数上限、是否为机房        |
+|    Exam页面的Build组件中    |       自动组卷中的设置（覆盖题型、覆盖考纲、覆盖难度）       |
+|    Exam页面的Build组件中    |                      模板导入上传的文件                      |
+|    Exam页面的Build组件中    |            试卷名称、试卷描述、所属科目、试卷型号            |
+|    Exam页面的BigQ组件中     |               大题题干、包含小题题数、大题总分               |
+|   Exam页面的JudgeQ组件中    | 小题题干、分值、答案、绑定考纲、解析（文字、图片、音视频）、所属大题 |
+|   Mark页面的GoOver组件中    | 序号、是否已确认、是否被选择、题干、总分、关键词（半主观题）、标准参考答案、学生答案、得分 |
+| Manage页面的NewNotice组件中 |                 公告标题、公告内容、接收对象                 |
+|  Manage页面的NewTask组件中  | 任务标题、任务所属课程、任务类型模块、考试时间、任务内容、接收对象 |

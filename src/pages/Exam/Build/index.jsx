@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Input, Divider, Form, Select, Radio } from 'antd';
+import { Button, Input, Divider, Form, Select, Radio, Modal, Upload, Cascader, message } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { nanoid } from 'nanoid';
 import { MyIcon } from '../../../assets/iconfont.js';
 import BigQ from './components/BigQ';
@@ -8,9 +9,8 @@ import BuildCss from './index.module.css'
 
 const { Option } = Select;
 export default class Build extends Component {
-
-  // state = {problemInfo: [], isSave: false}
-  state = {problemInfo: []}
+  
+  state = {problemInfo: [], isAutomaticVisible: false, isTemplateVisible: false}
 
   /* 新建试卷实时统计信息 */
   realTimeData = {
@@ -25,6 +25,211 @@ export default class Build extends Component {
 
   /* 所属科目可选列表 */
   courseBelong = ["计算机网络", "网络安全", "信息管理", '操作系统']
+
+  /* 覆盖考纲的信息 */
+  outline = [
+    // value：数据值；label：页面显示的标签；children：级联的下一层数据（其内对象属性同父层级）
+    {
+      value: "计算机网络体系结构",
+      label: "计算机网络体系结构",
+      children: [
+        {
+          value: "计算机网络概述",
+          label: "计算机网络概述",
+          children: [
+            {
+              value: "计算机网络的概念、组成与功能",
+              label: "计算机网络的概念、组成与功能"
+            },
+            {
+              value: "计算机网络的分类",
+              label: "计算机网络的分类"
+            },
+            {
+              value: "计算机网络主要性能指标",
+              label: "计算机网络主要性能指标"
+            }
+          ]
+        },
+        {
+          value: "计算机网络体系结构与参考模型",
+          label: "计算机网络体系结构与参考模型",
+          children: [
+            {
+              value: "计算机网络分层结构",
+              label: "计算机网络分层结构"
+            },
+            {
+              value: "计算机网络协议、接口、服务等概念",
+              label: "计算机网络协议、接口、服务等概念"
+            },
+            {
+              value: "ISO/OSI参考模型和TCP/IP模型",
+              label: "ISO/OSI参考模型和TCP/IP模型"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      value: "物理层",
+      label: "物理层",
+      children: [
+        {
+          value: "通信基础",
+          label: "通信基础",
+          children: [
+            {
+              value: "信道、信号、带宽、信源与信宿等基本概念",
+              label: "信道、信号、带宽、信源与信宿等基本概念"
+            },
+            {
+              value: "奈奎斯特定理与香农定理",
+              label: "奈奎斯特定理与香农定理"
+            },
+            {
+              value: "编码与调制",
+              label: "编码与调制"
+            },
+            {
+              value: "电路交换、报文交换与分组交换",
+              label: "电路交换、报文交换与分组交换"
+            },
+            {
+              value: "数据报与虚电路",
+              label: "数据报与虚电路"
+            }
+          ]
+        },
+        {
+          value: "传输介质",
+          label: "传输介质",
+          children: [
+            {
+              value: "双绞线、同轴电缆、光纤与无线传输介质",
+              label: "双绞线、同轴电缆、光纤与无线传输介质"
+            },
+            {
+              value: "物理层接口的特性",
+              label: "物理层接口的特性"
+            }
+          ]
+        },
+        {
+          value: "物理层设备",
+          label: "物理层设备",
+          children: [
+            {
+              value: "中继器",
+              label: "中继器"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      value: "数据链路层",
+      label: "数据链路层",
+      children: [
+        {
+          value: "第一章",
+          label: "第一章"
+        },
+        {
+          value: "第二章",
+          label: "第二章"
+        },
+        {
+          value: "第三章",
+          label: "第三章"
+        }
+      ]
+    },
+    {
+      value: "网络层",
+      label: "网络层",
+      children: [
+        {
+          value: "第一章",
+          label: "第一章"
+        },
+        {
+          value: "第二章",
+          label: "第二章"
+        },
+        {
+          value: "第三章",
+          label: "第三章"
+        }
+      ]
+    },
+    {
+      value: "传输层",
+      label: "传输层",
+      children: [
+        {
+          value: "第一章",
+          label: "第一章"
+        },
+        {
+          value: "第二章",
+          label: "第二章"
+        },
+        {
+          value: "第三章",
+          label: "第三章"
+        }
+      ]
+    },
+    {
+      value: "应用层",
+      label: "应用层",
+      children: [
+        {
+          value: "第一章",
+          label: "第一章"
+        },
+        {
+          value: "第二章",
+          label: "第二章"
+        },
+        {
+          value: "第三章",
+          label: "第三章"
+        }
+      ]
+    }
+  ]
+
+  /* 显示对话框 */
+  showModal = (type) => {
+    if(type === 'automatic') this.setState({isAutomaticVisible: true})
+    else if(type === 'template') this.setState({isTemplateVisible: true})
+  }
+
+  /* 点击对话框确定按钮 */
+  handleOk = (type) => {
+    if(type === 'automatic') {
+      this.setState({isAutomaticVisible: false})
+      message.success({
+          content: '自动组卷成功！',
+          style: {marginTop: '8.5vh'}
+      })
+    }
+    else if(type === 'template') {
+      this.setState({isTemplateVisible: false})
+      message.success({
+          content: '模板导入成功！',
+          style: {marginTop: '8.5vh'}
+      })
+    }
+  }
+
+  /* 点击对话框取消按钮 */
+  handleCancel = (type) => {
+    if(type === 'automatic') this.setState({isAutomaticVisible: false})
+    else if(type === 'template') this.setState({isTemplateVisible: false})
+  }
 
   /* 选择器发生变化时的回调 */
   selectChange = (value) => {
@@ -158,7 +363,26 @@ export default class Build extends Component {
     this.setState({problemInfo: newProblemInfo})
   }
 
+  /* 刷新的回调 */
+  refresh = () => {
+    const hide = message.loading({
+      content: '刷新中',
+      duration: 0,
+      style: {marginTop: '8.5vh'}
+    });
+    setTimeout(hide, 1000);
+  }
+
+  /* 完成创建的回调 */
+  finish = () => {
+    message.success({
+        content: '创建成功！已提交管理员审核',
+        style: {marginTop: '8.5vh'}
+    })
+  }
+
   render() {
+    const {problemInfo, isAutomaticVisible, isTemplateVisible} = this.state
     return (
       <div className={BuildCss.mainWrapper}>
         {/* 左列 */}
@@ -194,7 +418,7 @@ export default class Build extends Component {
           <div className={BuildCss.leftBottomWrapper}>
             <div className={BuildCss.lineWrapper} style={{ width: '100%', marginBottom: '4%' }}>
               <p style={{fontSize: 16}}>实时统计</p>
-              <Button size='small' type="primary" ghost>&nbsp;刷&nbsp;新&nbsp;</Button>
+              <Button size='small' type="primary" ghost onClick={this.refresh}>&nbsp;刷&nbsp;新&nbsp;</Button>
             </div>
             <div className={BuildCss.lineWrapper} style={{ width: '100%', marginBottom: '4%' }}>
               <p>考纲覆盖率：<span style={{color: '#FF4D4F'}}> {this.realTimeData.cover*100}% </span></p>
@@ -202,8 +426,7 @@ export default class Build extends Component {
             <div className={BuildCss.lineWrapper} style={{ width: '100%', marginBottom: '4%' }}>
               <p>近三年试卷重复率</p>
             </div>
-            {
-              this.realTimeData.same.map((item) => {
+            {this.realTimeData.same.map((item) => {
                 return (
                   <div key={nanoid()} className={BuildCss.lineWrapper} style={{ width: '100%', justifySelf: 'center', marginBottom: 5 }}>
                     <p style={{width: '100%', textAlign: 'center'}}>
@@ -212,10 +435,10 @@ export default class Build extends Component {
                     </p>
                   </div>
                 )
-              })
-            }
+              })}
           </div>
         </div>
+
         {/* 中部 */}
         <div id='middle' className={BuildCss.middleWrapper} onClick={this.deleteShadow}>
           {/* 试卷头部 */}
@@ -228,12 +451,11 @@ export default class Build extends Component {
           <div className={BuildCss.lineWrapper} style={{ width: '90%', marginBottom: '4%' }}>
             <Button size='small' type='primary' ghost onClick={this.addBigQ}>&emsp;创建大题&emsp;</Button>
             <Button size='small' type='primary' ghost>&emsp;从题库中选择&emsp;</Button>
-            <Button size='small' type='primary' ghost>&emsp;自动组卷&emsp;</Button>
-            <Button size='small' type='primary' ghost>&emsp;模板导入&emsp;</Button>
+            <Button size='small' type='primary' ghost onClick={() => this.showModal('automatic')}>&emsp;自动组卷&emsp;</Button>
+            <Button size='small' type='primary' ghost onClick={() => this.showModal('template')}>&emsp;模板导入&emsp;</Button>
           </div>
           {/* 试题 */}
-          {
-            this.state.problemInfo.map((item, index) => {
+          {problemInfo.map((item, index) => {
               return (
                 <div key={nanoid()} style={{width: '100%'}}>
                   <BigQ index={index+1} {...item} deleteBigQ={this.deleteBigQ} saveBigQ={this.saveBigQ}
@@ -244,9 +466,9 @@ export default class Build extends Component {
                   })}
                 </div>
                 )
-            })
-          }
+            })}
         </div>
+
         {/* 右列 */}
         <div className={BuildCss.rightWrapper}>
           <div className={BuildCss.lineWrapper} style={{ width: '80%' }}>
@@ -292,11 +514,61 @@ export default class Build extends Component {
 
             <Form.Item>
               <div className={BuildCss.lineWrapper} style={{ width: '100%', marginBottom: '4%', justifyContent: 'flex-end' }}>
-                <Button size='small' type="primary" htmlType="submit" style={{ lineHeight: '1.5em' }}>&nbsp;完成创建&nbsp;</Button>
+                <Button size='small' type="primary" htmlType="submit" style={{ lineHeight: '1.5em' }}
+                  onClick={this.finish}>&nbsp;完成创建&nbsp;</Button>
               </div>
             </Form.Item>
           </Form>
         </div>
+        
+        {/* 自动组卷对话框 */}
+        <Modal title="自动组卷" maskClosable={false} visible={isAutomaticVisible} onOk={() => this.handleOk('automatic')} okText='开始组卷'
+            onCancel={() => this.handleCancel('automatic')} cancelText='取消' centered bodyStyle={{
+                display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'
+            }}>
+              <Form style={{width: '80%'}}>
+                <Form.Item label="覆盖题型" name="qType" style={{ marginBottom: '5%', width: '100%' }} >
+                  <Select mode="multiple" allowClear style={{width: '100%'}} placeholder="不选则默认任意题型">
+                    <Option value='single'>单选题</Option>
+                    <Option value='multiple'>多选题</Option>
+                    <Option value='blank'>判断题</Option>
+                    <Option value='calculate'>计算题</Option>
+                    <Option value='connect'>连线题</Option>
+                    <Option value='order'>排序题</Option>
+                    <Option value='answer'>解答题</Option>
+                    <Option value='subsection'>分段题</Option>
+                    <Option value='program'>程序题</Option>
+                    <Option value='oral'>口语题</Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item label="覆盖考纲" name="qOutline" style={{ marginBottom: '5%', width: '100%' }} >
+                  <Cascader multiple options={this.outline} placeholder="请进行级联选择，不选则默认任意考点" />
+                </Form.Item>
+                <Form.Item label="覆盖难度" name="qDifficulty" style={{ marginBottom: '5%', width: '100%' }} >
+                  <Select mode="multiple" allowClear style={{width: '100%'}} placeholder="不选则默认任意难度">
+                    <Option value='simple'>简单</Option>
+                    <Option value='easy'>容易</Option>
+                    <Option value='medium'>中等</Option>
+                    <Option value='difficult'>困难</Option>
+                  </Select>
+                </Form.Item>
+              </Form>
+              <p style={{color: '#ACACAC', marginBottom: 0}}>注：系统将根据设置在您的题库及共享题库中搜索符合要求的题目自动组卷，您所创建的题库优先，且组卷后仍可修改。</p>
+        </Modal>
+        
+        {/* 模板导入对话框 */}
+        <Modal title="模板导入" maskClosable={false} visible={isTemplateVisible} onOk={() => this.handleOk('template')} okText='开始导入'
+            onCancel={() => this.handleCancel('template')} cancelText='取消' centered bodyStyle={{
+                display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'
+            }}>
+              <p>您可以通过 Word 或 Excel 文件导入整套试卷，请按照我们提供的模板格式来导入您的试卷，请点击链接下载模板
+                &emsp;<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">Word试卷模板</a>
+                &emsp;<a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">Excel试卷模板</a>
+              </p>
+              <Upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76">
+                <Button icon={<UploadOutlined />}>上传文件</Button>
+              </Upload>
+        </Modal>
       </div>
     )
   }

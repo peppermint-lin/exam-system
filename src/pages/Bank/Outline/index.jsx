@@ -230,7 +230,7 @@ export default class Outline extends Component {
         chapter: '物理层',
         sectionIndex: 3,
         section: '物理层设备',
-        site: '双绞线、同轴电缆、光纤与无线传输介质',
+        site: '中继器',
         mastery: '理解'
       }
     ]

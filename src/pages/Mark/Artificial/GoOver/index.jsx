@@ -455,7 +455,7 @@ export default class GoOver extends Component {
         }
         this.setState({testInfo: newTestInfo})
         message.success({
-            content: '批阅成功',
+            content: '批阅成功！',
             style: {marginTop: '8.5vh'}
         })
     }
@@ -500,6 +500,14 @@ export default class GoOver extends Component {
             newTestInfo.full_subjective = fullList
             this.setState({now: newNow, nowGrade: newNow.grade, testInfo: newTestInfo})
         }
+    }
+    
+    /* 提交整卷的回调 */
+    submit = () => {
+        message.success({
+            content: '已成功提交整卷！',
+            style: {marginTop: '8.5vh'}
+        })
     }
 
     render() {
@@ -563,7 +571,8 @@ export default class GoOver extends Component {
                         </div>
                         <div></div>
                         <div className={GoOverCss.buttonWrapper}>
-                            <Button type='primary' style={{backgroundColor: '#3EB575'}}>提交整卷</Button>
+                            <Button type='primary' style={{backgroundColor: '#3EB575'}}
+                                onClick={this.submit}>提交整卷</Button>
                             <Button type='primary' danger>退出阅卷</Button>
                         </div>
                     </div>

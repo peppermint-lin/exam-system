@@ -187,17 +187,17 @@ export default class CourseItem extends Component {
             {/* 历次考试 */}
             <div className={CourseItemCss.buttonItem}>
               <div className={CourseItemCss.buttonLine}></div>
-              <div className={CourseItemCss.buttonText}><p>历次考试</p></div>
+              <div className={CourseItemCss.buttonText}><p>历 次 考 试</p></div>
             </div>
             {/* 查看题库 */}
             <div className={CourseItemCss.buttonItem}>
               <div className={CourseItemCss.buttonLinePurple}></div>
-              <div className={CourseItemCss.buttonTextPurple}><p>查看题库</p></div>
+              <div className={CourseItemCss.buttonTextPurple}><p>查 看 题 库</p></div>
             </div>
             {/* 查看考纲 */}
             <div className={CourseItemCss.buttonItem}>
               <div className={CourseItemCss.buttonLine}></div>
-              <div className={CourseItemCss.buttonText}><p>查看考纲</p></div>
+              <div className={CourseItemCss.buttonText}><p>查 看 考 纲</p></div>
             </div>
           </div>
         </div>
