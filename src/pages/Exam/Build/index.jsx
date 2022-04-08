@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { Button, Input, Divider, Form, Select, Radio, Modal, Upload, Cascader, message } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import { nanoid } from 'nanoid';
-import { MyIcon } from '../../../assets/iconfont.js';
-import BigQ from './components/BigQ';
-import JudgeQ from './components/JudgeQ';
+import { Button, Input, Divider, Form, Select, Radio, Modal, Upload, Cascader, message, Space, Checkbox } from 'antd'
+import Highlighter from 'react-highlight-words'
+import { nanoid } from 'nanoid'
+import { UploadOutlined, SearchOutlined } from '@ant-design/icons'
+import { MyIcon } from '../../../assets/iconfont.js'
+import InfoTable from '../../../components/InfoTable'
+import BigQ from './components/BigQ'
+import JudgeQ from './components/JudgeQ'
 import BuildCss from './index.module.css'
+import './iconfont.css'
+import './table.css'
 
 const { Option } = Select;
 export default class Build extends Component {
   
-  state = {problemInfo: [], isAutomaticVisible: false, isTemplateVisible: false}
+  state = { searchText: '', searchedColumn: '', problemInfo: [], isSelectVisible: false, isAutomaticVisible: false, isTemplateVisible: false }
 
   /* 新建试卷实时统计信息 */
   realTimeData = {
@@ -201,15 +205,102 @@ export default class Build extends Component {
     }
   ]
 
-  /* 显示对话框 */
-  showModal = (type) => {
-    if(type === 'automatic') this.setState({isAutomaticVisible: true})
-    else if(type === 'template') this.setState({isTemplateVisible: true})
+  
+  /* 列筛选框 */
+  getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => {
+            this.searchInput = node;
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ marginBottom: 8, display: 'block' }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Search
+          </Button>
+          <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+            Reset
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              confirm({ closeDropdown: false });
+              this.setState({
+                searchText: selectedKeys[0],
+                searchedColumn: dataIndex,
+              });
+            }}
+          >
+            Filter
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#3B90FF' : undefined }} />,
+    onFilter: (value, record) =>
+      record[dataIndex]
+        ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
+        : '',
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) {
+        setTimeout(() => this.searchInput.select(), 100);
+      }
+    },
+    render: text =>
+      this.state.searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[this.state.searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ''}
+        />
+      ) : (
+        text
+      ),
+  })
+  /* 搜索 */
+  handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    this.setState({
+      searchText: selectedKeys[0],
+      searchedColumn: dataIndex,
+    });
+  }
+  /* 重置 */
+  handleReset = clearFilters => {
+    clearFilters();
+    this.setState({ searchText: '' });
   }
 
+  /* 显示对话框 */
+  showModal = (type) => {
+    if(type === 'select') this.setState({isSelectVisible: true})
+    else if(type === 'automatic') this.setState({isAutomaticVisible: true})
+    else if(type === 'template') this.setState({isTemplateVisible: true})
+  }
   /* 点击对话框确定按钮 */
   handleOk = (type) => {
-    if(type === 'automatic') {
+    if(type === 'select') {
+      this.setState({isSelectVisible: false})
+      message.success({
+          content: '选择的题目已导入成功！',
+          style: {marginTop: '8.5vh'}
+      })
+    }
+    else if(type === 'automatic') {
       this.setState({isAutomaticVisible: false})
       message.success({
           content: '自动组卷成功！',
@@ -224,10 +315,10 @@ export default class Build extends Component {
       })
     }
   }
-
   /* 点击对话框取消按钮 */
   handleCancel = (type) => {
-    if(type === 'automatic') this.setState({isAutomaticVisible: false})
+    if(type === 'select') this.setState({isSelectVisible: false})
+    else if(type === 'automatic') this.setState({isAutomaticVisible: false})
     else if(type === 'template') this.setState({isTemplateVisible: false})
   }
 
@@ -245,7 +336,6 @@ export default class Build extends Component {
       isSave: false, isAddSQ: false, isOverSQ: true, judgeQ: []})
     this.setState({problemInfo: newProblem})
   }
-
   /* 删除大题的回调 */
 	deleteBigQ = (id) => {
 		const {problemInfo} = this.state
@@ -258,7 +348,6 @@ export default class Build extends Component {
         style: {marginTop: '8.5vh'}
     })
 	}
-
   /* 保存卡片后，去除阴影的回调 */
   saveBigQ = (id, title, number, grade) => {
 		const {problemInfo} = this.state
@@ -286,7 +375,6 @@ export default class Build extends Component {
     })
     this.setState({problemInfo: newProblemInfo})
 	}
-
   /* 结束增加小题的回调 */
 	overSmallQ = (id) => {
 		const {problemInfo} = this.state
@@ -312,7 +400,6 @@ export default class Build extends Component {
     })
     this.setState({problemInfo: newProblem})
   }
-
   /* 删除判断题的回调 */
 	deleteJudgeQ = (id) => {
 		const {problemInfo} = this.state
@@ -331,7 +418,6 @@ export default class Build extends Component {
         style: {marginTop: '8.5vh'}
     })
 	}
-
   /* 保存判断题后，去除阴影的回调 */
   saveJudgeQ = (id, title, answer, grade) => {
 		const {problemInfo} = this.state
@@ -352,7 +438,6 @@ export default class Build extends Component {
     })
     this.setState({problemInfo: newProblemInfo})
   }
-
   /* 重新编辑判断题的回调 */
   editJudgeQ = (id) => {
 		const {problemInfo} = this.state
@@ -380,7 +465,6 @@ export default class Build extends Component {
     });
     setTimeout(hide, 1000);
   }
-
   /* 完成创建的回调 */
   finish = () => {
     if(window.confirm("已更新该卷考纲覆盖率和近三年重复率，是否确认完成创建？")){
@@ -392,7 +476,96 @@ export default class Build extends Component {
   }
 
   render() {
-    const {problemInfo, isAutomaticVisible, isTemplateVisible} = this.state
+    const {problemInfo, isSelectVisible, isAutomaticVisible, isTemplateVisible} = this.state
+    const showTotal = (total) => <p> 共{total}条&emsp; </p>
+    const columns = [
+      {
+        title: '序号',
+        dataIndex: 'number',
+        key: 'number',
+        width: '10%',
+        align: 'center',
+        render: (text, record, index) => <div><Checkbox></Checkbox>&nbsp;{index+1}</div>
+      },
+      {
+        title: '题库名称',
+        dataIndex: 'name',
+        key: 'name',
+        width: '20%',
+        align: 'center',
+        ...this.getColumnSearchProps('name'),
+        render: (text) => <div><i class="iconfont icon-dictionary linearMyIcon"></i>&nbsp;{text}</div>
+      },
+      {
+        title: '题型',
+        dataIndex: 'type',
+        key: 'type',
+        width: '30%',
+        align: 'center',
+        ellipsis: true
+      },
+      {
+        title: '题量',
+        dataIndex: 'quantity',
+        key: 'quantity',
+        width: '10%',
+        align: 'center',
+        sorter: (a, b) => a.quantity - b.quantity,
+        sortDirections: ['descend', 'ascend'],
+        render: (text) => text > 1000 ? <p style={{marginBottom: 0}}>1000+</p> : <p style={{marginBottom: 0}}>{text}</p>
+      },
+      {
+        title: '更新时间',
+        dataIndex: 'time',
+        key: 'time',
+        width: '30%',
+        align: 'center'
+      }
+    ]
+    /* 待导入题目的题库信息 */
+    const data = [
+      // key：唯一标识；name：题库名称；type：题型；quantity：题量；time：更新时间
+      {
+        key: '1',
+        name: '我创建的',
+        type: '名词解析、多选、论述、解答、计算题',
+        quantity: 175,
+        time: '2021年12月21日18:03:02'
+      },
+      {
+        key: '2',
+        name: '全校共享',
+        type: '单选、多选、判断、连线、名词解析、解答、计算、程序、口语题',
+        quantity: 317,
+        time: '2021年12月31日15:59:57'
+      },
+      {
+        key: '3',
+        name: '参考题库',
+        type: '单选、多选、判断、名词解析、解答题',
+        quantity: 1520,
+        time: '2022年01月01日11:18:25'
+      },
+      {
+        key: '4',
+        name: '我的收藏',
+        type: '单选、多选、判断、名词解析、解答题',
+        quantity: 52,
+        time: '2021年12月13日03:27:36'
+      }
+    ]
+    
+    /* 弹窗底部内容 */
+    const footerNode = (
+      <div className={BuildCss.footerWrapper}>
+        <p style={{alignSelf: 'flex-start', color: '#999999'}}>您已经从题库中选择了2道单选题、1道判断题、1道简答题、2道计算题</p>
+        <div>
+          <Button type='primary' ghost onClick={() => this.handleCancel('select')}>取消选题</Button>
+          <Button type='primary' onClick={() => this.handleOk('select')}>导入选题</Button>
+        </div>
+      </div>
+    )
+
     return (
       <div className={BuildCss.mainWrapper}>
         {/* 左列 */}
@@ -460,7 +633,7 @@ export default class Build extends Component {
           {/* 试卷快捷按钮 */}
           <div className={BuildCss.lineWrapper} style={{ width: '90%', marginBottom: '4%' }}>
             <Button size='small' type='primary' ghost onClick={this.addBigQ}>&emsp;创建大题&emsp;</Button>
-            <Button size='small' type='primary' ghost>&emsp;从题库中选择&emsp;</Button>
+            <Button size='small' type='primary' ghost onClick={() => this.showModal('select')}>&emsp;从题库中选择&emsp;</Button>
             <Button size='small' type='primary' ghost onClick={() => this.showModal('automatic')}>&emsp;自动组卷&emsp;</Button>
             <Button size='small' type='primary' ghost onClick={() => this.showModal('template')}>&emsp;模板导入&emsp;</Button>
           </div>
@@ -530,6 +703,13 @@ export default class Build extends Component {
             </Form.Item>
           </Form>
         </div>
+        
+        {/* 从题库中导入对话框 */}
+        <Modal title='从题库中导入' maskClosable={false} visible={isSelectVisible} onOk={() => this.handleOk('select')} okText='完成'
+          onCancel={() => this.handleCancel('select')} cancelText='返回' centered width={800} footer={footerNode} bodyStyle={{
+            display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
+            <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={4} noneMarginBottom={true} />
+        </Modal>
         
         {/* 自动组卷对话框 */}
         <Modal title="自动组卷" maskClosable={false} visible={isAutomaticVisible} onOk={() => this.handleOk('automatic')} okText='开始组卷'

@@ -31,3 +31,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+/* 弹窗底部父容器 */
+.footerWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}

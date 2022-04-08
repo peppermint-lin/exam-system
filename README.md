@@ -21,6 +21,8 @@
 17. react-highlight-words——React中用于高亮展示某段文本的组件
 18. draft-js——一款用来构建React富文本编辑器的框架
 19. axios——一个基于 promise 的网络请求库
+20. array-move——用于数组项移动的函数库
+21. react-sortable-hoc——一个React的排序组件库
 
 ### 项目运行
 
@@ -167,7 +169,14 @@
    ]
    ```
    
-8. Bank页面的Create组件中的data数据
+8. Bank页面的主组件中的subjectChildren数据
+
+   ```js
+   /* 所属科目的可选列表 */
+   subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
+   ```
+   
+9. Bank页面的Create组件中的data数据
 
    ```js
    /* 我创建的题库的信息 */
@@ -186,14 +195,33 @@
    ]
    ```
 
-9. Bank页面的Outline组件中的selectOptions数据
+10. Bank页面的Create组件中的modalData数据
+
+    ```js
+    /* 弹窗表格所打开的题库的信息 */
+    const modalData = [
+        // key：唯一标识；stem：题干；type：题型；outline：考纲；difficulty：难易程度；time：更新时间；index：排序号
+        {
+            key: '1',
+            stem: '以下IP地址中，属于C类地址是',
+            type: '单选题',
+            outline: 1,
+            difficulty: '中等',
+            time: '2021年12月21日18:03:02',
+            index: 0,
+        },
+        ……
+    ]
+    ```
+
+11. Bank页面的Outline组件中的selectOptions数据
 
    ```js
    /* 查看的课程中可选择的课程名（该教师所任教的课程） */
    selectOptions = ["计算机网络", "网络安全", "信息管理", "操作系统"]
    ```
-   
-10. Bank页面的Reference组件中的referenceData数据
+
+11. Bank页面的Reference组件中的referenceData数据
 
     ```js
     /* 爬虫结果的返回数据 */
@@ -205,7 +233,7 @@
     }
     ```
 
-11. Bank页面的Outline组件中的data数据
+12. Bank页面的Outline组件中的data数据
 
     ```js
     /* 教师所查看的科目的考纲信息 */
@@ -225,7 +253,7 @@
     ]
     ```
 
-12. Exam页面的主组件中的data数据
+13. Exam页面的主组件中的data数据
 
     ```js
     /* 考务安排的信息 */
@@ -244,7 +272,7 @@
     ]
     ```
 
-13. Exam页面的NewTest组件中的subject数据
+14. Exam页面的NewTest组件中的subject数据
 
     ```js
     /* 课程及章节信息 */
@@ -265,35 +293,35 @@
     ]
     ```
 
-14. Exam页面的NewTest组件中的paperChildren数据
+15. Exam页面的NewTest组件中的paperChildren数据
 
     ```js
     /* 试卷可选列表 */
     paperChildren = ["卷1", "卷2", "卷3"]
     ```
 
-15. Exam页面的NewTest组件中的studentChildren数据
+16. Exam页面的NewTest组件中的studentChildren数据
 
     ```js
     /* 应试学生可选列表 */
     studentChildren = ["计算机181", "计算机191", "计算机201"]
     ```
 
-16. Exam页面的NewTest组件中的teacherChildren数据
+17. Exam页面的NewTest组件中的teacherChildren数据
 
     ```js
     /* 监考教师可选列表 */
     teacherChildren = ["张三", "李四", "王五"]
     ```
 
-17. Exam页面的Place组件中的campusBelong数据
+18. Exam页面的Place组件中的campusBelong数据
 
     ```js
     /* 所属校区可选列表 */
     campusBelong = ["A市B区", "B市C区", "C市D区"]
     ```
 
-18. Exam页面的Build组件中的realTimeData数据
+19. Exam页面的Build组件中的realTimeData数据
 
     ```js
     /* 新建试卷实时统计信息 */
@@ -308,14 +336,14 @@
     }
     ```
 
-19. Exam页面的Build组件中的courseBelong数据
+20. Exam页面的Build组件中的courseBelong数据
 
     ```js
     /* 所属科目可选列表 */
     courseBelong = ["计算机网络", "网络安全", "信息管理", '操作系统']
     ```
 
-20. Exam页面的Build组件中的outline数据（JudgeQ组件中的也要）
+21. Exam页面的Build组件中的outline数据（JudgeQ组件中的也要）
 
     ```js
     /* 覆盖考纲的信息 */
@@ -343,7 +371,22 @@
     ]
     ```
 
-21. Exam页面的InvigilateList组件中的data数据
+22. Exam页面的Build组件中的data数据
+
+    ```js
+    /* 待导入题目的题库信息 */
+    const data = [
+        // key：唯一标识；name：题库名称；type：题型；quantity：题量；time：更新时间
+        {
+            key: '1',
+            name: '我创建的',
+            type: '名词解析、多选、论述、解答、计算题',
+            quantity: 175,
+            time: '2021年12月21日18:03:02'
+        },
+    ```
+    
+23. Exam页面的InvigilateList组件中的data数据
 
     ```js
     /* 监考任务列表的信息 */
@@ -365,7 +408,7 @@
     ]
     ```
 
-22. Exam页面的InvigilateThumbnail组件中的data数据
+24. Exam页面的InvigilateThumbnail组件中的data数据
 
     ```js
     /* 监考任务缩略图的信息 */
@@ -384,21 +427,21 @@
     ]
     ```
 
-23. Mark页面的Objective组件中的paperChildren数据
+25. Mark页面的Objective组件中的paperChildren数据
 
     ```js
     /* 试卷可选列表 */
     paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
     ```
 
-24. Mark页面的Artificial组件中的paperChildren数据
+26. Mark页面的Artificial组件中的paperChildren数据
 
     ```js
     /* 试卷可选列表 */
     paperChildren = ["计算机网络期末考试", "卷2", "卷3"]
     ```
 
-25. Mark页面的Artificial组件中的paperChildren数据
+27. Mark页面的Artificial组件中的paperChildren数据
 
     ```js
     /* 人工阅卷的信息 */
@@ -420,7 +463,7 @@
     ]
     ```
 
-26. Mark页面的GoOver组件中的testInfo数据（在state里面）
+28. Mark页面的GoOver组件中的testInfo数据（在state里面）
 
     ```js
     /* 当前所阅考生的试卷所有题目信息 */
@@ -462,7 +505,7 @@
     }
     ```
 
-27. Statistics页面的Invigilate组件中的data数据
+29. Statistics页面的Invigilate组件中的data数据
 
     ```js
     /* 监考数据的信息 */
@@ -485,28 +528,28 @@
     ]
     ```
 
-28. Statistics页面的Invigilate组件中的testChildren数据
+30. Statistics页面的Invigilate组件中的testChildren数据
 
     ```js
     /* 监考的考试可选列表 */
     testChildren = ["计算机网络期末考试", "考试2", "考试3"]
     ```
 
-29. Statistics页面的Teach组件中的subjectChildren数据
+31. Statistics页面的Teach组件中的subjectChildren数据
 
     ```js
     /* 查看科目的可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-30. Statistics页面的Teach组件中的testChildren数据
+32. Statistics页面的Teach组件中的testChildren数据
 
     ```js
     /* 具体考试的可选列表 */
     testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
     ```
 
-31. Statistics页面的GradeDistribution组件中的data数据
+33. Statistics页面的GradeDistribution组件中的data数据
 
     ```js
     /* 柱状图数据 */
@@ -520,7 +563,7 @@
     ]
     ```
 
-32. Statistics页面的WrongDistribution组件中的data数据
+34. Statistics页面的WrongDistribution组件中的data数据
 
     ```js
     /* 饼状图数据 */
@@ -534,7 +577,7 @@
     ]
     ```
 
-33. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
+35. Statistics页面的Analysis（Teach和Build组件中的都要）组件中的data数据
 
     ```js
     /* 成绩分析的信息 */
@@ -551,7 +594,7 @@
     }
     ```
 
-34. Statistics页面的BankRate组件中的data数据
+36. Statistics页面的BankRate组件中的data数据
 
     ```js
     /* 折线图数据 */
@@ -565,21 +608,21 @@
     ]
     ```
 
-35. Statistics页面的Build组件中的subjectChildren数据
+37. Statistics页面的Build组件中的subjectChildren数据
 
     ```js
     /* 查看科目的可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-36. Statistics页面的Build组件中的testChildren数据
+38. Statistics页面的Build组件中的testChildren数据
 
     ```js
     /* 具体考试的可选列表 */
     testChildren = ["期末考试A卷", "期末考试B卷", "期中考试A卷", "期中考试B卷"]
     ```
 
-37. Statistics页面的Chart组件中的data数据
+39. Statistics页面的Chart组件中的data数据
 
     ```js
     /* 双轴图数据 */
@@ -594,7 +637,7 @@
     ]
     ```
 
-38. Statistics页面的Cover组件中的coverData数据
+40. Statistics页面的Cover组件中的coverData数据
 
     ```js
     /* 考纲覆盖率信息 */
@@ -605,7 +648,7 @@
     }
     ```
 
-39. Manage页面的Teacher组件中的data数据
+41. Manage页面的Teacher组件中的data数据
 
     ```js
     /* 教师用户的信息 */
@@ -625,7 +668,7 @@
     ]
     ```
 
-40. Manage页面的Student组件中的data数据
+42. Manage页面的Student组件中的data数据
 
     ```js
     /* 学生用户的信息 */
@@ -645,7 +688,7 @@
     ]
     ```
 
-41. Manage页面的Character组件中的userData数据
+43. Manage页面的Character组件中的userData数据
 
     ```js
     /* 用户的角色信息 */
@@ -661,7 +704,7 @@
     ]
     ```
 
-42. Manage页面的Character组件中的configureData数据
+44. Manage页面的Character组件中的configureData数据
 
     ```js
     /* 配置的角色信息 */
@@ -677,7 +720,7 @@
     ]
     ```
 
-43. Manage页面的Handle组件中的data数据（在state里面）
+45. Manage页面的Handle组件中的data数据（在state里面）
 
     ```js
     /* 操作审批的信息 */
@@ -693,7 +736,7 @@
     ]
     ```
 
-44. Manage页面的Notice组件中的noticeData数据
+46. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史公告的信息 */
@@ -709,7 +752,7 @@
     ]
     ```
 
-45. Manage页面的Notice组件中的noticeData数据
+47. Manage页面的Notice组件中的noticeData数据
 
     ```js
     /* 历史任务的信息 */
@@ -725,21 +768,21 @@
     ]
     ```
 
-46. Manage页面的NewNotice组件中的receiver数据
+48. Manage页面的NewNotice组件中的receiver数据
 
     ```js
     /* 接收对象可选列表 */
     receiver = ["张三", "李四", "王五"]
     ```
 
-47. Manage页面的NewTask组件中的subjectChildren数据
+49. Manage页面的NewTask组件中的subjectChildren数据
 
     ```js
     /* 课程可选列表 */
     subjectChildren = ["计算机网络", "网络安全", "信息管理", "操作系统"]
     ```
 
-48. Manage页面的NewTask组件中的receiver数据
+50. Manage页面的NewTask组件中的receiver数据
 
     ```js
     /* 接收对象可选列表 */

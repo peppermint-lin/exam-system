@@ -135,7 +135,7 @@ export default class NewTest extends Component {
   handleOk = () => {
       this.setState({isModalVisible: false})
       message.success({
-          content: '设置完成！',
+          content: '设置成功！',
           style: {marginTop: '8.5vh'}
       })
   }
@@ -263,7 +263,7 @@ export default class NewTest extends Component {
         
         {/* 防作弊设置对话框 */}
         <Modal title="防作弊设置" maskClosable={false} visible={isModalVisible} onOk={this.handleOk} okText='提交'
-            onCancel={this.handleCancel} cancelText='取消' centered width='500' bodyStyle={{
+            onCancel={this.handleCancel} cancelText='取消' centered width={580} bodyStyle={{
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'
             }}>
             <Form name="modifyInfo" style={{width: '100%'}} onFinish={this.onFinish} onFinishFailed={this.onFinishFailed}
@@ -327,7 +327,6 @@ export default class NewTest extends Component {
                     <p style={{marginBottom: 0}}>&nbsp;禁止考生复制、粘贴、剪切</p>
                   </div>
                 </Checkbox.Group>
-                
             </Form>
         </Modal>
       </div>

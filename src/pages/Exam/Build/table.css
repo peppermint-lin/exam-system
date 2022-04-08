@@ -1,0 +1,79 @@
+/* 分页器选中页码的方框 */
+.ant-pagination-item-active {
+    background-color: #67A1F3 !important;
+    border: #67A1F3 !important;
+}
+
+/* 分页器选中页码的数字 */
+.ant-pagination-item-active > a {
+    color: white !important;
+}
+
+/* 表格标题行 */
+tr > th {
+    background-color: #67A1F3 !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* 表格所有行 */
+tr > td, tr > th {
+    padding: 9px 0 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 表格标题行内的图标 */
+tr > th svg {
+    color: white !important;
+    width: 35px;
+    margin-left: -25px;
+}
+
+/* .ant-table-filter-column {
+    justify-content: center !important;
+} */
+
+/* 奇数行的背景 */
+.odd_row {
+    background-color: white;
+}
+
+/* 偶数行的背景 */
+.even_row {
+    background-color: rgba(112, 112, 112, 0.1);
+}
+
+/* 在鼠标悬浮时所有单元格背景 */
+.ant-table-tbody > tr > td {
+    background: rgba(255,255,255,0) !important;
+}
+
+/* 在鼠标悬浮时当前行的背景 */
+.ant-table-tbody > tr:hover{
+    background: rgba(140, 188, 255, 0.5) !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+    border: 1px solid rgba(140, 188, 255, 0.5) !important;
+}
+
+/* 表格边框 */
+.ant-table-tbody td, th {
+    border: 1px solid rgba(112, 112, 112, 0.2) !important;
+}
+
+/* 分页器左侧数据及按钮的父容器 */
+.showTotalWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 分页器左侧的按钮 */
+.showTotalWrapper > Button {
+    border-color: #3B90FF;
+    color: #3B90FF;
+}

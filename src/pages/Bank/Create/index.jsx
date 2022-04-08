@@ -1,17 +1,132 @@
-import React, { Component } from 'react';
-import { Input, Button, Space } from 'antd';
-import Highlighter from 'react-highlight-words';
-import { SearchOutlined } from '@ant-design/icons';
-import { MyIcon } from '../../../assets/iconfont.js';
-import InfoTable from '../../../components/InfoTable';
+import React, { Component } from 'react'
+import { Input, Button, Space, Modal, message, Table } from 'antd'
+import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
+import { arrayMoveImmutable } from 'array-move'
+import Highlighter from 'react-highlight-words'
+import { SearchOutlined, MenuOutlined } from '@ant-design/icons'
+import { MyIcon } from '../../../assets/iconfont.js'
+import InfoTable from '../../../components/InfoTable'
 import CreateCss from './index.module.css'
+import './table.css'
 
+const DragHandle = SortableHandle(() => <MenuOutlined style={{ cursor: 'grab', color: '#999' }} />)
+const modalColumns = [
+  {
+    title: '',
+    dataIndex: 'sort',
+    width: '5%',
+    className: 'drag-visible',
+    align: 'center',
+    render: () => <DragHandle />
+  },
+  {
+    title: '题干',
+    dataIndex: 'stem',
+    width: '20%',
+    className: 'drag-visible',
+    align: 'center',
+    ellipsis: true
+  },
+  {
+    title: '题型',
+    dataIndex: 'type',
+    width: '8%',
+    align: 'center'
+  },
+  {
+    title: '考纲',
+    dataIndex: 'outline',
+    width: '8%',
+    align: 'center'
+  },
+  {
+    title: '难易程度',
+    dataIndex: 'difficulty',
+    width: '10%',
+    align: 'center'
+  },
+  {
+    title: '更新时间',
+    dataIndex: 'time',
+    width: '17%',
+    align: 'center',
+    ellipsis: true
+  },
+  {
+    title: '操作',
+    dataIndex: 'edit',
+    width: '30%',
+    align: 'center',
+    render: () => <div className={CreateCss.editButtonWrapper}>
+      <p id={CreateCss.editAgain} style={{marginBottom: 0}}><MyIcon type='icon-shanchu' />&nbsp;删除</p>
+      <p id={CreateCss.changeStatus} style={{marginBottom: 0}}><MyIcon type='icon-fuzhi' />&nbsp;复制</p>
+      <p id={CreateCss.exportPrinting} style={{marginBottom: 0}}><MyIcon type='icon-xiugaichengji' />&nbsp;编辑</p>
+    </div>
+  }
+]
+/* 弹窗表格所打开的题库的信息 */
+const modalData = [
+  // key：唯一标识；stem：题干；type：题型；outline：考纲；difficulty：难易程度；time：更新时间；index：排序号
+  {
+    key: '1',
+    stem: '以下IP地址中，属于C类地址是',
+    type: '单选题',
+    outline: 1,
+    difficulty: '中等',
+    time: '2021年12月21日18:03:02',
+    index: 0,
+  },
+  {
+    key: '2',
+    stem: '在OSI模型中，第N层和其上的N+1层的关系是',
+    type: '多选题',
+    outline: 2,
+    difficulty: '中等',
+    time: '2021年12月31日15:59:57',
+    index: 1,
+  },
+  {
+    key: '3',
+    stem: '数据只能沿一个固定方向传输的的通信方式是',
+    type: '单选题',
+    outline: 3,
+    difficulty: '容易',
+    time: '2022年01月01日11:18:25',
+    index: 2,
+  },
+  {
+    key: '4',
+    stem: 'CSMA/CD协议在站点发送数据时',
+    type: '单选题',
+    outline: 4,
+    difficulty: '中等',
+    time: '2021年12月13日03:27:36',
+    index: 3,
+  },
+  {
+    key: '5',
+    stem: '把网络分为电路交换网、报文交换网、分组交换网属于按什么进行分类',
+    type: '判断题',
+    outline: 5,
+    difficulty: '简单',
+    time: '2021年12月13日03:27:36',
+    index: 4,
+  },
+  {
+    key: '6',
+    stem: 'IP协议是无连接的，其信息传输方式是',
+    type: '简答题',
+    outline: 6,
+    difficulty: '困难',
+    time: '2021年12月13日03:27:36',
+    index: 5,
+  }
+]
+const SortableItem = SortableElement(props => <tr {...props} />)
+const SortableBody = SortableContainer(props => <tbody {...props} />)
 export default class Create extends Component {
 
-  state = {
-    searchText: '',
-    searchedColumn: ''
-  }
+  state = { searchText: '', searchedColumn: '', isModalVisible: false, modalTitle: '', dataSource: modalData }
 
   /* 列筛选框 */
   getColumnSearchProps = dataIndex => ({
@@ -78,7 +193,6 @@ export default class Create extends Component {
         text
       ),
   })
-
   /* 搜索 */
   handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -87,11 +201,54 @@ export default class Create extends Component {
       searchedColumn: dataIndex,
     });
   }
-
   /* 重置 */
   handleReset = clearFilters => {
     clearFilters();
     this.setState({ searchText: '' });
+  }
+
+  /* 显示对话框 */
+  showModal = (title) => {
+    this.setState({isModalVisible: true, modalTitle: title})
+  }
+  /* 点击对话框确定按钮 */
+  handleOk = () => {
+    this.setState({isModalVisible: false})
+    message.success({
+        content: '编辑成功！',
+        style: {marginTop: '8.5vh'}
+    })
+  }
+  /* 点击对话框取消按钮 */
+  handleCancel = () => {
+    this.setState({isModalVisible: false})
+  }
+
+  /* 弹窗内表格拖拽排序的相关函数 */
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    const { dataSource } = this.state;
+    if (oldIndex !== newIndex) {
+      const newData = arrayMoveImmutable([].concat(dataSource), oldIndex, newIndex).filter(
+        el => !!el,
+      );
+      console.log('Sorted items: ', newData);
+      this.setState({ dataSource: newData });
+    }
+  }
+  DraggableContainer = props => (
+    <SortableBody
+      useDragHandle
+      disableAutoscroll
+      helperClass="row-dragging"
+      onSortEnd={this.onSortEnd}
+      {...props}
+    />
+  )
+  DraggableBodyRow = ({ className, style, ...restProps }) => {
+    const { dataSource } = this.state;
+    // function findIndex base on Table rowKey props and should always be a right array index
+    const index = dataSource.findIndex(x => x.index === restProps['data-row-key']);
+    return <SortableItem index={index} {...restProps} />;
   }
   
   render() {
@@ -153,14 +310,13 @@ export default class Create extends Component {
         dataIndex: 'edit',
         key: 'edit',
         align: 'center',
-        render: () => <div className={CreateCss.editButtonWrapper}>
-          <p id={CreateCss.editAgain}><MyIcon type='icon-zaicibianji' />&nbsp;再次编辑</p>
+        render: (text, record) => <div className={CreateCss.editButtonWrapper}>
+          <p id={CreateCss.editAgain} onClick={() => this.showModal(record.name)}><MyIcon type='icon-zaicibianji' />&nbsp;编辑题库</p>
           <p id={CreateCss.changeStatus}><MyIcon type='icon-xiugaizhuangtai' />&nbsp;修改状态</p>
           <p id={CreateCss.exportPrinting}><MyIcon type='icon-daochudayin' />&nbsp;导出打印</p>
         </div>
       }
     ]
-
     /* 我创建的题库的信息 */
     const data = [
       // key：唯一标识；number：序号；name：名称；course：课程；type：题型；quantity：题量；status：共享状态
@@ -336,12 +492,38 @@ export default class Create extends Component {
         status: '可组卷'
       }
     ]
-
     const showTotal = (total) => <p> 共{total}条&emsp; </p>
+
+    const {isModalVisible, modalTitle} = this.state
+    /* 弹窗底部内容 */
+    const footerNode = (
+      <div className={CreateCss.footerWrapper}>
+        <p style={{alignSelf: 'flex-start', color: '#999999'}}>该题库中现有4道单选题、1道判断题、1道简答题、2道计算题，总计8题，总题型属于混合</p>
+        <Button type='primary' ghost onClick={this.handleCancel}>返回主页面</Button>
+      </div>
+    )
+    const pagination = {
+      showTotal: showTotal,
+      total: modalData.length,
+      pageSize: 4,
+      showQuickJumper: true,
+      showSizeChanger: false,
+      position: ['bottomCenter'],
+      style: {marginTop: '1.5%', marginBottom: 0}
+    }
 
     return (
       <div className={CreateCss.mainWrapper}>
         <InfoTable columns={columns} data={data} showTotal={showTotal} pageSize={12} />
+        
+        {/* 编辑题库对话框 */}
+        <Modal title={modalTitle} maskClosable={false} visible={isModalVisible} onOk={this.handleOk} okText='完成'
+          onCancel={this.handleCancel} cancelText='返回' centered width={800} footer={footerNode} bodyStyle={{
+            display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
+              <Table pagination={pagination} dataSource={this.state.dataSource} columns={modalColumns} rowKey="index" 
+                components={{ body: { wrapper: this.DraggableContainer, row: this.DraggableBodyRow } }}
+                style={{width: '100%'}} />
+        </Modal>
       </div>
     )
   }
