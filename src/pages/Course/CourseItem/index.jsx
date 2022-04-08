@@ -94,6 +94,21 @@ export default class CourseItem extends Component {
     this.setState({ searchText: '' });
   }
 
+  /* 执行修改成绩的回调 */
+  handleModify = (code, studentNumber, name) => {
+    const newGrade = window.prompt(`请输入学号为${studentNumber}的${name}同学的成绩，并提交教务审核`)
+    if(newGrade != null){
+      this.props.modifyGrade(code, studentNumber, newGrade)
+    }
+  }
+
+  /* 执行移出班级的回调 */
+  handleOut = (code, studentNumber, name) => {
+    if(window.confirm(`是否确定将学号为${studentNumber}的${name}同学移出班级吗？`)){
+      this.props.outClass(code, studentNumber)
+    }
+  }
+
   render() {
     const columns = [
       {
@@ -101,7 +116,8 @@ export default class CourseItem extends Component {
         dataIndex: 'number',
         key: 'number',
         width: '10%',
-        align: 'center'
+        align: 'center',
+        render: (text,record,index) => `${index+1}`
       },
       {
         title: '学院',
@@ -154,9 +170,13 @@ export default class CourseItem extends Component {
         dataIndex: 'edit',
         key: 'edit',
         align: 'center',
-        render: () => <div className={CourseItemCss.editButtonWrapper}>
-          <p id={CourseItemCss.changeGradeIcon}><MyIcon type='icon-xiugaichengji' />&nbsp;修改成绩</p>
-          <p id={CourseItemCss.outOfClassIcon}><MyIcon type='icon-yichubanji' />&nbsp;移出班级</p>
+        render: (text, record) => <div className={CourseItemCss.editButtonWrapper}>
+          <p id={CourseItemCss.changeGradeIcon}
+            onClick={() => this.handleModify(this.props.code, record.studentNumber, record.name)}>
+              <MyIcon type='icon-xiugaichengji' />&nbsp;修改成绩</p>
+          <p id={CourseItemCss.outOfClassIcon}
+            onClick={() => this.handleOut(this.props.code, record.studentNumber, record.name)}>
+              <MyIcon type='icon-yichubanji' />&nbsp;移出班级</p>
         </div>
       }
     ]

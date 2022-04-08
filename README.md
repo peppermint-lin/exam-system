@@ -134,7 +134,7 @@
    }
    ```
    
-7. Course页面的主组件中的courseItem数据
+7. Course页面的主组件中的courseItem数据（在state里面）
 
    ```js
    /* 教师所教授的每个课程的数据 */

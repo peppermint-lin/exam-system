@@ -253,6 +253,10 @@ export default class Build extends Component {
 			return problemInfoObj.id !== id
 		})
 		this.setState({problemInfo: newProblemInfo})
+    message.success({
+        content: '删除成功！',
+        style: {marginTop: '8.5vh'}
+    })
 	}
 
   /* 保存卡片后，去除阴影的回调 */
@@ -322,6 +326,10 @@ export default class Build extends Component {
       return item
     })
 		this.setState({problemInfo: newProblemInfo})
+    message.success({
+        content: '删除成功！',
+        style: {marginTop: '8.5vh'}
+    })
 	}
 
   /* 保存判断题后，去除阴影的回调 */
@@ -375,10 +383,12 @@ export default class Build extends Component {
 
   /* 完成创建的回调 */
   finish = () => {
-    message.success({
-        content: '创建成功！已提交管理员审核',
-        style: {marginTop: '8.5vh'}
-    })
+    if(window.confirm("已更新该卷考纲覆盖率和近三年重复率，是否确认完成创建？")){
+      message.success({
+          content: '创建成功！已提交管理员审核',
+          style: {marginTop: '8.5vh'}
+      })
+    }
   }
 
   render() {

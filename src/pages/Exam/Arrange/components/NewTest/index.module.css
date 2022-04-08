@@ -15,3 +15,13 @@
     justify-content: center;
     align-items: center;
 }
+
+/* 单行父容器 */
+.lineWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+    margin-bottom: 1%;
+}
