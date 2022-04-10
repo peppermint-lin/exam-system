@@ -1,4 +1,4 @@
-# Exam Syatem Readme Text
+# Exam System Readme Text
 
 ### 通过yarn add安装的依赖
 
